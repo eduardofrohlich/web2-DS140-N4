@@ -1,0 +1,111 @@
+p{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container-pedido1{
+    margin-top: 20px;
+}
+
+.container-roupas{
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-bottom: 20px;
+    border-style: solid;
+    border-width: 1px;
+}
+
+.container-roupa{
+    margin: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-style: solid;
+    border-width: 1px;
+    display: grid;
+    grid-template-columns: 200px 1fr 100px 300px;
+}
+
+.imagem-roupa{
+    width: 200px;
+    height: 150px;
+    border-style: solid;
+    border-width: 1px;
+}
+
+.info-roupa{
+    margin-left: 20px;
+    margin-top: 10px;
+    font-size: large;
+}
+
+.botao-up{
+    cursor: pointer;
+    width: 100px;
+    height: 70px;
+    margin-bottom: 5px;
+}
+
+.botao-down{
+    cursor: pointer;
+    width: 100px;
+    height: 70px;
+}
+
+.info-botao{
+    margin-left: 30px;
+    margin-top: 10px;
+    font-size: x-large;
+}
+
+.container-confirmar-pedidos{
+    margin-top: 30px;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-bottom: 20px;
+}
+
+.confirmar-pedido{
+    border-style: solid;
+    border-width: 1px;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 1fr 400px;
+}
+
+.info-pedido{
+    margin-left: 20px;
+    font-size: x-large;
+}
+
+.botao-confirmar{
+    /* Apagar depois de tirar o <a> */
+    width: 100%;
+    height: 80%;
+    /**/
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    background-color: rgb(47, 165, 47);
+    border-color: rgb(22, 138, 66);
+    border-style: solid;
+    border-width: 1px;
+    padding: 10px;
+    color: white;
+    font-size: x-large;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background-color 0.15s, color 0.15s;
+}
+
+/* Trocar cor ao passar o mouse no botão */
+.botao-confirmar:hover
+{
+  background-color: rgb(76, 187, 76);
+  color: white;
+}
+
+/* Trocar cor ao clicar no botão */
+.botao-confirmar:active
+{
+  opacity: 0.8;
+}
