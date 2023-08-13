@@ -1,0 +1,24 @@
+.tela{
+    margin: 100px;
+    display: flex;
+    margin-bottom: 50px;
+}
+.texto{
+    margin: 50px;
+    text-align: center;
+    margin-bottom: 0px;
+    margin-top: 0;
+}
+.botoes{
+    justify-items: center;
+    align-items: center;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    margin-left: 170px;
+}
+.btn-dark{
+    margin: 20px;
+    margin-top: 0px;
+    margin-left: 70px;  
+}
