@@ -480,3 +480,18 @@ function atualizarTempoTotal()
 
 let valorTotal = 0;
 let tempoTotal = 0;
+
+let botaoConfimar= document.getElementById('botaoConfirmar');
+
+botaoConfirmar.addEventListener('click', function(verificaBotao){
+    let valido = false;
+    for(let cont=0; cont<quantidadeRoupas.length; cont++){
+        if (quantidadeRoupas[cont]!=0){
+            valido = true;
+        }
+    }
+    if(!valido){
+        verificaBotao.preventDefault();
+        alert('Por favor, inclua peças de roupa no pedido para que ele possa ser confirmado!');
+    }
+});
