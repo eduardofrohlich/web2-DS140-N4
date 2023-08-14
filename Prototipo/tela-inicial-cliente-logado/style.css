@@ -19,16 +19,14 @@
   font-size: 20px;
 }
 
-
-
 .menu-sidebar {
-  width: 250px;
-  height: 100%;
-  background: #5d6b74;
-  position: fixed;
-  padding-top: 40px;
+    width: 250px;
+    height: 100%;
+    background: #5d6b74;
+    position: fixed;
+    padding-top: 40px;
+    overflow-y: auto;
 }
-
 
 .menu-sidebar li>a {
   display: table;
@@ -66,14 +64,6 @@
   background-color: #242424;
 }
 
-.menu-sidebar>ul.logout {
-    position: fixed;
-    bottom: 0;
-    list-style-type: none;
-    text-indent: -2%;
-    padding-bottom: 20px;
-    width: 250px;
-}
 
 
 .home {
@@ -138,6 +128,7 @@ th, td {
   text-align: center;
   padding: 12px;
 }
+
 
 th {
   background-color: #d3d3d3;
