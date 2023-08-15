@@ -1,0 +1,69 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+ 
+  .container-cad {
+    width: 700px;
+    margin: auto;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column; 
+    border-radius:6px;
+    padding:1em;
+    border: 1px #aaaaaa solid;
+}
+
+.container-cad h2 { 
+  font-family:'open_sansregular';
+  font-size: 2em;
+  color: #000;
+  border-bottom: 1px #f0eded solid;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  text-align: center;
+}
+
+.form-group {
+  width: 100%;
+  margin: 0 auto;
+  margin-bottom: 8px;
+  position: relative;
+}
+
+  input {
+    font-size: 16px;
+    font-family: inherit;
+    padding: 6px;
+    border-radius: 6px;
+    border: 1px #aaaaaa solid;
+    background: #fdfdfd;
+    outline: none;
+    width: 100%;
+    transition: all 0.3s;
+  }
+
+  .submit-btn {
+    float: right;
+    display: block;
+    padding: 5px 30px;
+    border: none;
+    outline: none;
+    color: #ffffff;
+    font-size: 16px;
+    font-family:'open_sansregular';
+    border-radius: 6px;
+    margin: 16px 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+#btn1{
+  background-color: red;
+}
+
+#btn2{
+  background-color: #24a0ed;
+}
+  

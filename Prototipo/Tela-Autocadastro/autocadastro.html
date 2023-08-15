@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Cadastro</title>
+</head>
+<body>
+    <div class="container-cad">
+        <h2>Cadastro</h2>
+        <form name="form-cad" method="post" action="#">
+            <div class="form-group">
+                <label for="nomeCompleto">Nome Completo</label>
+                <input type="text" name="nomeCompleto" required />
+            </div>
+            
+            <div class="form-group">
+                <label for="cpf">CPF</label>
+                <input type="text" name="cpf" required/>
+            </div>
+
+            <div class="form-group">
+                <label for="email">E-mail</label>
+                <input type="email" name="email" required />
+            </div>
+
+            <div class="form-group">
+                <label for="telefone">Telefone</label>
+                <input type="text" name="telefone" required/>
+            </div>
+
+            <div class="form-group">
+                <span></span>
+                <label for="rua">Rua</label>
+                <input type="text" name="rua" required/>
+            </div>
+
+            <div class="form-group">
+                <label for="numCasa">N°</label>
+                <input type="text" name="numCasa" required/>
+            </div>
+
+            <div class="form-group">
+                <label for="bairro">Bairro</label>
+                <input type="text" name="bairro" required />
+            </div>
+    
+            <div>
+                <button type="submit" id="btn1" class="submit-btn">Cancelar</button>
+                <button type="submit" id="btn2" class="submit-btn">Enviar</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
