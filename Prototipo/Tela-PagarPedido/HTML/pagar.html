@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt">
+    <head>
+        <meta charset="UTF-8">
+        <title>Pagar Pedido</title>
+        <link rel="stylesheet" href="../CSS/container-pagar-pedido.css">
+    </head>
+
+    <body>
+        <div class="container-pagar-pedido">
+            <div class="container-roupas-pedido">
+                <!-- Roupas do pedido -->
+                <div class="container-roupa">
+                    <!-- Gerar as tags com o conteúdo do banco de dados -->
+                    <img class="imagem-roupa" src="../Imagens/meia.jpg">
+
+                    <div class="info-roupa">
+                        <p>Nome da roupa: Meia</p>
+                        <p>Quantidade: 7</p>
+                        <p>Valor total: 3.5 R$</p>
+                    </div>
+                    <!-- Gerar as tags com o conteúdo do banco de dados -->
+                </div>
+
+                <!-- Apagar as roupas abaixo após a implementação do banco de dados -->
+                <div class="container-roupa">
+                    <img class="imagem-roupa" src="../Imagens/bermuda.png">
+
+                    <div class="info-roupa">
+                        <p>Nome da roupa: Bermuda</p>
+                        <p>Quantidade: 10</p>
+                        <p>Valor total: 7.5 R$</p>
+                    </div>
+                </div>
+                <div class="container-roupa">
+                    <img class="imagem-roupa" src="../Imagens/jaqueta.png">
+
+                    <div class="info-roupa">
+                        <p>Nome da roupa: Jaqueta</p>
+                        <p>Quantidade: 2</p>
+                        <p>Valor total: 3 R$</p>
+                    </div>
+                </div>
+                <div class="container-roupa">
+                    <img class="imagem-roupa" src="../Imagens/calca.png">
+
+                    <div class="info-roupa">
+                        <p>Nome da roupa: Calça</p>
+                        <p>Quantidade: 5</p>
+                        <p>Valor total: 5 R$</p>
+                    </div>
+                </div>
+                <div class="container-roupa">
+                    <img class="imagem-roupa" src="../Imagens/blusa.png">
+
+                    <div class="info-roupa">
+                        <p>Nome da roupa: Blusa</p>
+                        <p>Quantidade: 3</p>
+                        <p>Valor total: 3 R$</p>
+                    </div>
+                </div>
+                <!-- Apagar até aqui !! -->
+            </div>
+
+            <div class="container-confirmar-pagamento">
+                <div class="container-confirmar">
+                    <div class="info-pedido">
+                        <p>Nome do Cliente: Joãozinho Feijão</p>
+                        <p>Id do Pedido: 1</p>
+                        <p>Valor Total: 22 R$</p>
+                    </div>
+
+                    <a href="next.html">
+                        <!-- Quando confirmar o pagamento, salvar a data e horário. Atualizar estado do pedido -->
+                        <button class="botao-confirmar">CONFIRMAR PAGAMENTO</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
