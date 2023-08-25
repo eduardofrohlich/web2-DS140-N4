@@ -88,7 +88,9 @@
                 <td>17/08/2023</td>
                 <td>Cancelado</td>
                 <td>R$ 70,00</td>
-                <td>-</td>
+                <td>
+                  <a class="grey-button" href="#">Detalhes do pedido</a>
+                </td>
               </tr>
               <tr>
                 <td>000121</td>
@@ -368,7 +370,8 @@
     .listagem a {
       background: #38797a9d;
       text-align: center;
-      display: inline-flex;
+      display: grid;
+      place-items: center;
       border-radius: 3vh;
       text-decoration: none;
     }
@@ -376,9 +379,13 @@
     .listagem .grey-button {
       background: #1a191986;
       text-align: center;
-      display: inline-flex;
       border-radius: 3vh;
       text-decoration: none;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: 0.5s;
     }
 
     .popup {
