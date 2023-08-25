@@ -481,7 +481,8 @@ function atualizarTempoTotal()
 let valorTotal = 0;
 let tempoTotal = 0;
 
-let botaoConfimar= document.getElementById('botaoConfirmar');
+let botaoConfirmar= document.getElementById('botaoConfirmar');
+let botaoCancelar= document.getElementById('botaoCancelar');
 
 botaoConfirmar.addEventListener('click', function(verificaBotao){
     let valido = false;
@@ -493,5 +494,7 @@ botaoConfirmar.addEventListener('click', function(verificaBotao){
     if(!valido){
         verificaBotao.preventDefault();
         alert('Por favor, inclua peças de roupa no pedido para que ele possa ser confirmado!');
+    } else{
+        alert("Seu pedido foi confirmado! O número do pedido é: 568.")
     }
 });
