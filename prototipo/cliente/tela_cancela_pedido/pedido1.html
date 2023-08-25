@@ -5,7 +5,8 @@
   <meta http-equiv="X-UA-Compatible">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>LOL - Lavanderia Online</title>
-  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="base-style.css">
+  <link rel="stylesheet" href="animation-style.css">
 </head>
 
 <body>
@@ -29,13 +30,66 @@
       <div class="content">
         <h2>Pedido #698</h2>
         <div class="itens-pedido">
-          <div>
-            <img src="/prototipo/cliente/tela_pedido_online/Imagens/meia.jpg" alt="">
-          </div>
+          <section class="box mb-5">
+            <div class="marquee-wrapper" style="user-select: none;">
+              <div class="marquee-content scrollingX">
+                <div class="card-testimonial">
+                  <article>
+                    <picture>
+                      <img src="../tela_pedido_online/Imagens/meia.jpg" alt="meia">
+                    </picture>
+                    <h4>6 Meias</h4>
+                  </article>
+                </div>
+                <div class="card-testimonial">
+                  <article>
+                    <picture>
+                      <img src="../tela_pedido_online/Imagens/calca.png" alt="calca">
+                    </picture>
+                    <h4>2 Calças</h4>
+                  </article>
+                </div>
+                <div class="card-testimonial">
+                  <article>
+                    <picture>
+                      <img src="../tela_pedido_online/Imagens/camisa.png" alt="camiseta">
+                    </picture>
+                    <h4>4 Camisetas</h4>
+                </div>
+
+                <div class="card-testimonial">
+                  <article>
+                    <picture>
+                      <img src="../tela_pedido_online/Imagens/bermuda.png" alt="bermuda">
+                    </picture>
+                    <h4>4 Bermudas</h4>
+                  </article>
+                </div>
+              </div>
+            </div>
+          </section>
         </div>
-
-
+      </div>
+      <button type="submit" class="btn" onclick="openPopup()">Cancelar</button>
+      <div class="popup" id="popup">
+        <img src="./assets/erro.png">
+        <h2>Cancelar Pedido</h2>
+        <p>Você tem certeza que deseja cancelar seu pedido?</p>
+        <button type="button" class="btn-yes" onclick="closePopup()">Sim</button>
+        <button type="button" onclick="closePopup()">Não</button>
       </div>
     </section>
-
   </div>
+  <script src="main.js"></script>
+  <script>
+    let popup = document.getElementById('popup');
+    function openPopup() {
+      popup.classList.add("open-popup");
+    }
+    function closePopup() {
+      popup.classList.remove("open-popup");
+    }
+  </script>
+</body>
+
+</html>
