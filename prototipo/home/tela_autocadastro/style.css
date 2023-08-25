@@ -64,7 +64,7 @@
     color: #ffffff;
     font-size: 16px;
     border-radius: 6px;
-    margin: 16px 8px;
+    margin: 16px 0 16px 8px;
     cursor: pointer;
     transition: all 0.3s;
 }
@@ -83,4 +83,52 @@
  #numCasa,#estado{
   margin-left: 8px;
   width: 25%;
+}
+
+#alerta{
+  display: none;
+  width: 100%;
+  margin: 50px auto;
+  text-align: center;
+}
+
+.main-container{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 15px 40px;
+  flex-wrap: wrap;
+}
+
+.card{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 8em;
+  height: 6rem;
+  margin: 0.5em;
+  background-color: rgb(232,232,232);
+  border-radius: 6px;
+}
+
+.info{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1em;
+}
+#fecha{
+  background-color: #24a0ed;
+  float: right;
+  display: block;
+  padding: 5px 30px;
+  border: none;
+  outline: none;
+  color: #ffffff;
+  font-size: 16px;
+  border-radius: 6px;
+  margin: 16px 0;
+  cursor: pointer;
 }
