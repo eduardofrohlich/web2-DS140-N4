@@ -1,6 +1,10 @@
 body{
     background-image: url("../Imagens/bolhas.png");
     background-size: cover;
+    /* Usando o lolmeme
+    background-image: url("../Imagens/lolmeme.png");
+    background-size: 100px;
+    */
 }
 
 p{
