@@ -495,6 +495,11 @@ botaoConfirmar.addEventListener('click', function(verificaBotao){
         verificaBotao.preventDefault();
         alert('Por favor, inclua peças de roupa no pedido para que ele possa ser confirmado!');
     } else{
-        alert("Seu pedido foi confirmado! O número do pedido é: 568.")
+        alert("Seu pedido foi confirmado! O número do pedido é: 1.")
     }
 });
+botaoCancelar.addEventListener('click', function(verificaBotaoCancelar){
+    let texto="Você tem certeza que deseja cancelar o pedido?";
+    if(!confirm(texto)){
+        verificaBotaoCancelar.preventDefault();
+    }});
