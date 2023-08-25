@@ -62,9 +62,7 @@
                 <td>Aberto</td>
                 <td>R$ 110,00</td>
                 <td>
-                  <div class="popup" id="popup">
-                    <a class="cancel-button" onclick="openPopup()">Cancelar</a>
-                  </div>
+                  <a class="cancel-button" onclick="openPopup()">Cancelar</a>
                 </td>
               </tr>
               <tr>
@@ -73,9 +71,7 @@
                 <td>Aberto</td>
                 <td>R$ 30,00</td>
                 <td>
-                  <div class="popup" id="popup">
-                    <a class="cancel-button" onclick="openPopup()">Cancelar</a>
-                  </div>
+                  <a class="cancel-button" onclick="openPopup()">Cancelar</a>
                 </td>
               </tr>
               <tr>
@@ -84,9 +80,7 @@
                 <td>Aberto</td>
                 <td>R$ 85,00</td>
                 <td>
-                  <div class="popup" id="popup">
-                    <a class="cancel-button" onclick="openPopup()">Cancelar</a>
-                  </div>
+                  <a class="cancel-button" onclick="openPopup()">Cancelar</a>
                 </td>
               </tr>
               <tr>
@@ -94,6 +88,7 @@
                 <td>17/08/2023</td>
                 <td>Cancelado</td>
                 <td>R$ 70,00</td>
+                <td>-</td>
               </tr>
               <tr>
                 <td>000121</td>
@@ -101,9 +96,7 @@
                 <td>Aberto</td>
                 <td>R$ 40,00</td>
                 <td>
-                  <div class="popup" id="popup">
-                    <a class="cancel-button" onclick="openPopup()">Cancelar</a>
-                  </div>
+                  <a class="cancel-button" onclick="openPopup()">Cancelar</a>
                 </td>
               </tr>
               <tr>
@@ -258,6 +251,15 @@
         </div>
       </div>
     </section>
+    <div class="popup" id="popup">
+      <img src="./assets/atencao.png">
+      <h2>Cancelar Pedido</h2>
+      <p>Você tem certeza que deseja cancelar seu pedido?</p>
+      <button type="button" class="btn-yes" onclick="closePopup()">Sim</button>
+      <button type="button" onclick="closePopup()">Não</button>
+    </div>
+
+
   </div>
 
   <style>
@@ -379,6 +381,70 @@
       text-decoration: none;
     }
 
+    .popup {
+      width: 400px;
+      background: #fff;
+      border-radius: 6px;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.1);
+      text-align: center;
+      padding: 0 30px 30px;
+      color: #333;
+      visibility: hidden;
+      transition: transform 0.4s, top 0.4s;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .open-popup {
+      visibility: visible;
+      top: 50%;
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    .popup img {
+      width: 100px;
+      justify-content: center;
+      margin-top: -50px;
+      border-radius: 20px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .popup h2 {
+      font-size: 30px;
+      font-weight: 500;
+      margin: 30px 0 10px;
+    }
+
+    .popup button {
+      width: 100%;
+      margin-top: 50px;
+      padding: 10px 0;
+      background: #6e6e6ea9;
+      color: #fff;
+      border: 0;
+      outline: none;
+      font-size: 18px;
+      border-radius: 4px;
+      cursor: pointer;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .popup .btn-yes {
+      width: 100%;
+      margin-top: 50px;
+      padding: 10px 0;
+      background: #db08087c;
+      color: #fff;
+      border: 0;
+      outline: none;
+      font-size: 18px;
+      border-radius: 4px;
+      cursor: pointer;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
     .content-with-sidebar {
       display: flex;
       flex-direction: column;
@@ -409,5 +475,14 @@
         });
       });
     });
+
+    let popup = document.getElementById('popup');
+    function openPopup() {
+      popup.classList.add("open-popup");
+    }
+    function closePopup() {
+      popup.classList.remove("open-popup");
+    }
+
   </script>
 </body>
