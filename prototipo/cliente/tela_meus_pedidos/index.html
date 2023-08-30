@@ -59,12 +59,14 @@
               <tr>
                 <td>000125</td>
                 <td>20/08/2023</td>
-                <td>Aberto</td>
+                <td id="aberto1">Aberto</td>
                 <td>R$ 110,00</td>
-                <td>
-                  <a class="cancel-button" onclick="openPopup()">Cancelar</a>
+                <td id="btn-cancel1">
+                  <a class="cancel-button" onclick="setRowId('aberto1'); openPopup()">Cancelar</a>
                 </td>
+
               </tr>
+
               <tr>
                 <td>000200</td>
                 <td>22/08/2023</td>
@@ -86,9 +88,9 @@
               <tr>
                 <td>000124</td>
                 <td>19/08/2023</td>
-                <td>Aberto</td>
+                <td id="aberto2">Aberto</td>
                 <td>R$ 30,00</td>
-                <td>
+                <td id="btn-cancel2">
                   <a class="cancel-button" onclick="openPopup()">Cancelar</a>
                 </td>
               </tr>
@@ -97,7 +99,7 @@
                 <td>18/08/2023</td>
                 <td>Aberto</td>
                 <td>R$ 85,00</td>
-                <td>
+                <td id="btn-cancel3">
                   <a class="cancel-button" onclick="openPopup()">Cancelar</a>
                 </td>
               </tr>
@@ -115,7 +117,7 @@
                 <td>16/08/2023</td>
                 <td>Aberto</td>
                 <td>R$ 40,00</td>
-                <td>
+                <td id="btn-cancel4">
                   <a class="cancel-button" onclick="openPopup()">Cancelar</a>
                 </td>
               </tr>
@@ -275,9 +277,17 @@
       <img src="./assets/atencao.png">
       <h2>Cancelar Pedido</h2>
       <p>Você tem certeza que deseja cancelar seu pedido?</p>
-      <button type="button" class="btn-yes" onclick="closePopup()">Sim</button>
+      <button type="button" class="btn-yes" onclick="closePopupYes()">Sim</button>
       <button type="button" onclick="closePopup()">Não</button>
     </div>
+
+    <div class="popup" id="popup2">
+      <img src="assets/sucesso.png">
+      <h2>Cancelar Pedido</h2>
+      <p>Pedido cancelado com sucesso!</p>
+      <button type="button" class="btn-yes" onclick="closePopupCancel()">Ok</button>
+    </div>
+
 
   </div>
 
@@ -499,6 +509,12 @@
       });
     });
 
+    let selectedRowId = "";
+
+    function setRowId(rowId) {
+      selectedRowId = rowId;
+    }
+
     let popup = document.getElementById('popup');
     function openPopup() {
       popup.classList.add("open-popup");
@@ -507,30 +523,60 @@
       popup.classList.remove("open-popup");
     }
 
+    function cancelOrder(rowId) {
+      let statusCell = document.getElementById(rowId).querySelector("td:nth-child(3)");
+      statusCell.textContent = "Cancelado";
+      statusCell.style.color = "red";
+
+      let buttonCell = document.getElementById(rowId).querySelector("td:nth-child(5)");
+      buttonCell.innerHTML = "<a class='grey-button' href='#'>Detalhar Pedido</a>";
+    }
+
+
+    function closePopupYes() {
+      console.log("selectedRowId:", selectedRowId);
+      popup.classList.remove("open-popup");
+      let popup2 = document.getElementById('popup2');
+      popup2.classList.add("open-popup");
+
+      if (selectedRowId !== "") {
+        let statusCell = document.getElementById(selectedRowId);
+        console.log("statusCell:", statusCell);
+      }
+      let cancelarBotao = document.getElementById("btn-cancel" + selectedRowId);
+      cancelarBotao.innerHTML = "<a class='cancel-button' onclick='cancelOrder(\"" + selectedRowId + "\")'>Cancelar</a>";
+    }
+
+
+
+    function closePopupCancel() {
+      let popup2 = document.getElementById('popup2');
+      popup2.classList.remove("open-popup");
+    }
+
     /* 
       Alterar os estados do pedido.
       novoEstado == O próximo estado que o pedido deve assumir.
       idLinhaEstado == O id da linha que contém o nome do estado (coluna status)
       botaoEstado == O id do botao que chama a função. Serve para alterar o botão para ativar a função do novo estado.
     */
-    function alterarEstado(novoEstado = "", idLinhaEstado = "", botaoEstado = "")
-    {
+    function alterarEstado(novoEstado = "", idLinhaEstado = "", botaoEstado = "") {
       let alterarNomeEstado = document.getElementById(idLinhaEstado);
       alterarNomeEstado.innerHTML = novoEstado;
-      
-      if(novoEstado == "Finalizado"){
+
+      if (novoEstado == "Finalizado") {
         // Acaba
-        document.getElementById(idLinhaEstado).style.color="green";
+        document.getElementById(idLinhaEstado).style.color = "green";
         document.getElementById(botaoEstado).innerHTML = "";
       }
-      else if(novoEstado == "Aguardando Pagamento"){
+      else if (novoEstado == "Aguardando Pagamento") {
         // Deve possibilitar pagar o pedido
-        document.getElementById(idLinhaEstado).style.color="blue";
+        document.getElementById(idLinhaEstado).style.color = "blue";
         document.getElementById(botaoEstado).innerHTML = "<a class='grey-button' style='background-color: rgb(94, 184, 211);' onclick='alterarEstado(\"Pago\", \"" + idLinhaEstado + "\", \"" + botaoEstado + "\")' href='#'>Pagar</a>";
       }
-      else if(novoEstado == "Pago"){
+      else if (novoEstado == "Pago") {
         // Deve possibilitar finalizar o pedido
-        document.getElementById(idLinhaEstado).style.color="rgb(214, 94, 50)";
+        document.getElementById(idLinhaEstado).style.color = "rgb(214, 94, 50)";
         document.getElementById(botaoEstado).innerHTML = "<a class='grey-button' style='background-color: rgb(214, 94, 50);' onclick='alterarEstado(\"Finalizado\", \"" + idLinhaEstado + "\", \"" + botaoEstado + "\")' href='#'>Finalizar Pedido</a>";
       }
     }
