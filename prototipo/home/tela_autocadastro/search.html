@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/prototipo/base-style.css">
     <title>Pesquisar Pedido</title>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"
             integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
@@ -75,51 +76,79 @@
     </script>
 </head>
 <body>
-    <section class="container-cad">
-        <div class="main-container">
-            <input type="text" id="search-input" placeholder="Digite o código do pedido." autocomplete="off">
+    <nav class="menu-sidebar">
+        <div class="logo">
+            <img src="/prototipo/logo.png" alt="Logo">
         </div>
-        <div class="main-container " id="cards-container">
-            <div id="alerta">Pedido não encontrado.</div>
-            <div class="card" id="1">
-                <h3>Pedido 235</h3>
-                    <p>Valor R$3</p>
+        <h2><a href="/prototipo/cliente/tela_inicial_cliente/index.html">LOL Lavanderia Online</a></h2>
+        <ul>
+            <li><a href="#"><i class="menu-item"></i><span class="menu-texto">Página Inicial</span></a></li>
+            <li><a href="#"><i class="menu-item"></i><span class="menu-texto">Meus pedidos</span></a></li>
+            <li><a href="#"><i class="menu-item"></i><span class="menu-texto">Pesquisar Pedidos</span></a></li>
+            <li><a href="#"><i class="menu-item"></i><span class="menu-texto">Serviços</span></a></li>
+            <li><a href="#"><i class="menu-item"></i><span class="menu-texto">Contato</span></a></li>
+        </ul>
+        <ul class="logout">
+            <li><a href="/prototipo/home/tela_inicial/inicio.html"><i class="menu-item"></i><span class="menu-texto">Sair</span></a></li>
+        </ul>
+    </nav>
+    <div class="content-with-sidebar">
+        <section class="home">
+            <div class="content">
+                <!-- Adicione o conteudo aqui -->
+                <section >
+                    <div class="main-container">
+                        <input type="text" id="search-input" placeholder="Digite o código do pedido." autocomplete="off">
+                    </div>
+                    <div class="main-container " id="cards-container">
+                        <div id="alerta">Pedido não encontrado.</div>
+                        <div class="card" id="1">
+                            <h3>Pedido 235</h3>
+                                <p>Valor R$3</p>
+                        </div>
+                        <div class="card" id="2">
+                            <h3>Pedido 237</h3>
+                                <p>Valor R$6</p>
+                        </div>
+                        <div class="info-container">
+                            <h3>Pedido 235</h3>
+                            <div class="info">
+                                <p id="3">Valor Total R$3 </p><p></p>
+                            </div>
+                            <div class="info">
+                                <span><p>Prazo 2 dias</p></span><span><p></p></span>
+                            </div>
+                            <div class="info">
+                                <span><p>Situação "EM ABERTO"</p></span><span><p></p></span>
+                            </div>
+                            <div class="info">
+                                <span><p>Roupas</p></span><span><p></p></span>
+                            </div>
+                            <div class="info">
+                                <span><p>Jaqueta</p></span><span><p></p></span>
+                            </div>
+                            <div class="info">
+                                <span><p>valor R$1</p></span><span><p></p></span>
+                            </div>
+                            <div class="info">
+                                <span><p>2 dias</p></span><span><p></p></span>
+                            </div>
+                            <div class="info">
+                                <button id="fecha">Fechar</button>
+                            </div>
+            
+                        </div>
+                    </div>
+                </section>
+            
             </div>
-            <div class="card" id="2">
-                <h3>Pedido 237</h3>
-                    <p>Valor R$6</p>
-            </div>
-            <div class="info-container">
-                <h3>Pedido 235</h3>
-                <div class="info">
-                    <p id="3">Valor Total R$3 </p><p></p>
-                </div>
-                <div class="info">
-                    <span><p>Prazo 2 dias</p></span><span><p></p></span>
-                </div>
-                <div class="info">
-                    <span><p>Situação "EM ABERTO"</p></span><span><p></p></span>
-                </div>
-                <div class="info">
-                    <span><p>Roupas</p></span><span><p></p></span>
-                </div>
-                <div class="info">
-                    <span><p>Jaqueta</p></span><span><p></p></span>
-                </div>
-                <div class="info">
-                    <span><p>valor R$1</p></span><span><p></p></span>
-                </div>
-                <div class="info">
-                    <span><p>2 dias</p></span><span><p></p></span>
-                </div>
-                <div class="info">
-                    <button id="fecha">Fechar</button>
-                </div>
+        </section>
+    </div>
 
-            </div>
-        </div>
-    </section>
-
+    <style>
+        /* adicione o css da classe content aqui */
+    </style>
 </body>
+
 </html>
                                 
