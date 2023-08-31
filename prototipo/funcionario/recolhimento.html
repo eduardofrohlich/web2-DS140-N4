@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmação de Recolhimento</title>
+    <link rel="stylesheet" href="/prototipo/base-style.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        .content-with-sidebar {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .confirmation {
+            text-align: center;
+            padding: 100px;
+            background-color: #38797a9d;
+            border-radius: 10px;
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+            width: 70%;
+            margin: 0 auto;
+        }
+
+        .confirmation p {
+            font-size: 18px;
+            color: #333333;
+            margin-bottom: 20px;
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="logo">
+        <img src="/prototipo/logo.png" alt="Logo">
+    </div>
+    <nav class="menu-sidebar">
+    </nav>
+    <div class="content-with-sidebar">
+        <section class="home">
+            <div class="content">
+                <div class="confirmation">
+                    <h1 style="font-size: 2.5em; color: #333333; margin-top: 0;">Confirmação de Recolhimento</h1>
+                    <p>O pedido foi recolhido com sucesso!</p>
+                    <a class="back-button" href="../funcionario/index.html">Voltar para Pedidos Abertos</a>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
