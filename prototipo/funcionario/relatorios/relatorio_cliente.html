@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOL - Lavanderia Online</title>
+    <link rel="stylesheet" href="./base-style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.4.1/jspdf.debug.js" 
+    integrity="sha384-THVO/sM0mFD9h7dfSndI6TS0PgAGavwKvB5hAxRRvc0o9cPLohB0wb/PTA7LdUHs" crossorigin="anonymous"></script>
+</head>
+<style>
+    .titulo{
+        display: flex;  
+        justify-content: center;
+    }
+    .botao{
+        display: flex;
+        justify-content: right; 
+    }
+    .botao a{
+        cursor:pointer;
+    }
+    .home .content {
+        padding-top: 12vh;
+    }
+    .content h1 {
+        color: #000;
+        margin-left: 4vh;
+        font-weight: bolder;
+        font-size: 2vw;
+        top: 3.5vh;
+        text-align: left;
+        margin-bottom: 4vh;
+    }
+
+    .listagem table {
+        border-collapse: collapse;
+        width: 100%;
+        margin-bottom: 10vh;
+    }
+
+    .listagem th {
+        padding: 0.7vh;
+        text-align: center;
+        border-bottom: 1px solid #ddd;
+        font-size: large;
+    }
+
+    .listagem td {
+        text-align: center;
+        border-bottom: 1px solid #ddd;
+        font-size:  large;
+    }
+
+    .listagem tr:hover {
+        background-color: #f5f5f5;
+    }
+
+    .listagem th {
+        background-color: #38797a9d;
+        color: #fff;
+    }
+
+    .listagem .cancel-button {
+        margin-left: 10px;
+        background-color: #d9534f;
+        color: white;
+        border: none;
+        border-radius: 3vh;
+        padding: 6px 12px;
+        cursor: pointer;
+    }
+
+    .content-with-sidebar {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .content {
+        width: 100%;
+    }
+</style>
+<body>
+    <nav class="menu-sidebar">
+        <div class="logo">
+            <img src="logo.png" alt="Logo">
+        </div>
+        <h2><a href="/prototipo/cliente/tela_inicial_cliente/index.html">LOL Lavanderia Online</a></h2>
+        <ul>
+            <li><a href="/prototipo/cliente/tela_inicial_cliente/index.html"><i class="menu-item"></i><span
+                        class="menu-texto">Página Inicial</span></a></li>
+            <li><a href="/prototipo/cliente/tela_meus_pedidos/index.html"><i class="menu-item"></i><span
+                        class="menu-texto">Meus pedidos</span></a></li>
+            <li><a href="/prototipo/funcionario/relatorios/relatorios.html"><i class="menu-item"></i><span
+                        class="menu-texto">Relatórios</span></a></li>
+            <li><a href="#"><i class="menu-item"></i><span class="menu-texto">Serviços</span></a></li>
+            <li><a href="#"><i class="menu-item"></i><span class="menu-texto">Contato</span></a></li>
+        </ul>
+        <ul class="logout">
+            <li><a href="/prototipo/home/tela_inicial/inicio.html"><i class="menu-item"></i><span
+                        class="menu-texto">Sair</span></a></li>
+        </ul>
+    </nav>
+    <div class="content-with-sidebar">
+        <section class="home">
+            <div class="content" id="content">
+                <div class="titulo">
+                    <h1>Relatório de Clientes da Lavanderia</h1>
+                </div>
+                <div class="listagem">
+                    <table id="table" style="font-size: 10px; width: 100%">
+                        <thead>
+                            <tr>
+                                <th style="width:20%">Nome</th>
+                                <th style="width:20%">Email</th>
+                                <th style="width:20%">CPF</th>
+                                <th style="width:20%">Telefone</th>
+                                <th style="width:20%">Endereço</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Joana</td>
+                                <td>João@gmail.com</td>
+                                <td>111.222.333-44</td>
+                                <td>(41) 99999-9999</td>
+                                <td>Rua Dr. Alcides Vieira Arcoverde, 1225</td>
+                            </tr>
+                            <tr>
+                                <td>João</td>
+                                <td>João@yahoo.com</td>
+                                <td>222.333.444-55</td>
+                                <td>(41) 99999-9999</td>
+                                <td>Rua Dr. Alcides Vieira Arcoverde, 1225</td>
+                            </tr>
+                            <tr>
+                                <td>Joaquina</td>
+                                <td>Joaquina@outlook.com</td>
+                                <td>333.444.555-66</td>
+                                <td>(41) 99999-9999</td>
+                                <td>Rua Dr. Alcides Vieira Arcoverde, 1225</td>
+                            </tr>
+                            <tr>
+                                <td>José</td>
+                                <td>José@hotmail.com</td>
+                                <td>444.555.666-77</td>
+                                <td>(41) 99999-9999</td>
+                                <td>Rua Dr. Alcides Vieira Arcoverde, 1225</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="botao">
+                <a onclick="gerarPDFCliente()">Gerar PDF</a>
+            </div>
+        </section>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+        crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"
+        integrity="sha512-qZvrmS2ekKPF2mSznTQsxqPgnpkI4DNTlrdUmTzrDgektczlKNRRhy5X5AAOnx5S09ydFYWWNSfcEqDTTHgtNA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.6.0/jspdf.plugin.autotable.min.js"
+        integrity="sha512-DgV2mIRy66quVbkj4yS6FN7cccMH/iPXhDOi/ckWIAANbOL78RuoaA6MAu9BAdYEyAdIuIm63LzsaFmHGd7L8w==" 
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        function gerarPDFCliente(){
+            var doc = new jsPDF('l');
+            /*doc.autoTable({
+                html:'#table',
+                theme: 'grid',
+                startY:60,
+                styles:{
+                    fontSize:50,
+                    cellWidth:'wrap'
+                },
+                columnStyles:{
+                    1:{
+                        columnWidth:'auto'
+                    }
+                }
+            }) 
+            var margins = {
+                top:10,
+                bottom: 10,
+                left:10,
+                width:595
+            };*/
+            doc.fromHTML(document.querySelector("#content"))/*,
+                margins.left,
+                margins.top, {
+                'width': margins.width 
+            }*/;
+            doc.save('RelatorioCliente.pdf');
+            };
+    </script>
+</body>
