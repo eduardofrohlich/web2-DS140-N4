@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
 
 <head>
   <meta charset="UTF-8">
@@ -31,19 +30,25 @@
         <h1>Histórico de Pedidos</h1>
         <div class="seletor-status">
           <form>
-            <label for="filtro-estados">Filtrar por estado:</label>
+            <label for="filtro-estados">Filtrar por:</label>
             <select id="filtro-estados">
-              <option value="">Todos</option>
-              <option value="aberto">Aberto</option>
-              <option value="aguardando pagamento">Aguardando pagamento</option>
-              <option value="rejeitado">Rejeitado</option>
-              <option value="pago">Pago</option>
-              <option value="recolhido">Recolhido</option>
-              <option value="finalizado">Finalizado</option>
-              <option value="cancelado">Cancelado</option>
+              <option value="todos">Todos</option>
+              <option value="hoje">Hoje</option>
+              <option value="periodo-personalizado">Período personalizado</option>
             </select>
+
+            <div class="personalizado">
+              <label for="data-inicio">Data início:</label>
+              <input type="date" id="data-inicio" name="data-inicio">
+              <label for="data-fim">Data fim:</label>
+              <input type="date" id="data-fim" name="data-fim">
+              <a class="btn-filtro" onclick="filtrarPorData()">Filtrar</a>
+            </div>
           </form>
+
         </div>
+
+
         <div class="listagem">
           <table>
             <thead>
@@ -325,6 +330,23 @@
       border: 1px solid #000;
     }
 
+    .fim {
+      margin-left: 10px;
+    }
+
+    .btn-filtro {
+      color: #fff;
+      text-decoration: none;
+      padding: 1vh 6vh;
+      font-weight: 500;
+      font-weight: bolder;
+      transition: 0.5s;
+      background: #7c898a9d;
+      border: none;
+      border-radius: 3vh;
+      margin-left: 0;
+    }
+
     .seletor-status a {
       color: #fff;
       text-decoration: none;
@@ -336,6 +358,10 @@
       border: none;
       border-radius: 3vh;
       margin-left: 0;
+    }
+
+    .personalizado {
+      display: none;
     }
 
     .listagem table {
@@ -475,62 +501,78 @@
     document.addEventListener("DOMContentLoaded", function () {
       const filtroEstados = document.getElementById("filtro-estados");
       const linhasPedidos = document.querySelectorAll("tbody tr");
+      const dataInicioInput = document.getElementById("data-inicio");
+      const dataFimInput = document.getElementById("data-fim");
+      const divPersonalizada = document.querySelector(".personalizado"); // Seleciona a div personalizada
 
-      filtroEstados.addEventListener("change", function () {
+      // Função para exibir ou ocultar a div personalizada com base na seleção do filtro
+      function toggleDivPersonalizada() {
         const estadoSelecionado = filtroEstados.value;
+
+        if (estadoSelecionado === "periodo-personalizado") {
+          divPersonalizada.style.display = "block"; // Exibe a div personalizada
+        } else {
+          divPersonalizada.style.display = "none"; // Oculta a div personalizada
+        }
+      }
+
+      // Adicione um ouvinte de evento de mudança ao filtro de estados
+      filtroEstados.addEventListener("change", function () {
+        toggleDivPersonalizada(); // Chamada da função ao selecionar uma opção no filtro
 
         linhasPedidos.forEach(function (linha) {
           const statusPedido = linha.querySelector("td:nth-child(3)").textContent;
 
-          if (estadoSelecionado === "" || estadoSelecionado === statusPedido.toLowerCase()) {
+          if (estadoSelecionado === "todos" || estadoSelecionado === statusPedido.toLowerCase()) {
             linha.style.display = "table-row";
           } else {
             linha.style.display = "none";
           }
         });
       });
-    });
 
-    let selectedRowId = "";
+      // Adicione um ouvinte de evento de mudança aos campos de data
+      dataInicioInput.addEventListener("change", function () {
+        filtrarPorData();
+      });
 
-    function setRowId(rowId) {
-      selectedRowId = rowId;
-    }
+      dataFimInput.addEventListener("change", function () {
+        filtrarPorData();
+      });
 
-    let popup = document.getElementById('popup');
-    function openPopup() {
-      popup.classList.add("open-popup");
-    }
-    function closePopup() {
-      popup.classList.remove("open-popup");
-    }
+      // Função para filtrar pedidos por data
+      function filtrarPorData() {
+        const dataInicio = document.getElementById("data-inicio").value;
+        const dataFim = document.getElementById("data-fim").value;
+        const linhasPedidos = document.querySelectorAll("tbody tr");
 
-    function cancelOrder(rowId) {
-      let statusCell = document.getElementById(rowId).querySelector("td:nth-child(3)");
-      statusCell.textContent = "Cancelado";
-      statusCell.style.color = "red";
+        linhasPedidos.forEach(function (linha) {
+          const dataPedido = linha.querySelector("td:nth-child(2)").textContent;
+          const dataPedidoFormatada = formatarData(dataPedido); // Formatar a data
 
-      let buttonCell = document.getElementById(rowId).querySelector("td:nth-child(5)");
-      buttonCell.innerHTML = "<a class='grey-button' href='#'>Detalhar Pedido</a>";
-    }
-
-    function closePopupYes() {
-      popup.classList.remove("open-popup");
-      let popup2 = document.getElementById('popup2');
-      popup2.classList.add("open-popup");
-
-      if (selectedRowId !== "") {
-        let statusCell = document.getElementById(selectedRowId);
-        console.log("statusCell:", statusCell);
+          if (
+            (dataInicio === "" || dataPedidoFormatada >= dataInicio) &&
+            (dataFim === "" || dataPedidoFormatada <= dataFim)
+          ) {
+            linha.style.display = "table-row";
+          } else {
+            linha.style.display = "none";
+          }
+        });
       }
-      let cancelarBotao = document.getElementById("btn-cancel" + selectedRowId);
-      cancelarBotao.innerHTML = "<a class='cancel-button' onclick='cancelOrder(\"" + selectedRowId + "\")'>Cancelar</a>";
-    }
 
-    function closePopupCancel() {
-      let popup2 = document.getElementById('popup2');
-      popup2.classList.remove("open-popup");
-    }
+      // Função para formatar a data de "yyyy-mm-dd" para "dd/mm/yyyy"
+      function formatarData(data) {
+        const partesData = data.split("-");
+        if (partesData.length === 3) {
+          return `${partesData[2]}/${partesData[1]}/${partesData[0]}`;
+        }
+        return data; // Retorna a data original se não for um formato reconhecido
+      }
 
+
+      // Chame a função toggleDivPersonalizada para definir o estado inicial
+      toggleDivPersonalizada();
+    });
   </script>
 </body>
