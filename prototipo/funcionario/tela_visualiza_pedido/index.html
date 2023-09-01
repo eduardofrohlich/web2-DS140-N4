@@ -28,7 +28,7 @@
   <div class="content-with-sidebar">
     <section class="home">
       <div class="content">
-        <h1>Meus Pedidos</h1>
+        <h1>Histórico de Pedidos</h1>
         <div class="seletor-status">
           <form>
             <label for="filtro-estados">Filtrar por estado:</label>
@@ -67,24 +67,6 @@
 
               </tr>
 
-              <tr>
-                <td>000200</td>
-                <td>22/08/2023</td>
-                <td id="estado1" style="color: gray;">Recolhido</td>
-                <td>R$ 100,00</td>
-                <td id="botao1">
-                  <a class="grey-button" onclick="alterarEstado('Aguardando Pagamento', 'estado1', 'botao1')" href="#">Confirmar Lavagem</a>
-                </td>
-              </tr>
-              <tr>
-                <td>000201</td>
-                <td>23/08/2023</td>
-                <td id="estado2" style="color: rgb(214, 94, 50);">Pago</td>
-                <td>R$ 100,00</td>
-                <td id="botao2">
-                  <a class="grey-button" style="background-color: rgb(214, 94, 50);" onclick="alterarEstado('Finalizado', 'estado2', 'botao2')" href="#">Finalizar Pedido</a>
-                </td>
-              </tr>
               <tr>
                 <td>000124</td>
                 <td>19/08/2023</td>
@@ -532,7 +514,6 @@
       buttonCell.innerHTML = "<a class='grey-button' href='#'>Detalhar Pedido</a>";
     }
 
-
     function closePopupYes() {
       popup.classList.remove("open-popup");
       let popup2 = document.getElementById('popup2');
@@ -546,38 +527,9 @@
       cancelarBotao.innerHTML = "<a class='cancel-button' onclick='cancelOrder(\"" + selectedRowId + "\")'>Cancelar</a>";
     }
 
-
-
     function closePopupCancel() {
       let popup2 = document.getElementById('popup2');
       popup2.classList.remove("open-popup");
-    }
-
-    /* 
-      Alterar os estados do pedido.
-      novoEstado == O próximo estado que o pedido deve assumir.
-      idLinhaEstado == O id da linha que contém o nome do estado (coluna status)
-      botaoEstado == O id do botao que chama a função. Serve para alterar o botão para ativar a função do novo estado.
-    */
-    function alterarEstado(novoEstado = "", idLinhaEstado = "", botaoEstado = "") {
-      let alterarNomeEstado = document.getElementById(idLinhaEstado);
-      alterarNomeEstado.innerHTML = novoEstado;
-
-      if (novoEstado == "Finalizado") {
-        // Acaba
-        document.getElementById(idLinhaEstado).style.color = "green";
-        document.getElementById(botaoEstado).innerHTML = "";
-      }
-      else if (novoEstado == "Aguardando Pagamento") {
-        // Deve possibilitar pagar o pedido
-        document.getElementById(idLinhaEstado).style.color = "blue";
-        document.getElementById(botaoEstado).innerHTML = "<a class='grey-button' style='background-color: rgb(94, 184, 211);' onclick='alterarEstado(\"Pago\", \"" + idLinhaEstado + "\", \"" + botaoEstado + "\")' href='#'>Pagar</a>";
-      }
-      else if (novoEstado == "Pago") {
-        // Deve possibilitar finalizar o pedido
-        document.getElementById(idLinhaEstado).style.color = "rgb(214, 94, 50)";
-        document.getElementById(botaoEstado).innerHTML = "<a class='grey-button' style='background-color: rgb(214, 94, 50);' onclick='alterarEstado(\"Finalizado\", \"" + idLinhaEstado + "\", \"" + botaoEstado + "\")' href='#'>Finalizar Pedido</a>";
-      }
     }
 
   </script>
