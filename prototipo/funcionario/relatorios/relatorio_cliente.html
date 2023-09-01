@@ -1,28 +1,32 @@
 <!DOCTYPE html>
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LOL - Lavanderia Online</title>
     <link rel="stylesheet" href="./base-style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.4.1/jspdf.debug.js" 
-    integrity="sha384-THVO/sM0mFD9h7dfSndI6TS0PgAGavwKvB5hAxRRvc0o9cPLohB0wb/PTA7LdUHs" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.4.1/jspdf.debug.js" integrity="sha384-THVO/sM0mFD9h7dfSndI6TS0PgAGavwKvB5hAxRRvc0o9cPLohB0wb/PTA7LdUHs" crossorigin="anonymous"></script>
 </head>
 <style>
-    .titulo{
-        display: flex;  
+    .titulo {
+        display: flex;
         justify-content: center;
     }
-    .botao{
+
+    .botao {
         display: flex;
-        justify-content: right; 
+        justify-content: right;
     }
-    .botao a{
-        cursor:pointer;
+
+    .botao a {
+        cursor: pointer;
     }
+
     .home .content {
         padding-top: 12vh;
     }
+
     .content h1 {
         color: #000;
         margin-left: 4vh;
@@ -49,7 +53,7 @@
     .listagem td {
         text-align: center;
         border-bottom: 1px solid #ddd;
-        font-size:  large;
+        font-size: large;
     }
 
     .listagem tr:hover {
@@ -81,25 +85,23 @@
         width: 100%;
     }
 </style>
+
 <body>
     <nav class="menu-sidebar">
         <div class="logo">
             <img src="logo.png" alt="Logo">
         </div>
-        <h2><a href="/prototipo/cliente/tela_inicial_cliente/index.html">LOL Lavanderia Online</a></h2>
+        <h2><a href="/prototipo/funcionario/index.html">LOL Lavanderia Online</a></h2>
         <ul>
-            <li><a href="/prototipo/cliente/tela_inicial_cliente/index.html"><i class="menu-item"></i><span
-                        class="menu-texto">Página Inicial</span></a></li>
-            <li><a href="/prototipo/cliente/tela_meus_pedidos/index.html"><i class="menu-item"></i><span
-                        class="menu-texto">Meus pedidos</span></a></li>
-            <li><a href="/prototipo/funcionario/relatorios/relatorios.html"><i class="menu-item"></i><span
-                        class="menu-texto">Relatórios</span></a></li>
+            <li><a href="/prototipo/funcionario/index.html"><i class="menu-item"></i><span class="menu-texto">Página Inicial</span></a></li>
+            <li><a href="/prototipo/funcionario/tela_visualiza_pedido/index.html"><i class="menu-item"></i><span class="menu-texto">Pedidos</span></a></li>
+            <li><a href="/prototipo/funcionario/relatorios/relatorios.html"><i class="menu-item"></i><span class="menu-texto">Relatórios</span></a></li>
+            <li><a href="/prototipo/funcionario/tela_manutencao_funcionarios/manutencao_de_funcionarios.html"><i class="menu-item"></i><span class="menu-texto">Funcionários</span></a></li>
             <li><a href="#"><i class="menu-item"></i><span class="menu-texto">Serviços</span></a></li>
             <li><a href="#"><i class="menu-item"></i><span class="menu-texto">Contato</span></a></li>
         </ul>
         <ul class="logout">
-            <li><a href="/prototipo/home/tela_inicial/inicio.html"><i class="menu-item"></i><span
-                        class="menu-texto">Sair</span></a></li>
+            <li><a href="/prototipo/home/tela_inicial/inicio.html"><i class="menu-item"></i><span class="menu-texto">Sair</span></a></li>
         </ul>
     </nav>
     <div class="content-with-sidebar">
@@ -157,18 +159,12 @@
             </div>
         </section>
     </div>
-    
-    <script src="https://code.jquery.com/jquery-3.7.1.js"
-        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
-        crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"
-        integrity="sha512-qZvrmS2ekKPF2mSznTQsxqPgnpkI4DNTlrdUmTzrDgektczlKNRRhy5X5AAOnx5S09ydFYWWNSfcEqDTTHgtNA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.6.0/jspdf.plugin.autotable.min.js"
-        integrity="sha512-DgV2mIRy66quVbkj4yS6FN7cccMH/iPXhDOi/ckWIAANbOL78RuoaA6MAu9BAdYEyAdIuIm63LzsaFmHGd7L8w==" 
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" integrity="sha512-qZvrmS2ekKPF2mSznTQsxqPgnpkI4DNTlrdUmTzrDgektczlKNRRhy5X5AAOnx5S09ydFYWWNSfcEqDTTHgtNA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.6.0/jspdf.plugin.autotable.min.js" integrity="sha512-DgV2mIRy66quVbkj4yS6FN7cccMH/iPXhDOi/ckWIAANbOL78RuoaA6MAu9BAdYEyAdIuIm63LzsaFmHGd7L8w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
-        function gerarPDFCliente(){
+        function gerarPDFCliente() {
             var doc = new jsPDF('l');
             /*doc.autoTable({
                 html:'#table',
@@ -196,6 +192,6 @@
                 'width': margins.width 
             }*/;
             doc.save('RelatorioCliente.pdf');
-            };
+        };
     </script>
 </body>
