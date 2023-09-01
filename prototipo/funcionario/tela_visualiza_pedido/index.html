@@ -64,12 +64,64 @@
               <tr>
                 <td>000125</td>
                 <td>20/08/2023</td>
-                <td id="aberto1">Aberto</td>
+                <td id=" aberto1" style="background-color: yellow">Aberto</td>
                 <td>R$ 110,00</td>
                 <td id="btn-cancel1">
-                  <a class="cancel-button" onclick="setRowId('aberto1'); openPopup()">Cancelar</a>
+                  <a class="btn-confirm">Confirmar Recolhimento</a>
                 </td>
 
+              </tr>
+
+              <tr>
+                <td>000200</td>
+                <td>22/08/2023</td>
+                <td id="estado1" style="background-color: gray;">Recolhido</td>
+                <td>R$ 100,00</td>
+                <td id="botao1">
+                  <a class="grey-button" onclick="alterarEstado('Aguardando Pagamento', 'estado1', 'botao1')" href="#">Confirmar Lavagem</a>
+                </td>
+              </tr>
+              <tr>
+                <td>000201</td>
+                <td>23/08/2023</td>
+                <td id="estado2" style="background-color: rgb(214, 94, 50);">Pago</td>
+                <td>R$ 100,00</td>
+                <td id="botao2">
+                  <a class="grey-button" style="background-color: rgb(214, 94, 50);" onclick="alterarEstado('Finalizado', 'estado2', 'botao2')" href="#">Finalizar Pedido</a>
+                </td>
+              </tr>
+              <tr>
+                <td>000100</td>
+                <td>22/07/2023</td>
+                <td style="background-color: rgba(255, 0, 0, 0.697)">Rejeitado</td>
+                <td>R$ 50,00</td>
+                <td><a class="grey-button" href="#">Detalhes do pedido</a></td>
+              </tr>
+
+              <tr>
+                <td>000117</td>
+                <td>12/08/2023</td>
+                <td style="background-color: rgb(26, 204, 26)">Finalizado</td>
+                <td>R$ 70,00</td>
+                <td><a class="grey-button" href="#">Detalhes do pedido</a></td>
+              </tr>
+
+              <tr>
+                <td>000122</td>
+                <td>17/08/2023</td>
+                <td style="background-color: rgba(255, 0, 0, 0.697)">Cancelado</td>
+                <td>R$ 70,00</td>
+                <td>
+                  <a class="grey-button" href="#">Detalhes do pedido</a>
+                </td>
+              </tr>
+
+              <tr>
+                <td>000120</td>
+                <td>15/08/2023</td>
+                <td style="background-color: rgba(8, 169, 255, 0.77)">Aguardando pagamento</td>
+                <td>R$ 120,00</td>
+                <td><a href="#">Pagar pedido</a></td>
               </tr>
 
               <tr>
@@ -90,15 +142,7 @@
                   <a class="cancel-button" onclick="openPopup()">Cancelar</a>
                 </td>
               </tr>
-              <tr>
-                <td>000122</td>
-                <td>17/08/2023</td>
-                <td>Cancelado</td>
-                <td>R$ 70,00</td>
-                <td>
-                  <a class="grey-button" href="#">Detalhes do pedido</a>
-                </td>
-              </tr>
+
               <tr>
                 <td>000121</td>
                 <td>16/08/2023</td>
@@ -108,13 +152,7 @@
                   <a class="cancel-button" onclick="openPopup()">Cancelar</a>
                 </td>
               </tr>
-              <tr>
-                <td>000120</td>
-                <td>15/08/2023</td>
-                <td>Aguardando pagamento</td>
-                <td>R$ 120,00</td>
-                <td><a href="#">Pagar pedido</a></td>
-              </tr>
+
               <tr>
                 <td>000119</td>
                 <td>14/08/2023</td>
@@ -129,13 +167,7 @@
                 <td>R$ 55,00</td>
                 <td><a class="grey-button" href="#">Detalhes do pedido</a></td>
               </tr>
-              <tr>
-                <td>000117</td>
-                <td>12/08/2023</td>
-                <td>Finalizado</td>
-                <td>R$ 70,00</td>
-                <td><a class="grey-button" href="#">Detalhes do pedido</a></td>
-              </tr>
+
               <tr>
                 <td>000116</td>
                 <td>11/08/2023</td>
@@ -248,13 +280,7 @@
                 <td>R$ 50,00</td>
                 <td><a class="grey-button" href="#">Detalhes do pedido</a></td>
               </tr>
-              <tr>
-                <td>000100</td>
-                <td>22/07/2023</td>
-                <td>Rejeitado</td>
-                <td>R$ 50,00</td>
-                <td><a class="grey-button" href="#">Detalhes do pedido</a></td>
-              </tr>
+
             </tbody>
           </table>
         </div>
@@ -503,22 +529,19 @@
       const linhasPedidos = document.querySelectorAll("tbody tr");
       const dataInicioInput = document.getElementById("data-inicio");
       const dataFimInput = document.getElementById("data-fim");
-      const divPersonalizada = document.querySelector(".personalizado"); // Seleciona a div personalizada
-
-      // Função para exibir ou ocultar a div personalizada com base na seleção do filtro
+      const divPersonalizada = document.querySelector(".personalizado");
       function toggleDivPersonalizada() {
         const estadoSelecionado = filtroEstados.value;
 
         if (estadoSelecionado === "periodo-personalizado") {
-          divPersonalizada.style.display = "block"; // Exibe a div personalizada
+          divPersonalizada.style.display = "block";
         } else {
-          divPersonalizada.style.display = "none"; // Oculta a div personalizada
+          divPersonalizada.style.display = "none";
         }
       }
 
-      // Adicione um ouvinte de evento de mudança ao filtro de estados
       filtroEstados.addEventListener("change", function () {
-        toggleDivPersonalizada(); // Chamada da função ao selecionar uma opção no filtro
+        toggleDivPersonalizada();
 
         linhasPedidos.forEach(function (linha) {
           const statusPedido = linha.querySelector("td:nth-child(3)").textContent;
@@ -531,7 +554,6 @@
         });
       });
 
-      // Adicione um ouvinte de evento de mudança aos campos de data
       dataInicioInput.addEventListener("change", function () {
         filtrarPorData();
       });
@@ -540,7 +562,6 @@
         filtrarPorData();
       });
 
-      // Função para filtrar pedidos por data
       function filtrarPorData() {
         const dataInicio = document.getElementById("data-inicio").value;
         const dataFim = document.getElementById("data-fim").value;
@@ -548,7 +569,7 @@
 
         linhasPedidos.forEach(function (linha) {
           const dataPedido = linha.querySelector("td:nth-child(2)").textContent;
-          const dataPedidoFormatada = formatarData(dataPedido); // Formatar a data
+          const dataPedidoFormatada = formatarData(dataPedido);
 
           if (
             (dataInicio === "" || dataPedidoFormatada >= dataInicio) &&
@@ -561,17 +582,13 @@
         });
       }
 
-      // Função para formatar a data de "yyyy-mm-dd" para "dd/mm/yyyy"
       function formatarData(data) {
         const partesData = data.split("-");
         if (partesData.length === 3) {
           return `${partesData[2]}/${partesData[1]}/${partesData[0]}`;
         }
-        return data; // Retorna a data original se não for um formato reconhecido
+        return data;
       }
-
-
-      // Chame a função toggleDivPersonalizada para definir o estado inicial
       toggleDivPersonalizada();
     });
   </script>
