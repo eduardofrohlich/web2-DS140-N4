@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Editar Roupa</title>
+</head>
+
+<body>
+  <div class="container-cad">
+    <h2>Editar Roupa</h2>
+    <form name="form-cad" id="form-funcionario">
+      <div class="form-group">
+        <label for="nome">Nome da peça</label>
+        <input type="name" id="nome" name="nome" value="Camisa Social" required />
+      </div>
+      <div class="form-group">
+        <label for="preco">Preço</label>
+        <input type="text" value="R$ 13,00"  />
+      </div>
+
+
+      <div class="inline-group">
+        <div class="form-group" id="dataNasc">
+          <label for="dataNasc">Prazo</label>
+          <input type="price" id="dataNasc" name="dataNasc" value="15 dias" required />
+        </div>
+      </div>
+
+      <div>
+        <a href="./manutencao_roupas.html">
+          <button type="button" id="btn1" class="submit-btn">Cancelar</button>
+        </a>
+        <a href="./manutencao_roupas.html">
+          <button type="submit" id="btn-form" class="submit-btn btn2">Salvar</button>
+        </a>
+      </div>
+    </form>
+  </div>
+
+  <style>
+    .container-cad {
+      width: 700px;
+      margin: auto;
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      border-radius: 6px;
+      padding: 1em;
+      border: 1px #aaaaaa solid;
+      background-color: #ffffff6c;
+    }
+
+    .container-cad h2 {
+      font-size: 2em;
+      color: #000;
+      border-bottom: 1px #f0eded solid;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      text-align: center;
+    }
+
+    .form-group {
+      width: 100%;
+      margin: 0 auto;
+      margin-bottom: 8px;
+      position: relative;
+    }
+
+    .inline-group {
+      display: flex;
+      gap: 0.5em;
+    }
+
+    input {
+      font-size: 16px;
+      font-family: inherit;
+      padding: 6px;
+      border-radius: 6px;
+      border: 1px #aaaaaa solid;
+      background: #fdfdfd;
+      outline: none;
+      width: 100%;
+      transition: all 0.3s;
+    }
+
+    .submit-btn {
+      float: right;
+      display: block;
+      padding: 5px 30px;
+      border: none;
+      outline: none;
+      color: #ffffff;
+      font-size: 16px;
+      border-radius: 6px;
+      margin: 16px 0 16px 8px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    #btn1 {
+      background-color: red;
+    }
+
+    .btn2 {
+      background-color: #24a0ed;
+    }
+
+    #numCasa,
+    #estado {
+      width: 25%;
+    }
+
+    #alerta {
+      display: none;
+      width: 100%;
+      margin: 50px auto;
+      text-align: center;
+    }
+
+    .main-container {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      margin: 15px 40px;
+      flex-wrap: wrap;
+    }
+
+    .card {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      width: 8em;
+      height: 6rem;
+      margin: 0.5em;
+      background-color: rgb(232, 232, 232);
+      border-radius: 6px;
+    }
+
+    .info {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 1em;
+    }
+
+    #fecha {
+      background-color: #24a0ed;
+      float: right;
+      display: block;
+      padding: 5px 30px;
+      border: none;
+      outline: none;
+      color: #ffffff;
+      font-size: 16px;
+      border-radius: 6px;
+      margin: 16px 0;
+      cursor: pointer;
+    }
+
+    /*base*/
+
+    .content-with-sidebar {
+      margin-left: 15%;
+    }
+
+    .menu-item {
+      position: relative;
+      display: table-cell;
+      width: 5vw;
+      height: 3.6vh;
+      font-size: 2vw;
+    }
+
+    .menu-sidebar {
+      width: 15%;
+      height: 100%;
+      background: #5d6b74;
+      position: fixed;
+      padding-top: 4vh;
+      overflow-y: auto;
+    }
+
+    .menu-sidebar li>a {
+      display: table;
+      color: #ffffff;
+      text-decoration: none;
+    }
+
+    .menu-sidebar .menu-texto {
+      position: relative;
+      display: table-cell;
+      width: 35vw;
+      padding: 1vh 0;
+      font-family: 'Poppins';
+      font-size: 1vw;
+    }
+
+    .menu-sidebar h2 {
+      padding: 3vh 1.5vw;
+      font-size: 1.9vw;
+    }
+
+    .menu-sidebar a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .logo {
+      display: flex;
+      justify-content: center;
+    }
+
+    .logo img {
+      max-width: 80%;
+      height: auto;
+    }
+
+    .menu-sidebar li:hover>a,
+    .dashboard-page nav.dashboard-menu ul li.active a {
+      color: #fff;
+      background-color: #242424;
+    }
+
+
+    .home {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .home .content {
+      padding-left: 0;
+      padding-top: 12vh;
+    }
+
+    .home h2 {
+      font-size: 3vw;
+      letter-spacing: 0.03em;
+      margin-bottom: 2vh;
+    }
+
+    .content-with-sidebar .home .novo-pedido {
+      position: absolute;
+      top: 3%;
+      right: 0;
+    }
+
+    .home a:hover {
+      background: #ffffff07;
+      color: #000;
+    }
+  </style>
+  <script>
+    function mascaraMoeda(event) {
+      const onlyDigits = event.target.value
+        .split("")
+        .filter(s => /\d/.test(s))
+        .join("")
+        .padStart(3, "0")
+      const digitsFloat = onlyDigits.slice(0, -2) + "." + onlyDigits.slice(-2)
+      event.target.value = maskCurrency(digitsFloat)
+    }
+
+    function maskCurrency(valor, locale = 'pt-BR', currency = 'BRL') {
+      return new Intl.NumberFormat(locale, {
+        style: 'currency',
+        currency
+      }).format(valor)
+    }
+  </script>
+</body>
+
+</html>

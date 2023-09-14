@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+
+  <title>Informações da Roupa</title>
+
+  <script>
+  </script>
+
+</head>
+
+<body>
+  <nav class="menu-sidebar">
+    <div class="logo">
+      <img src="/prototipo/logo.png" alt="Logo">
+    </div>
+    <h2><a href="/prototipo/funcionario/index.html">LOL Lavanderia Online</a></h2>
+    <ul>
+      <li><a href="/prototipo/funcionario/index.html"><i class="menu-item"></i><span class="menu-texto">Página Inicial</span></a></li>
+      <li><a href="/prototipo/funcionario/tela_visualiza_pedido/index.html"><i class="menu-item"></i><span class="menu-texto">Pedidos</span></a></li>
+      <li><a href="/prototipo/funcionario/relatorios/relatorios.html"><i class="menu-item"></i><span class="menu-texto">Relatórios</span></a></li>
+      <li><a href="/prototipo/funcionario/tela_manutencao_funcionarios/manutencao_de_funcionarios.html"><i class="menu-item"></i><span class="menu-texto">Funcionários</span></a></li>
+      <li><a href="/prototipo/funcionario/tela_manutencao_roupas/manutencao_roupas.html"><i class="menu-item"></i><span class="menu-texto">Roupas</span></a></li>
+
+      <li><a href="#"><i class="menu-item"></i><span class="menu-texto">Serviços</span></a></li>
+      <li><a href="#"><i class="menu-item"></i><span class="menu-texto">Contato</span></a></li>
+    </ul>
+    <ul class="logout">
+      <li><a href="/prototipo/home/tela_inicial/inicio.html"><i class="menu-item"></i><span class="menu-texto">Sair</span></a></li>
+    </ul>
+  </nav>
+  <div class="content-with-sidebar">
+    <section class="home">
+      <div class="content">
+        <h1>Dados da peça de roupa</h1>
+        <div class="container-cad">
+
+          <form name="form-cad" id="form-funcionario">
+            <div class="form-group">
+              <label for="nomePeca">Nome da peça</label>
+              <input type="text" id="nomePeca" name="nomePeca" value="Camisa social" disabled required />
+            </div>
+
+            <div class="form-group">
+              <label for="preco">Preco</label>
+              <input type="preco" id="preco" name="preco" value="R$13,00" disabled required />
+            </div>
+
+            <div class="inline-group">
+              <div class="form-group" id="prazo">
+                <label for="prazo">Prazo</label>
+                <input type="prazo" id="prazo" name="prazo" value="15 dias" disabled required />
+              </div>
+            </div>
+
+            <div>
+              <button type="button" id="btn1" class="submit-btn" onclick="window.location.href='./manutencao_roupas.html'">Cancelar</button>
+              <button type="button" id="btn2" class="submit-btn btn2" onclick="window.location.href='/prototipo/funcionario/tela_manutencao_roupas/editar_roupa.html'">Editar</button>
+              <button type="button" id="btn3" class="submit-btn" onclick="window.location.href='./manutencao_roupas.html'">Deletar</button>
+              
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <style>
+    .novo-pedido {
+      display: flex;
+      justify-content: left;
+    }
+
+    .title-page {
+      display: block;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .home .content {
+      padding-top: 12vh;
+    }
+
+    .seletor-status {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-left: 4vh;
+      margin-bottom: 2vh;
+    }
+
+
+    .content h1 {
+      color: #000;
+      margin-left: 4vh;
+      font-weight: bolder;
+      font-size: 2vw;
+      top: 3.5vh;
+      text-align: left;
+    }
+
+    .seletor-status label {
+      color: #000;
+      font-weight: bolder;
+      position: relative;
+      display: block;
+    }
+
+    .seletor-status select {
+      color: #000;
+      margin-left: 0.7vh;
+      margin-right: 5vh;
+      margin-bottom: 2vh;
+      margin: 2vh 0 3vh 0;
+      padding: 1vh 1vh;
+      position: relative;
+      background: #38797a00;
+      border-radius: 3vh;
+      border: 1px solid #000;
+    }
+
+
+    .content-with-sidebar {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .content {
+      width: 100%;
+    }
+  </style>
+</body>
+
+</html>
