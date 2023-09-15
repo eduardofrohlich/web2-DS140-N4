@@ -273,21 +273,23 @@
         </div>
       </div>
     </section>
-    <div class="popup" id="popup">
-      <img src="./assets/atencao.png">
-      <h2>Cancelar Pedido</h2>
-      <p>Você tem certeza que deseja cancelar seu pedido?</p>
-      <button type="button" class="btn-yes" onclick="closePopupYes()">Sim</button>
-      <button type="button" onclick="closePopup()">Não</button>
-    </div>
 
-    <div class="popup" id="popup2">
-      <img src="assets/sucesso.png">
-      <h2>Cancelar Pedido</h2>
-      <p>Pedido cancelado com sucesso!</p>
-      <button type="button" class="btn-yes" onclick="closePopupCancel()">Ok</button>
-    </div>
+    <div class="overlay" id="overlay">
+      <div class="popup" id="popup">
+        <img src="./assets/atencao.png">
+        <h2>Cancelar Pedido</h2>
+        <p>Você tem certeza que deseja cancelar seu pedido?</p>
+        <button type="button" class="btn-yes" onclick="closePopupYes()">Sim</button>
+        <button type="button" onclick="closePopup()">Não</button>
+      </div>
 
+      <div class="popup" id="popup2">
+        <img src="assets/sucesso.png">
+        <h2>Cancelar Pedido</h2>
+        <p>Pedido cancelado com sucesso!</p>
+        <button type="button" class="btn-yes" onclick="closePopupCancel()">Ok</button>
+      </div>
+    </div>
 
   </div>
 
@@ -415,6 +417,21 @@
       transition: 0.5s;
     }
 
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      /* Fundo escuro com transparência */
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      /* Garante que o overlay fique acima de outros elementos */
+    }
+
     .popup {
       width: 400px;
       background: #fff;
@@ -429,9 +446,10 @@
       visibility: hidden;
       transition: transform 0.4s, top 0.4s;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      z-index: 1001;
     }
 
-    .open-popup {
+    .popup.open-popup {
       visibility: visible;
       top: 50%;
       transform: translate(-50%, -50%) scale(1);
@@ -510,20 +528,17 @@
     });
 
     let popup = document.getElementById('popup');
+
     function openPopup() {
-      popup.classList.add("open-popup");
+      document.getElementById('overlay').style.display = 'flex';
+      document.getElementById('popup').classList.add('open-popup');
+      document.body.style.overflow = 'hidden';
     }
+
     function closePopup() {
-      popup.classList.remove("open-popup");
-    }
-
-    function cancelOrder(rowId) {
-      let statusCell = document.getElementById(rowId).querySelector("td:nth-child(3)");
-      statusCell.textContent = "Cancelado";
-      statusCell.style.color = "red";
-
-      let buttonCell = document.getElementById(rowId).querySelector("td:nth-child(5)");
-      buttonCell.innerHTML = "<a class='grey-button' href='#'>Detalhar Pedido</a>";
+      document.getElementById('overlay').style.display = 'none'; //
+      document.getElementById('popup').classList.remove('open-popup');
+      document.body.style.overflow = 'auto';
     }
 
 
@@ -538,14 +553,25 @@
       }
       let cancelarBotao = document.getElementById("btn-cancel" + selectedRowId);
       cancelarBotao.innerHTML = "<a class='cancel-button' onclick='cancelOrder(\"" + selectedRowId + "\")'>Cancelar</a>";
+      closePopup();
     }
-
-
 
     function closePopupCancel() {
       let popup2 = document.getElementById('popup2');
       popup2.classList.remove("open-popup");
+      closePopup();
     }
+
+    function cancelOrder(rowId) {
+      let statusCell = document.getElementById(rowId).querySelector("td:nth-child(3)");
+      statusCell.textContent = "Cancelado";
+      statusCell.style.color = "red";
+
+      let buttonCell = document.getElementById(rowId).querySelector("td:nth-child(5)");
+      buttonCell.innerHTML = "<a class='grey-button' href='#'>Detalhar Pedido</a>";
+    }
+
+
 
     /* 
       Alterar os estados do pedido.
