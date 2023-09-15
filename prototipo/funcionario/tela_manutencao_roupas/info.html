@@ -225,16 +225,14 @@
       popup.classList.remove("open-popup");
     }
 
-    function cancelOrder(rowId) {
-      let statusCell = document.getElementById(rowId).querySelector("td:nth-child(3)");
-      statusCell.textContent = "Cancelado";
-      statusCell.style.color = "red";
-    }
-
     function closePopupYes() {
       popup.classList.remove("open-popup");
       let popup2 = document.getElementById('popup2');
       popup2.classList.add("open-popup");
+      setTimeout(function () {
+        closePopupCancel();
+        window.location.href = './manutencao_roupas.html';
+      }, 2000);
     }
 
     function closePopupCancel() {
