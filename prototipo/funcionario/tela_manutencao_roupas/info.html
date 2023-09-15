@@ -60,13 +60,29 @@
             <div>
               <button type="button" id="btn1" class="submit-btn" onclick="window.location.href='./manutencao_roupas.html'">Cancelar</button>
               <button type="button" id="btn2" class="submit-btn btn2" onclick="window.location.href='/prototipo/funcionario/tela_manutencao_roupas/editar_roupa.html'">Editar</button>
-              <button type="button" id="btn3" class="submit-btn" onclick="window.location.href='./manutencao_roupas.html'">Deletar</button>
-              
+              <button type="button" id="btn3" class="submit-btn" onclick="openPopup()">Deletar</button>
+
             </div>
-          </form>
+
+            <div class="popup" id="popup">
+              <img src="assets/atencao.png">
+              <h2>Cancelar Pedido</h2>
+              <p>Você tem certeza que deseja cancelar seu pedido?</p>
+              <button type="button" class="btn-yes" onclick="closePopupYes()">Sim</button>
+              <button type="button" onclick="closePopup()">Não</button>
+            </div>
+
+            <div class="popup" id="popup2">
+              <img src="assets/sucesso.png">
+              <h2>Cancelar Pedido</h2>
+              <p>Pedido cancelado com sucesso!</p>
+              <button type="button" class="btn-yes" onclick="closePopupCancel()">Ok</button>
+            </div>
         </div>
+        </form>
       </div>
-    </section>
+  </div>
+  </section>
   </div>
 
   <style>
@@ -93,7 +109,6 @@
       margin-bottom: 2vh;
     }
 
-
     .content h1 {
       color: #000;
       margin-left: 4vh;
@@ -101,6 +116,70 @@
       font-size: 2vw;
       top: 3.5vh;
       text-align: left;
+    }
+
+    .popup {
+      width: 400px;
+      background: #fff;
+      border-radius: 6px;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.1);
+      text-align: center;
+      padding: 0 30px 30px;
+      color: #333;
+      visibility: hidden;
+      transition: transform 0.4s, top 0.4s;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      z-index: 1001;
+    }
+
+    .popup.open-popup {
+      visibility: visible;
+      top: 50%;
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    .popup img {
+      width: 100px;
+      justify-content: center;
+      margin-top: -50px;
+      border-radius: 20px;
+    }
+
+    .popup h2 {
+      font-size: 30px;
+      font-weight: 500;
+      margin: 30px 0 10px;
+    }
+
+    .popup button {
+      width: 100%;
+      margin-top: 50px;
+      padding: 10px 0;
+      background: #6e6e6ea9;
+      color: #fff;
+      border: 0;
+      outline: none;
+      font-size: 18px;
+      border-radius: 4px;
+      cursor: pointer;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .popup .btn-yes {
+      width: 100%;
+      margin-top: 50px;
+      padding: 10px 0;
+      background: #db08087c;
+      color: #fff;
+      border: 0;
+      outline: none;
+      font-size: 18px;
+      border-radius: 4px;
+      cursor: pointer;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     }
 
     .seletor-status label {
@@ -134,6 +213,36 @@
       width: 100%;
     }
   </style>
+
+  <script>
+    let popup = document.getElementById('popup');
+
+    function openPopup() {
+      popup.classList.add("open-popup");
+    }
+
+    function closePopup() {
+      popup.classList.remove("open-popup");
+    }
+
+    function cancelOrder(rowId) {
+      let statusCell = document.getElementById(rowId).querySelector("td:nth-child(3)");
+      statusCell.textContent = "Cancelado";
+      statusCell.style.color = "red";
+    }
+
+    function closePopupYes() {
+      popup.classList.remove("open-popup");
+      let popup2 = document.getElementById('popup2');
+      popup2.classList.add("open-popup");
+    }
+
+    function closePopupCancel() {
+      let popup2 = document.getElementById('popup2');
+      popup2.classList.remove("open-popup");
+    }
+
+  </script>
 </body>
 
 </html>
