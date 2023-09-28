@@ -10,7 +10,8 @@
 
 ## Passo a passo para execução do projeto:
 - Recomenda-se que seja utilizado o **Visual Studio Code** e a extensão disponível no marketplace do VS Code chamada **Live Server**, a qual permite a visualização da página ao vivo no navegador, com atualização em tempo real.
- ![Live Server](https://iili.io/JdqaIMx.png)
+
+![Live Server](https://iili.io/JdqaIMx.png)
 >Clone o projeto utilizando o comando:
 ~~~javascript
 git clone https://github.com/eduardofrohlich/web2-DS140-N4.git
