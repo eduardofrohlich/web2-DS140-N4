@@ -27,16 +27,16 @@ public class Cliente implements Serializable
 	@Column(name="senha")
 	private Long senha;
 	
-	@Column(name="email")
+	@Column(name="email", length=50)
 	private String email;
 	
-	@Column(name="nome")
+	@Column(name="nome", length=100)
 	private String nome;
 	
-	@Column(name="cpf")
+	@Column(name="cpf", length=11)
 	private String cpf;
 	
-	@Column(name="telefone")
+	@Column(name="telefone", length=9)
 	private String telefone;
 
 	public Cliente() {

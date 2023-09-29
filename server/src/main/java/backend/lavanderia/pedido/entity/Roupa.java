@@ -17,7 +17,7 @@ public class Roupa implements Serializable
 	@SequenceGenerator(name="roupa_idroupa_seq", allocationSize=1)
 	private Long idRoupa;
 	
-	@Column(name="nomeRoupa")
+	@Column(name="nomeRoupa", length=30)
 	private String nomeRoupa;
 	
 	@Column(name="valor")

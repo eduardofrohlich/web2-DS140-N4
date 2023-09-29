@@ -1,7 +1,7 @@
 package backend.lavanderia.usuario.entity;
 
 import java.io.Serializable;
-
+import backend.lavanderia.usuario.entity.Endereco;
 import jakarta.persistence.*;
 
 
@@ -9,6 +9,7 @@ import jakarta.persistence.*;
 @Table(name="Funcionario")
 public class Funcionario implements Serializable
 {
+
 	private static final Long serialVersionUID = 1L;
 	
 	@Id
@@ -23,19 +24,19 @@ public class Funcionario implements Serializable
 	@Column(name="senha")
 	private Long senha;
 	
-	@Column(name="email")
+	@Column(name="email", length=50)
 	private String email;
 	
-	@Column(name="nome")
+	@Column(name="nome", length=100)
 	private String nome;
 	
-	@Column(name="cpf")
+	@Column(name="cpf", length=11)
 	private String cpf;
 	
-	@Column(name="telefone")
+	@Column(name="telefone", length=9)
 	private String telefone;
 	
-	@Column(name="dataNascimento")
+	@Column(name="dataNascimento", length=10)
 	private String dataNascimento;
 
 	public Funcionario() {
@@ -118,4 +119,5 @@ public class Funcionario implements Serializable
 	public void setDataNascimento(String dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
+	
 }
