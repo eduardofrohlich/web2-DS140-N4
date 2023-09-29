@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 public class FuncionarioDTO implements Serializable
 {
+	private static final long serialVersionUID = -5714985206043251717L;
+	
 	private int idFuncionario;
 	private EnderecoDTO endereco;
 	private int senha;

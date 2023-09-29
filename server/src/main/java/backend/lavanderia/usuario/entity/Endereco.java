@@ -10,30 +10,29 @@ import jakarta.persistence.*;
 @Table(name="Endereco")
 public class Endereco implements Serializable
 {
-	private static final Long serialVersionUID=1L;
-	
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="endereco_idendereco_seq")
 	@SequenceGenerator(name="endereco_idendereco_seq", allocationSize=1)
 	@Column(name="idEndereco")
 	private Long idEndereco;
 	
-	@Column(name="estado")
+	@Column(name="estado", length=2)
 	private String estado;
 	
-	@Column(name="cidade")
+	@Column(name="cidade", length=30)
 	private String cidade;
 	
-	@Column(name="cep")
+	@Column(name="cep", length= 8)
 	private String cep;
 	
-	@Column(name="rua")
+	@Column(name="rua", length=50)
 	private String rua;
 	
 	@Column(name="numero")
 	private Long numero;
 	
-	@Column(name="bairro")
+	@Column(name="bairro", length=20)
 	private String bairro;
 
 	public Endereco() {

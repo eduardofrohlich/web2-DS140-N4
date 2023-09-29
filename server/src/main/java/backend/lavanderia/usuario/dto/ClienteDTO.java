@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 public class ClienteDTO implements Serializable
 {
+	private static final long serialVersionUID = -6411715904609095531L;
+	
 	private int idCliente;
 	private EnderecoDTO endereco;
 	private int senha;

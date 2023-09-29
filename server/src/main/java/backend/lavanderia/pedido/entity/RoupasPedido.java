@@ -1,12 +1,7 @@
 package backend.lavanderia.pedido.entity;
 
 import java.io.Serializable;
-import java.util.List;
 import java.util.Objects;
-
-import backend.lavanderia.pedido.entity.Pedido;
-import backend.lavanderia.pedido.entity.Roupa;
-
 import jakarta.persistence.*;
 
 
@@ -15,7 +10,6 @@ import jakarta.persistence.*;
 @Table(name="RoupasPedido")
 public class RoupasPedido implements Serializable
 {
-	private static final Long serialVersionUID = 1L;
 	
 	@Id
 	@ManyToOne
