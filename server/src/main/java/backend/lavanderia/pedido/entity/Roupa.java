@@ -10,7 +10,6 @@ import jakarta.persistence.*;
 @Table(name="Roupa")
 public class Roupa implements Serializable
 {
-	private static final Long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="roupa_idroupa_seq")

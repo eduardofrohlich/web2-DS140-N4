@@ -6,7 +6,6 @@ import java.util.Objects;
 
 public class RoupasPedidoKey implements Serializable
 {
-	private static final Long serialVersionUID = 1L;
 
 	private Pedido pedido;
 	private Roupa roupa;

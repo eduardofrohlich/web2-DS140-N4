@@ -6,7 +6,6 @@ import backend.lavanderia.usuario.entity.Funcionario;
 import backend.lavanderia.usuario.entity.Endereco;
 import backend.lavanderia.usuario.dto.FuncionarioDTO;
 import backend.lavanderia.usuario.dto.EnderecoDTO;
-import backend.lavanderia.usuario.directive.ValidaEndereco;
 import backend.lavanderia.usuario.directive.ValidaUsuario;
 
 import java.util.ArrayList;

@@ -2,12 +2,12 @@ package backend.lavanderia.pedido.dto;
 
 import java.io.Serializable;
 
-public class RoupasPedidoDTO implements Serializable
-{
+public class RoupasPedidoDTO implements Serializable {
+	private static final long serialVersionUID = 9162075246893239523L;
 	private RoupaDTO roupa;
 	private int qtdRoupa;
 	private double valorTotalRoupa;
-	
+
 	public RoupasPedidoDTO() {
 		super();
 	}

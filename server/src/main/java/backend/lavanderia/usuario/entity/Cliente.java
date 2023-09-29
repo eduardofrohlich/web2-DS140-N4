@@ -3,8 +3,6 @@ package backend.lavanderia.usuario.entity;
 import java.io.Serializable;
 import java.util.Objects;
 
-import backend.lavanderia.usuario.entity.Endereco;
-
 import jakarta.persistence.*;
 
 
@@ -12,7 +10,6 @@ import jakarta.persistence.*;
 @Table(name="Cliente")
 public class Cliente implements Serializable
 {
-	private static final Long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="cliente_idcliente_seq")

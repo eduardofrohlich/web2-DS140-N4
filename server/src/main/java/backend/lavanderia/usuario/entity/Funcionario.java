@@ -1,17 +1,16 @@
 package backend.lavanderia.usuario.entity;
 
 import java.io.Serializable;
-import backend.lavanderia.usuario.entity.Endereco;
 import jakarta.persistence.*;
 
 
 @Entity
 @Table(name="Funcionario")
-public class Funcionario implements Serializable
-{
+public class Funcionario implements Serializable {
 
-	private static final Long serialVersionUID = 1L;
 	
+	private static final long serialVersionUID = 8168708525661512463L;
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="funcionario_idfuncionario_seq")
 	@SequenceGenerator(name="funcionario_idfuncionario_seq", allocationSize=1)

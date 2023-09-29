@@ -2,13 +2,12 @@ package backend.lavanderia.pedido.dto;
 
 import java.io.Serializable;
 
-public class RoupaDTO implements Serializable
-{
+public class RoupaDTO implements Serializable {
 	private int idRoupa;
 	private String nomeRoupa;
 	private double valor;
 	private int prazo;
-	
+
 	public RoupaDTO() {
 		super();
 	}

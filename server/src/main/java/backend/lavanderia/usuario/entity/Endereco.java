@@ -10,7 +10,6 @@ import jakarta.persistence.*;
 @Table(name="Endereco")
 public class Endereco implements Serializable
 {
-	private static final Long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="endereco_idendereco_seq")
