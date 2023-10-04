@@ -2,26 +2,23 @@ package backend.lavanderia.pedido.dto;
 
 import java.io.Serializable;
 import java.util.List;
-
 import backend.lavanderia.usuario.dto.ClienteDTO;
 
-public class PedidoDTO implements Serializable {
-	private static final long serialVersionUID = -328296161084243022L;
-
+public class PedidoDTO implements Serializable
+{
 	private int idPedido;
 	private ClienteDTO cliente;
-	private List<RoupasPedidoDTO> roupas;
+	private List<RoupasPedidoDTO> roupas; 
 	private String estado;
 	private double valorTotal;
 	private int prazoEntrega;
 	private String dataHora;
-
+	
 	public PedidoDTO() {
 		super();
 	}
 
-	public PedidoDTO(int idPedido, ClienteDTO cliente, List<RoupasPedidoDTO> roupas, String estado, double valorTotal,
-			int prazoEntrega, String dataHora) {
+	public PedidoDTO(int idPedido, ClienteDTO cliente, List<RoupasPedidoDTO> roupas, String estado, double valorTotal, int prazoEntrega, String dataHora) {
 		super();
 		this.idPedido = idPedido;
 		this.cliente = cliente;

@@ -8,7 +8,7 @@ public class ValidaUsuario
 	{
 		ValidaEndereco.endereco(cliente.getEndereco());
 		
-		if(cliente.getSenha() > 9999 && cliente.getSenha() < 1000)
+		if(cliente.getSenha().length() < 4)
 			throw new RuntimeException("A senha deve conter 4 dígitos!");
 		
 		if(cliente.getEmail().length() > 50)
@@ -37,7 +37,7 @@ public class ValidaUsuario
 	{
 		ValidaEndereco.endereco(funcionario.getEndereco());
 		
-		if(funcionario.getSenha() > 9999 && funcionario.getSenha() < 1000)
+		if(funcionario.getSenha().length() != 4)
 			throw new RuntimeException("A senha deve conter 4 dígitos!");
 		
 		if(funcionario.getEmail().length() > 50)

@@ -11,5 +11,6 @@ import org.springframework.data.repository.query.Param;
 public interface FuncionarioRepository extends JpaRepository<Funcionario, Long>
 {
 	public Optional<Funcionario> findByCpf(@Param("cpf") String cpf);
+	public Optional<Funcionario> findByEmailAndSenha(@Param("email") String email, @Param("senha") String senha);
 	public Long countByEndereco(@Param("endereco") Endereco endereco);
 }

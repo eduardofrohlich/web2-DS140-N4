@@ -2,22 +2,25 @@ package backend.lavanderia.pedido.dto;
 
 import java.io.Serializable;
 
-public class RoupaDTO implements Serializable {
+public class RoupaDTO implements Serializable
+{
 	private int idRoupa;
 	private String nomeRoupa;
 	private double valor;
 	private int prazo;
-
+	private String imagem;
+	
 	public RoupaDTO() {
 		super();
 	}
 
-	public RoupaDTO(int idRoupa, String nomeRoupa, double valor, int prazo) {
+	public RoupaDTO(int idRoupa, String nomeRoupa, double valor, int prazo, String imagem) {
 		super();
 		this.idRoupa = idRoupa;
 		this.nomeRoupa = nomeRoupa;
 		this.valor = valor;
 		this.prazo = prazo;
+		this.imagem = imagem;
 	}
 
 	public int getIdRoupa() {
@@ -50,5 +53,13 @@ public class RoupaDTO implements Serializable {
 
 	public void setPrazo(int prazo) {
 		this.prazo = prazo;
+	}
+
+	public String getImagem() {
+		return imagem;
+	}
+
+	public void setImagem(String imagem) {
+		this.imagem = imagem;
 	}
 }

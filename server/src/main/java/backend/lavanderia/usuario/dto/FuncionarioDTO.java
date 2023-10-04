@@ -4,11 +4,9 @@ import java.io.Serializable;
 
 public class FuncionarioDTO implements Serializable
 {
-	private static final long serialVersionUID = -5714985206043251717L;
-	
 	private int idFuncionario;
 	private EnderecoDTO endereco;
-	private int senha;
+	private String senha;
 	private String email;
 	private String nome;
 	private String cpf;
@@ -19,7 +17,7 @@ public class FuncionarioDTO implements Serializable
 		super();
 	}
 
-	public FuncionarioDTO(int idFuncionario, EnderecoDTO endereco, int senha, String email, String nome, String cpf, String telefone, String dataNascimento) {
+	public FuncionarioDTO(int idFuncionario, EnderecoDTO endereco, String senha, String email, String nome, String cpf, String telefone, String dataNascimento) {
 		super();
 		this.idFuncionario = idFuncionario;
 		this.endereco = endereco;
@@ -47,11 +45,11 @@ public class FuncionarioDTO implements Serializable
 		this.endereco = endereco;
 	}
 
-	public int getSenha() {
+	public String getSenha() {
 		return senha;
 	}
 
-	public void setSenha(int senha) {
+	public void setSenha(String senha) {
 		this.senha = senha;
 	}
 

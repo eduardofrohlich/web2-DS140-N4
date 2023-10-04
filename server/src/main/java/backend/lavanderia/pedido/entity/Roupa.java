@@ -10,13 +10,12 @@ import jakarta.persistence.*;
 @Table(name="Roupa")
 public class Roupa implements Serializable
 {
-	
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="roupa_idroupa_seq")
 	@SequenceGenerator(name="roupa_idroupa_seq", allocationSize=1)
 	private Long idRoupa;
 	
-	@Column(name="nomeRoupa", length=30)
+	@Column(name="nomeRoupa")
 	private String nomeRoupa;
 	
 	@Column(name="valor")
@@ -24,17 +23,21 @@ public class Roupa implements Serializable
 	
 	@Column(name="prazo")
 	private Long prazo;
+	
+	@Column(name="imagem")
+	private String imagem;
 
 	public Roupa() {
 		super();
 	}
 
-	public Roupa(Long idRoupa, String nomeRoupa, Double valor, Long prazo) {
+	public Roupa(Long idRoupa, String nomeRoupa, Double valor, Long prazo, String imagem) {
 		super();
 		this.idRoupa = idRoupa;
 		this.nomeRoupa = nomeRoupa;
 		this.valor = valor;
 		this.prazo = prazo;
+		this.imagem = imagem;
 	}
 
 	public Long getIdRoupa() {
@@ -69,9 +72,17 @@ public class Roupa implements Serializable
 		this.prazo = prazo;
 	}
 
+	public String getImagem() {
+		return imagem;
+	}
+
+	public void setImagem(String imagem) {
+		this.imagem = imagem;
+	}
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(idRoupa, nomeRoupa, prazo, valor);
+		return Objects.hash(idRoupa, imagem, nomeRoupa, prazo, valor);
 	}
 
 	@Override
@@ -83,7 +94,8 @@ public class Roupa implements Serializable
 		if (getClass() != obj.getClass())
 			return false;
 		Roupa other = (Roupa) obj;
-		return Objects.equals(idRoupa, other.idRoupa) && Objects.equals(nomeRoupa, other.nomeRoupa)
-				&& Objects.equals(prazo, other.prazo) && Objects.equals(valor, other.valor);
+		return Objects.equals(idRoupa, other.idRoupa) && Objects.equals(imagem, other.imagem)
+				&& Objects.equals(nomeRoupa, other.nomeRoupa) && Objects.equals(prazo, other.prazo)
+				&& Objects.equals(valor, other.valor);
 	}
 }

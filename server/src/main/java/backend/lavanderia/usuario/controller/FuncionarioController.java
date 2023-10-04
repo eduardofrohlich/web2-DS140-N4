@@ -1,6 +1,7 @@
 package backend.lavanderia.usuario.controller;
 
 import backend.lavanderia.usuario.repository.FuncionarioRepository;
+import backend.lavanderia.usuario.service.Criptografia;
 import backend.lavanderia.usuario.repository.EnderecoRepository;
 import backend.lavanderia.usuario.entity.Funcionario;
 import backend.lavanderia.usuario.entity.Endereco;
@@ -46,21 +47,21 @@ public class FuncionarioController
 		
 		return lista;
 	}
-
 	
-	@GetMapping("/funcionarios/{id}")
-	public FuncionarioDTO obterFuncionarioComId(@PathVariable("id") Long id)
+	// Login
+	@GetMapping("/funcionarios/{email}/{senha}")
+	public FuncionarioDTO identificarFuncionario(@PathVariable("email") String email, @PathVariable("senha") String senha)
 	{
-		Optional<Funcionario> buscaFuncionario = repoFuncionario.findById(id);
+		Optional<Funcionario> buscaFuncionario = repoFuncionario.findByEmailAndSenha(email, Criptografia.criptografarSenha(senha));
 		
 		if(buscaFuncionario.isEmpty())
-			throw new IllegalArgumentException("Não existe cliente com esse id!");
+			throw new RuntimeException("Não existe funcionario com esse email e senha!");
 		
 		return mapper.map(buscaFuncionario, FuncionarioDTO.class);
 	}
 	
 	@PostMapping("/funcionarios")
-	public FuncionarioDTO inserirCliente(@RequestBody FuncionarioDTO funcionario)
+	public FuncionarioDTO inserirFuncionario(@RequestBody FuncionarioDTO funcionario)
 	{
 		if(!repoFuncionario.findByCpf(funcionario.getCpf()).isEmpty())
 			throw new IllegalArgumentException("O cliente já existe!");
@@ -72,6 +73,8 @@ public class FuncionarioController
 			endereco = Optional.of(repoEndereco.save(mapper.map(funcionario.getEndereco(), Endereco.class)));
 		
 		funcionario.setEndereco(mapper.map(endereco.get(), EnderecoDTO.class)); // Garante que o endereço vai estar correto
+		funcionario.setSenha(Criptografia.criptografarSenha(funcionario.getSenha()));
+		
 		Funcionario funcionarioInserido = repoFuncionario.save(mapper.map(funcionario, Funcionario.class));
 		
 		return mapper.map(funcionarioInserido, FuncionarioDTO.class);
@@ -110,7 +113,7 @@ public class FuncionarioController
 		buscaFuncionario.get().setCpf(funcionario.getCpf());
 		buscaFuncionario.get().setEmail(funcionario.getEmail());
 		buscaFuncionario.get().setNome(funcionario.getNome());
-		buscaFuncionario.get().setSenha(Long.valueOf(funcionario.getSenha()));
+		buscaFuncionario.get().setSenha(Criptografia.criptografarSenha(funcionario.getSenha()));
 		buscaFuncionario.get().setTelefone(funcionario.getTelefone());
 		buscaFuncionario.get().setDataNascimento(funcionario.getDataNascimento());
 		
@@ -129,9 +132,9 @@ public class FuncionarioController
 		
 		repoFuncionario.deleteById(buscaFuncionario.get().getIdFuncionario());
 		
-		if(repoFuncionario.countByEndereco(buscaFuncionario.get().getEndereco()) == 0L)
+		if(Math.toIntExact(repoFuncionario.countByEndereco(buscaFuncionario.get().getEndereco())) == 0)
 			repoEndereco.deleteById(buscaFuncionario.get().getEndereco().getIdEndereco());
-		
+
 		return mapper.map(buscaFuncionario, FuncionarioDTO.class);
 	}
 }

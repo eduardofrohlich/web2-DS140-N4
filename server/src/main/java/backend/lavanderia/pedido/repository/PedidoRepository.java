@@ -6,5 +6,5 @@ import org.springframework.data.jpa.repository.*;
 
 public interface PedidoRepository extends JpaRepository<Pedido, Long>
 {
-	
+
 }

@@ -8,43 +8,40 @@ import backend.lavanderia.usuario.entity.Cliente;
 
 import jakarta.persistence.*;
 
+
 @Entity
-@Table(name = "Pedido")
-public class Pedido implements Serializable {
-
-	private static final long serialVersionUID = -787718348010957797L;
-
-
+@Table(name="Pedido")
+public class Pedido implements Serializable
+{
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pedido_idpedido_seq")
-	@SequenceGenerator(name = "pedido_idpedido_seq", allocationSize = 1)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="pedido_idpedido_seq")
+	@SequenceGenerator(name="pedido_idpedido_seq", allocationSize=1)
 	private Long idPedido;
-
+	
 	@OneToOne
-	@JoinColumn(name = "FK_idCliente", referencedColumnName = "idCliente")
+	@JoinColumn(name="FK_idCliente", referencedColumnName="idCliente")
 	private Cliente cliente;
-
-	@OneToMany(mappedBy = "pedido", fetch = FetchType.EAGER)
+	
+	@OneToMany(mappedBy = "pedido", fetch=FetchType.EAGER)
 	private List<RoupasPedido> roupas;
-
-	@Column(name = "estado")
+	
+	@Column(name="estado")
 	private Long estado;
-
-	@Column(name = "valorTotal")
+	
+	@Column(name="valorTotal")
 	private Double valorTotal;
-
-	@Column(name = "prazoEntrega")
+	
+	@Column(name="prazoEntrega")
 	private Long prazoEntrega;
-
-	@Column(name = "dataHora")
+	
+	@Column(name="dataHora")
 	private String dataHora;
 
 	public Pedido() {
 		super();
 	}
 
-	public Pedido(Long idPedido, Cliente cliente, List<RoupasPedido> roupas, Long estado, Double valorTotal,
-			Long prazoEntrega, String dataHora) {
+	public Pedido(Long idPedido, Cliente cliente, List<RoupasPedido> roupas, Long estado, Double valorTotal, Long prazoEntrega, String dataHora) {
 		super();
 		this.idPedido = idPedido;
 		this.cliente = cliente;
@@ -70,7 +67,7 @@ public class Pedido implements Serializable {
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
-
+	
 	public List<RoupasPedido> getRoupas() {
 		return roupas;
 	}

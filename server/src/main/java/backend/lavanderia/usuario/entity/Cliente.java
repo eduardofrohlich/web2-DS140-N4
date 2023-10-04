@@ -10,7 +10,6 @@ import jakarta.persistence.*;
 @Table(name="Cliente")
 public class Cliente implements Serializable
 {
-	
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="cliente_idcliente_seq")
 	@SequenceGenerator(name="cliente_idcliente_seq", allocationSize=1)
@@ -22,25 +21,25 @@ public class Cliente implements Serializable
 	private Endereco endereco;
 	
 	@Column(name="senha")
-	private Long senha;
+	private String senha;
 	
-	@Column(name="email", length=50)
+	@Column(name="email")
 	private String email;
 	
-	@Column(name="nome", length=100)
+	@Column(name="nome")
 	private String nome;
 	
-	@Column(name="cpf", length=11)
+	@Column(name="cpf")
 	private String cpf;
 	
-	@Column(name="telefone", length=9)
+	@Column(name="telefone")
 	private String telefone;
 
 	public Cliente() {
 		super();
 	}
 
-	public Cliente(Long idCliente, Endereco endereco, Long senha, String email, String nome, String cpf, String telefone) {
+	public Cliente(Long idCliente, Endereco endereco, String senha, String email, String nome, String cpf, String telefone) {
 		super();
 		this.idCliente = idCliente;
 		this.endereco = endereco;
@@ -67,11 +66,11 @@ public class Cliente implements Serializable
 		this.endereco = endereco;
 	}
 
-	public Long getSenha() {
+	public String getSenha() {
 		return senha;
 	}
 
-	public void setSenha(Long senha) {
+	public void setSenha(String senha) {
 		this.senha = senha;
 	}
 

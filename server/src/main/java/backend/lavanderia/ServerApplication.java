@@ -11,9 +11,10 @@ public class ServerApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ServerApplication.class, args);
 	}
-
+	
 	@Bean
-	ModelMapper modelMapper() {
+	ModelMapper modelMapper()
+	{
 		return new ModelMapper();
 	}
 }

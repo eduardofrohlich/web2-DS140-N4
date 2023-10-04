@@ -2,6 +2,7 @@ package backend.lavanderia.pedido.entity;
 
 import java.io.Serializable;
 import java.util.Objects;
+
 import jakarta.persistence.*;
 
 
@@ -10,7 +11,6 @@ import jakarta.persistence.*;
 @Table(name="RoupasPedido")
 public class RoupasPedido implements Serializable
 {
-	
 	@Id
 	@ManyToOne
 	@JoinColumn(name="FK_idPedido", referencedColumnName="idPedido")
