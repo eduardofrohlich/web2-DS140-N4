@@ -1,0 +1,100 @@
+/Observable componente teste 1
+
+import { from, Observable } from 'rxjs';
+
+const createAppComponentObservable = (): Observable<boolean> => {
+  return from(
+    new Promise<boolean>((resolve) => {
+      const fixture = TestBed.createComponent(AppComponent);
+      const app = fixture.componentInstance;
+      resolve(!!app);
+    })
+  );
+};
+
+const testObservable1 = createAppComponentObservable();
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+// Observable componente teste 2
+
+import { from, Observable } from 'rxjs';
+
+const titleCheckObservable = (): Observable<boolean> => {
+  return from(
+    new Promise<boolean>((resolve) => {
+      const fixture = TestBed.createComponent(AppComponent);
+      const app = fixture.componentInstance;
+      resolve(app.title === 'FrontAngular');
+    })
+  );
+};
+
+const testObservable2 = titleCheckObservable();
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Observable componente teste 3
+
+import { from, Observable } from 'rxjs';
+import { concatMap, filter, switchMap, take, tap } from 'rxjs/operators';
+
+const renderTitleObservable = (): Observable<boolean> => {
+  return from(
+    new Promise<boolean>((resolve) => {
+      const fixture = TestBed.createComponent(AppComponent);
+
+      fixture.detectChanges();
+
+      const compiled = fixture.nativeElement as HTMLElement;
+      const titleElement = compiled.querySelector('.content span');
+
+      if (titleElement) {
+        resolve(titleElement.textContent?.includes('FrontAngular app is running!'));
+      } else {
+        resolve(false);
+      }
+    })
+  );
+};
+
+const testObservable3 = renderTitleObservable();
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+// Observable do módulo
+import { from, Observable } from 'rxjs';
+
+export class AppModuleService {
+  // Observable que representa o carregamento do módulo
+  loadModuleObservable(): Observable<string> {
+    return from(new Promise<string>((resolve) => {
+      // Simulando o carregamento do módulo
+      setTimeout(() => {
+        resolve('App Module Loaded');
+      }, 1000);
+    }));
+  }
+
+  // Observable que representa o bootstrap do componente AppComponent
+  bootstrapAppComponentObservable(): Observable<string> {
+    return from(new Promise<string>((resolve) => {
+      // Simulando o bootstrap do componente
+      setTimeout(() => {
+        resolve('AppComponent Bootstrapped');
+      }, 500);
+    }));
+  }
+}
