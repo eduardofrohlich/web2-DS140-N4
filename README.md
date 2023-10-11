@@ -8,7 +8,7 @@
 - GRR20221117 - Gustavo Jahnz - gustavojahnz@gmail.com
 - GRR20185215 - Ingrity Valeska Cardoso Rodrigues - ingrity_valeska@hotmail.com
 
-## Passo a passo para execução do projeto:
+## Passo a passo para execução do PROTOTIPO:
 - Recomenda-se que seja utilizado o **Visual Studio Code** e a extensão disponível no marketplace do VS Code chamada **Live Server**, a qual permite a visualização da página ao vivo no navegador, com atualização em tempo real.
 
 ![Live Server](https://iili.io/JdqaIMx.png)
@@ -45,5 +45,10 @@ senha: cliente
 email: admin@email.com
 senha: admin
 ~~~
+
+
+## Passo a passo para execução do SERVER:
+Ausente
+
 
 
