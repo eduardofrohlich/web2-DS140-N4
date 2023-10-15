@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class FuncionarioDTO implements Serializable
 {
 	private int idFuncionario;
-	private EnderecoDTO endereco;
+	private String endereco;
 	private String senha;
 	private String email;
 	private String nome;
@@ -17,7 +17,7 @@ public class FuncionarioDTO implements Serializable
 		super();
 	}
 
-	public FuncionarioDTO(int idFuncionario, EnderecoDTO endereco, String senha, String email, String nome, String cpf, String telefone, String dataNascimento) {
+	public FuncionarioDTO(int idFuncionario, String endereco, String senha, String email, String nome, String cpf, String telefone, String dataNascimento) {
 		super();
 		this.idFuncionario = idFuncionario;
 		this.endereco = endereco;
@@ -37,11 +37,11 @@ public class FuncionarioDTO implements Serializable
 		this.idFuncionario = idFuncionario;
 	}
 
-	public EnderecoDTO getEndereco() {
+	public String getEndereco() {
 		return endereco;
 	}
 
-	public void setEndereco(EnderecoDTO endereco) {
+	public void setEndereco(String endereco) {
 		this.endereco = endereco;
 	}
 

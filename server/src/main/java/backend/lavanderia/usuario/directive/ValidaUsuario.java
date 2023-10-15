@@ -6,7 +6,6 @@ public class ValidaUsuario
 {
 	public static void usuario(ClienteDTO cliente) throws RuntimeException
 	{
-		ValidaEndereco.endereco(cliente.getEndereco());
 		
 		if(cliente.getSenha().length() < 4)
 			throw new RuntimeException("A senha deve conter 4 dígitos!");
@@ -35,7 +34,6 @@ public class ValidaUsuario
 	
 	public static void usuario(FuncionarioDTO funcionario) throws RuntimeException
 	{
-		ValidaEndereco.endereco(funcionario.getEndereco());
 		
 		if(funcionario.getSenha().length() != 4)
 			throw new RuntimeException("A senha deve conter 4 dígitos!");

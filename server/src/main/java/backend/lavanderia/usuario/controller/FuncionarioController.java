@@ -1,14 +1,5 @@
 package backend.lavanderia.usuario.controller;
 
-import backend.lavanderia.usuario.repository.FuncionarioRepository;
-import backend.lavanderia.usuario.service.Criptografia;
-import backend.lavanderia.usuario.repository.EnderecoRepository;
-import backend.lavanderia.usuario.entity.Funcionario;
-import backend.lavanderia.usuario.entity.Endereco;
-import backend.lavanderia.usuario.dto.FuncionarioDTO;
-import backend.lavanderia.usuario.dto.EnderecoDTO;
-import backend.lavanderia.usuario.directive.ValidaUsuario;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -24,15 +15,20 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import backend.lavanderia.usuario.directive.ValidaUsuario;
+import backend.lavanderia.usuario.dto.FuncionarioDTO;
+import backend.lavanderia.usuario.entity.Funcionario;
+import backend.lavanderia.usuario.repository.FuncionarioRepository;
+import backend.lavanderia.usuario.service.Criptografia;
+
 
 @CrossOrigin
 @RestController
 public class FuncionarioController 
 {
 	@Autowired
-	private FuncionarioRepository repoFuncionario;
-	@Autowired
-	private EnderecoRepository repoEndereco;
+	private FuncionarioRepository repoFuncionario;	
+	
 	@Autowired
 	private ModelMapper mapper;
 	
@@ -67,12 +63,7 @@ public class FuncionarioController
 			throw new IllegalArgumentException("O cliente já existe!");
 		
 		ValidaUsuario.usuario(funcionario);
-		Optional<Endereco> endereco = repoEndereco.findByCepAndNumero(funcionario.getEndereco().getCep(), Long.valueOf(funcionario.getEndereco().getNumero()));
 		
-		if(endereco.isEmpty())
-			endereco = Optional.of(repoEndereco.save(mapper.map(funcionario.getEndereco(), Endereco.class)));
-		
-		funcionario.setEndereco(mapper.map(endereco.get(), EnderecoDTO.class)); // Garante que o endereço vai estar correto
 		funcionario.setSenha(Criptografia.criptografarSenha(funcionario.getSenha()));
 		
 		Funcionario funcionarioInserido = repoFuncionario.save(mapper.map(funcionario, Funcionario.class));
@@ -89,27 +80,8 @@ public class FuncionarioController
 			throw new IllegalArgumentException("Não existe cliente com esse id!");
 		
 		ValidaUsuario.usuario(funcionario);
-		Long idEndereco = buscaFuncionario.get().getEndereco().getIdEndereco();
-		
-		switch(Math.toIntExact(repoFuncionario.countByEndereco(buscaFuncionario.get().getEndereco())))
-		{
-			case 0:
-				throw new IllegalArgumentException("Não existe endereço com esse id!");
-			
-			// Pode sobreescrever o endereço
-			case 1:
-				buscaFuncionario.get().setEndereco(mapper.map(funcionario.getEndereco(), Endereco.class));
-				buscaFuncionario.get().getEndereco().setIdEndereco(idEndereco);
-				repoEndereco.save(buscaFuncionario.get().getEndereco());
-				break;
-				
-			// Deve criar um novo endereço (caso em que clientes estão em um mesmo endereço e um cliente muda de endereço)
-			default:
-				Endereco endereco = repoEndereco.save(mapper.map(funcionario.getEndereco(), Endereco.class));
-				buscaFuncionario.get().setEndereco(endereco);
-				break;
-		}
-		
+	
+
 		buscaFuncionario.get().setCpf(funcionario.getCpf());
 		buscaFuncionario.get().setEmail(funcionario.getEmail());
 		buscaFuncionario.get().setNome(funcionario.getNome());
@@ -132,8 +104,7 @@ public class FuncionarioController
 		
 		repoFuncionario.deleteById(buscaFuncionario.get().getIdFuncionario());
 		
-		if(Math.toIntExact(repoFuncionario.countByEndereco(buscaFuncionario.get().getEndereco())) == 0)
-			repoEndereco.deleteById(buscaFuncionario.get().getEndereco().getIdEndereco());
+
 
 		return mapper.map(buscaFuncionario, FuncionarioDTO.class);
 	}

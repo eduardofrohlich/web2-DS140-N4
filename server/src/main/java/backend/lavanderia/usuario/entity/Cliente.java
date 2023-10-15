@@ -10,38 +10,26 @@ import jakarta.persistence.*;
 @Table(name="Cliente")
 public class Cliente implements Serializable
 {
+	private static final long serialVersionUID = 1L;
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="cliente_idcliente_seq")
-	@SequenceGenerator(name="cliente_idcliente_seq", allocationSize=1)
-	@Column(name="idCliente")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idCliente;
 	
-	@OneToOne //(cascade = CascadeType.ALL) <-- Sobreescreve a tabela endereço.
-	@JoinColumn(name="FK_idEndereco", referencedColumnName="idEndereco")
-	private Endereco endereco;
-	
-	@Column(name="senha")
+	private String endereco;
 	private String senha;
-	
-	@Column(name="email")
 	private String email;
-	
-	@Column(name="nome")
 	private String nome;
-	
-	@Column(name="cpf")
 	private String cpf;
-	
-	@Column(name="telefone")
 	private String telefone;
 
 	public Cliente() {
 		super();
 	}
 
-	public Cliente(Long idCliente, Endereco endereco, String senha, String email, String nome, String cpf, String telefone) {
+	
+	public Cliente(String endereco, String senha, String email, String nome, String cpf, String telefone) {
 		super();
-		this.idCliente = idCliente;
 		this.endereco = endereco;
 		this.senha = senha;
 		this.email = email;
@@ -49,6 +37,7 @@ public class Cliente implements Serializable
 		this.cpf = cpf;
 		this.telefone = telefone;
 	}
+
 
 	public Long getIdCliente() {
 		return idCliente;
@@ -58,11 +47,11 @@ public class Cliente implements Serializable
 		this.idCliente = idCliente;
 	}
 
-	public Endereco getEndereco() {
+	public String getEndereco() {
 		return endereco;
 	}
 
-	public void setEndereco(Endereco endereco) {
+	public void setEndereco(String endereco) {
 		this.endereco = endereco;
 	}
 
@@ -108,7 +97,7 @@ public class Cliente implements Serializable
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(cpf, email, endereco, idCliente, nome, senha, telefone);
+		return Objects.hash(idCliente);
 	}
 
 	@Override
@@ -120,9 +109,8 @@ public class Cliente implements Serializable
 		if (getClass() != obj.getClass())
 			return false;
 		Cliente other = (Cliente) obj;
-		return Objects.equals(cpf, other.cpf) && Objects.equals(email, other.email)
-				&& Objects.equals(endereco, other.endereco) && Objects.equals(idCliente, other.idCliente)
-				&& Objects.equals(nome, other.nome) && Objects.equals(senha, other.senha)
-				&& Objects.equals(telefone, other.telefone);
+		return Objects.equals(idCliente, other.idCliente);
 	}
+
+	
 }

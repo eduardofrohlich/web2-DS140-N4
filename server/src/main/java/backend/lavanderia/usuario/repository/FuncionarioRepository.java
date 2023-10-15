@@ -1,6 +1,5 @@
 package backend.lavanderia.usuario.repository;
 
-import backend.lavanderia.usuario.entity.Endereco;
 import backend.lavanderia.usuario.entity.Funcionario;
 
 import java.util.Optional;
@@ -12,5 +11,5 @@ public interface FuncionarioRepository extends JpaRepository<Funcionario, Long>
 {
 	public Optional<Funcionario> findByCpf(@Param("cpf") String cpf);
 	public Optional<Funcionario> findByEmailAndSenha(@Param("email") String email, @Param("senha") String senha);
-	public Long countByEndereco(@Param("endereco") Endereco endereco);
+	public Long countByEndereco(@Param("endereco") String endereco);
 }

@@ -9,14 +9,15 @@ import jakarta.persistence.*;
 @Table(name="Funcionario")
 public class Funcionario implements Serializable
 {
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="funcionario_idfuncionario_seq")
 	@SequenceGenerator(name="funcionario_idfuncionario_seq", allocationSize=1)
 	private Long idFuncionario;
 	
-	@OneToOne //(cascade = CascadeType.ALL)
-	@JoinColumn(name="FK_idEndereco", referencedColumnName="idEndereco")
-	private Endereco endereco;
+	@Column(name="endereco")
+	private String endereco;
 	
 	@Column(name="senha")
 	private String senha;
@@ -40,7 +41,7 @@ public class Funcionario implements Serializable
 		super();
 	}
 
-	public Funcionario(Long idFuncionario, Endereco endereco, String senha, String email, String nome, String cpf, String telefone, String dataNascimento) {
+	public Funcionario(Long idFuncionario, String endereco, String senha, String email, String nome, String cpf, String telefone, String dataNascimento) {
 		super();
 		this.idFuncionario = idFuncionario;
 		this.endereco = endereco;
@@ -60,11 +61,11 @@ public class Funcionario implements Serializable
 		this.idFuncionario = idFuncionario;
 	}
 
-	public Endereco getEndereco() {
+	public String getEndereco() {
 		return endereco;
 	}
 
-	public void setEndereco(Endereco endereco) {
+	public void setEndereco(String endereco) {
 		this.endereco = endereco;
 	}
 

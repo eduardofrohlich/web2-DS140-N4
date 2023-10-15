@@ -1,13 +1,5 @@
 package backend.lavanderia.usuario.controller;
 
-import backend.lavanderia.usuario.repository.ClienteRepository;
-import backend.lavanderia.usuario.repository.EnderecoRepository;
-import backend.lavanderia.usuario.service.Criptografia;
-import backend.lavanderia.usuario.dto.ClienteDTO;
-import backend.lavanderia.usuario.dto.EnderecoDTO;
-import backend.lavanderia.usuario.entity.Cliente;
-import backend.lavanderia.usuario.entity.Endereco;
-import backend.lavanderia.usuario.directive.ValidaUsuario;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -21,6 +13,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import backend.lavanderia.usuario.directive.ValidaUsuario;
+import backend.lavanderia.usuario.dto.ClienteDTO;
+import backend.lavanderia.usuario.entity.Cliente;
+import backend.lavanderia.usuario.repository.ClienteRepository;
+import backend.lavanderia.usuario.service.Criptografia;
+
 
 @CrossOrigin
 @RestController
@@ -28,8 +26,7 @@ public class ClienteController
 {
 	@Autowired
 	private ClienteRepository repoCliente;
-	@Autowired
-	private EnderecoRepository repoEndereco;
+	
 	@Autowired
 	private ModelMapper mapper;
 	
@@ -64,12 +61,8 @@ public class ClienteController
 			throw new IllegalArgumentException("O cliente já existe!");
 		
 		ValidaUsuario.usuario(cliente);
-		Optional<Endereco> endereco = repoEndereco.findByCepAndNumero(cliente.getEndereco().getCep(), Long.valueOf(cliente.getEndereco().getNumero()));
-		
-		if(endereco.isEmpty())
-			endereco = Optional.of(repoEndereco.save(mapper.map(cliente.getEndereco(), Endereco.class)));
-		
-		cliente.setEndereco(mapper.map(endereco.get(), EnderecoDTO.class)); // Garante que o endereço vai estar correto
+
+
 		cliente.setSenha(Criptografia.criptografarSenha(cliente.getSenha()));
 		
 		Cliente clienteInserido = repoCliente.save(mapper.map(cliente, Cliente.class));

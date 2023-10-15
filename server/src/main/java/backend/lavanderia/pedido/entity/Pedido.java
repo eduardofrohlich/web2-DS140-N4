@@ -13,6 +13,8 @@ import jakarta.persistence.*;
 @Table(name="Pedido")
 public class Pedido implements Serializable
 {
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="pedido_idpedido_seq")
 	@SequenceGenerator(name="pedido_idpedido_seq", allocationSize=1)
