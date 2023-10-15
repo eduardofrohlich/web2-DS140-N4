@@ -71,7 +71,7 @@ public class FuncionarioController
 		return mapper.map(funcionarioInserido, FuncionarioDTO.class);
 	}
 	
-	@PutMapping("/funcionarios/{id}")
+	/*@PutMapping("/funcionarios/{id}")
 	public FuncionarioDTO atualizarFuncionario(@PathVariable("id") int id, @RequestBody FuncionarioDTO funcionario)
 	{
 		Optional<Funcionario> buscaFuncionario = repoFuncionario.findById(Long.valueOf(id));
@@ -107,5 +107,5 @@ public class FuncionarioController
 
 
 		return mapper.map(buscaFuncionario, FuncionarioDTO.class);
-	}
+	}*/
 }

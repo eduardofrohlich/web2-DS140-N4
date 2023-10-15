@@ -1,6 +1,7 @@
 package backend.lavanderia.usuario.entity;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 import jakarta.persistence.*;
 
@@ -12,38 +13,24 @@ public class Funcionario implements Serializable
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="funcionario_idfuncionario_seq")
-	@SequenceGenerator(name="funcionario_idfuncionario_seq", allocationSize=1)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idFuncionario;
 	
-	@Column(name="endereco")
 	private String endereco;
-	
-	@Column(name="senha")
 	private String senha;
-	
-	@Column(name="email")
 	private String email;
-	
-	@Column(name="nome")
 	private String nome;
-	
-	@Column(name="cpf")
 	private String cpf;
-	
-	@Column(name="telefone")
 	private String telefone;
-	
-	@Column(name="dataNascimento")
 	private String dataNascimento;
 
 	public Funcionario() {
 		super();
 	}
 
-	public Funcionario(Long idFuncionario, String endereco, String senha, String email, String nome, String cpf, String telefone, String dataNascimento) {
+	public Funcionario(Long id, String endereco, String senha, String email, String nome, String cpf, String telefone, String dataNascimento) {
 		super();
-		this.idFuncionario = idFuncionario;
+		this.idFuncionario = id;
 		this.endereco = endereco;
 		this.senha = senha;
 		this.email = email;
@@ -116,4 +103,23 @@ public class Funcionario implements Serializable
 	public void setDataNascimento(String dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(idFuncionario);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Funcionario other = (Funcionario) obj;
+		return Objects.equals(idFuncionario, other.idFuncionario);
+	}
+	
+	
 }
