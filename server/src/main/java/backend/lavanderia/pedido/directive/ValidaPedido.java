@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 import backend.lavanderia.pedido.dto.PedidoDTO;
+import backend.lavanderia.pedido.entity.enums.PedidoStatus;
 import backend.lavanderia.pedido.service.OrderStatus;
 import backend.lavanderia.usuario.directive.ValidaUsuario;
 
@@ -13,8 +14,6 @@ public class ValidaPedido
 	public static void pedido(PedidoDTO pedido) throws RuntimeException
 	{
 		ValidaUsuario.usuario(pedido.getCliente());
-		
-		OrderStatus.getStatusCode(pedido.getEstado());
 
 		if(pedido.getRoupas().isEmpty())
 			throw new RuntimeException("O pedido deve conter ao menos 1 roupa!");

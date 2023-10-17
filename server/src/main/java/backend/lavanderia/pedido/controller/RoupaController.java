@@ -64,7 +64,7 @@ public class RoupaController
 		ValidaRoupa.roupa(roupa);
 		
 		buscaRoupa.get().setNomeRoupa(roupa.getNomeRoupa());
-		buscaRoupa.get().setPrazo(Long.valueOf(roupa.getPrazo()));
+		buscaRoupa.get().setPrazo(Integer.valueOf(roupa.getPrazo()));
 		buscaRoupa.get().setValor(roupa.getValor());
 		buscaRoupa.get().setImagem(roupa.getImagem());
 		

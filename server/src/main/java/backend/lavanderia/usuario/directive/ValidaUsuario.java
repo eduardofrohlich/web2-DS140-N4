@@ -1,6 +1,8 @@
 package backend.lavanderia.usuario.directive;
 
-import backend.lavanderia.usuario.dto.*;
+import backend.lavanderia.usuario.dto.ClienteDTO;
+import backend.lavanderia.usuario.dto.FuncionarioDTO;
+import backend.lavanderia.usuario.entity.Cliente;
 
 public class ValidaUsuario
 {

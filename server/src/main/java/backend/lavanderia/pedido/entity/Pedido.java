@@ -4,9 +4,19 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 
-import backend.lavanderia.usuario.entity.Cliente;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import jakarta.persistence.*;
+import backend.lavanderia.pedido.entity.enums.PedidoStatus;
+import backend.lavanderia.usuario.entity.Cliente;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 
 
 @Entity
@@ -16,39 +26,31 @@ public class Pedido implements Serializable
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="pedido_idpedido_seq")
-	@SequenceGenerator(name="pedido_idpedido_seq", allocationSize=1)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long idPedido;
 	
 	@OneToOne
 	@JoinColumn(name="FK_idCliente", referencedColumnName="idCliente")
 	private Cliente cliente;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "pedido", fetch=FetchType.EAGER)
 	private List<RoupasPedido> roupas;
 	
-	@Column(name="estado")
-	private Long estado;
-	
-	@Column(name="valorTotal")
+	private Integer pedidoStatus;
 	private Double valorTotal;
-	
-	@Column(name="prazoEntrega")
 	private Long prazoEntrega;
-	
-	@Column(name="dataHora")
 	private String dataHora;
 
 	public Pedido() {
-		super();
 	}
 
-	public Pedido(Long idPedido, Cliente cliente, List<RoupasPedido> roupas, Long estado, Double valorTotal, Long prazoEntrega, String dataHora) {
+	public Pedido(Long idPedido, Cliente cliente, List<RoupasPedido> roupas, PedidoStatus pedidoStatus, Double valorTotal, Long prazoEntrega, String dataHora) {
 		super();
 		this.idPedido = idPedido;
 		this.cliente = cliente;
 		this.roupas = roupas;
-		this.estado = estado;
+		setPedidoStatus(pedidoStatus);
 		this.valorTotal = valorTotal;
 		this.prazoEntrega = prazoEntrega;
 		this.dataHora = dataHora;
@@ -74,16 +76,14 @@ public class Pedido implements Serializable
 		return roupas;
 	}
 
-	public void setRoupas(List<RoupasPedido> roupas) {
-		this.roupas = roupas;
+	public PedidoStatus getPedidoStatus() {
+		return PedidoStatus.valueOf(pedidoStatus);
 	}
 
-	public Long getEstado() {
-		return estado;
-	}
-
-	public void setEstado(Long estado) {
-		this.estado = estado;
+	public void setPedidoStatus(PedidoStatus pedidoStatus) {
+		if(pedidoStatus != null) {
+			this.pedidoStatus = pedidoStatus.getCode();
+		}
 	}
 
 	public Double getValorTotal() {
@@ -112,7 +112,7 @@ public class Pedido implements Serializable
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(cliente, dataHora, estado, idPedido, prazoEntrega, roupas, valorTotal);
+		return Objects.hash(idPedido);
 	}
 
 	@Override
@@ -124,9 +124,8 @@ public class Pedido implements Serializable
 		if (getClass() != obj.getClass())
 			return false;
 		Pedido other = (Pedido) obj;
-		return Objects.equals(cliente, other.cliente) && Objects.equals(dataHora, other.dataHora)
-				&& Objects.equals(estado, other.estado) && Objects.equals(idPedido, other.idPedido)
-				&& Objects.equals(prazoEntrega, other.prazoEntrega) && Objects.equals(roupas, other.roupas)
-				&& Objects.equals(valorTotal, other.valorTotal);
+		return Objects.equals(idPedido, other.idPedido);
 	}
+
+	
 }

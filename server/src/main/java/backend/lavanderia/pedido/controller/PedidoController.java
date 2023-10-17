@@ -1,38 +1,39 @@
 package backend.lavanderia.pedido.controller;
 
-import backend.lavanderia.pedido.repository.PedidoRepository;
-import backend.lavanderia.pedido.repository.RoupaRepository;
-import backend.lavanderia.pedido.repository.RoupasPedidoRepository;
-import backend.lavanderia.usuario.repository.ClienteRepository;
-import backend.lavanderia.pedido.entity.Pedido;
-import backend.lavanderia.pedido.entity.Roupa;
-import backend.lavanderia.pedido.entity.RoupasPedido;
-import backend.lavanderia.usuario.entity.Cliente;
-import backend.lavanderia.pedido.dto.PedidoDTO;
-import backend.lavanderia.pedido.dto.RoupaDTO;
-import backend.lavanderia.pedido.dto.RoupasPedidoDTO;
-
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-import backend.lavanderia.pedido.service.OrderStatus;
 
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@CrossOrigin
+import backend.lavanderia.pedido.entity.Pedido;
+import backend.lavanderia.pedido.service.PedidoService;
+
+
 @RestController
-public class PedidoController 
-{
+@RequestMapping(value="/pedidos")
+public class PedidoController {
+	
+	@Autowired
+	private PedidoService service;
+	
+	@GetMapping
+	public ResponseEntity<List<Pedido>> findAll(){
+		List<Pedido> list = service.findAll();
+		return ResponseEntity.ok().body(list);
+	}
+	
+	@GetMapping(value = "/{id}")
+	public ResponseEntity<Pedido> findById(@PathVariable Long id) {
+		Pedido obj = service.findById(id);
+		return ResponseEntity.ok().body(obj);
+	}
+	
+	
+	/*
 	@Autowired
 	private PedidoRepository repoPedido;
 	@Autowired
@@ -45,7 +46,11 @@ public class PedidoController
 	private ModelMapper mapper;
 	
 	@GetMapping("/pedidos")
-	public List<PedidoDTO> buscarTodosPedidos()
+	
+	
+	
+	
+	/*public List<PedidoDTO> buscarTodosPedidos()
 	{
 		List<Pedido> buscaPedidos = repoPedido.findAll();
 		List<PedidoDTO> lista = new ArrayList<>();
@@ -58,8 +63,9 @@ public class PedidoController
 			lista.add(p);
 		}
 		
-		return lista;
-	}
+		return lista; 
+	} */
+	/*
 	
 	@GetMapping("/pedidos/aberto")
 	public List<PedidoDTO> buscarTodosPedidosAberto()
@@ -209,5 +215,5 @@ public class PedidoController
 		p.setEstado(OrderStatus.getStatusString(pedidoInserido.getEstado()));
 		
 		return p;
-	}
+	} */
 }

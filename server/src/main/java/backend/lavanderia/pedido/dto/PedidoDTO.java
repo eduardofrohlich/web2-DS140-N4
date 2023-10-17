@@ -2,14 +2,17 @@ package backend.lavanderia.pedido.dto;
 
 import java.io.Serializable;
 import java.util.List;
+
+import backend.lavanderia.pedido.entity.enums.PedidoStatus;
 import backend.lavanderia.usuario.dto.ClienteDTO;
 
 public class PedidoDTO implements Serializable
 {
+	private static final long serialVersionUID = 1L;
 	private int idPedido;
 	private ClienteDTO cliente;
 	private List<RoupasPedidoDTO> roupas; 
-	private String estado;
+	private Integer pedidoStatus;
 	private double valorTotal;
 	private int prazoEntrega;
 	private String dataHora;
@@ -18,15 +21,25 @@ public class PedidoDTO implements Serializable
 		super();
 	}
 
-	public PedidoDTO(int idPedido, ClienteDTO cliente, List<RoupasPedidoDTO> roupas, String estado, double valorTotal, int prazoEntrega, String dataHora) {
+	public PedidoDTO(int idPedido, ClienteDTO cliente, List<RoupasPedidoDTO> roupas, PedidoStatus pedidoStatus, double valorTotal, int prazoEntrega, String dataHora) {
 		super();
 		this.idPedido = idPedido;
 		this.cliente = cliente;
 		this.roupas = roupas;
-		this.estado = estado;
+		setPedidoStatus(pedidoStatus);
 		this.valorTotal = valorTotal;
 		this.prazoEntrega = prazoEntrega;
 		this.dataHora = dataHora;
+	}
+
+	public PedidoStatus getPedidoStatus() {
+		return PedidoStatus.valueOf(pedidoStatus);
+	}
+
+	public void setPedidoStatus(PedidoStatus pedidoStatus) {
+		if(pedidoStatus != null) {
+			this.pedidoStatus = pedidoStatus.getCode();
+		}
 	}
 
 	public int getIdPedido() {
@@ -51,14 +64,6 @@ public class PedidoDTO implements Serializable
 
 	public void setRoupas(List<RoupasPedidoDTO> roupas) {
 		this.roupas = roupas;
-	}
-
-	public String getEstado() {
-		return estado;
-	}
-
-	public void setEstado(String estado) {
-		this.estado = estado;
 	}
 
 	public double getValorTotal() {

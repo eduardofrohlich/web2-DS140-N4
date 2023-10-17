@@ -11,6 +11,8 @@ import jakarta.persistence.*;
 @Table(name="RoupasPedido")
 public class RoupasPedido implements Serializable
 {
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@ManyToOne
 	@JoinColumn(name="FK_idPedido", referencedColumnName="idPedido")
