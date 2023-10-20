@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt">
+    <head>
+        <meta charset="UTF-8">
+        <title>Pagar Pedido</title>
+    </head>
+
+    <body>
+        <div class="container-pagar-pedido">
+            <div class="container-roupas-pedido">
+                <!-- Roupas do pedido -->
+                <div class="container-roupa" *ngFor="let roupa of pedido.roupas">
+                    <!-- Gerar as tags com o conteúdo do banco de dados -->
+                    <img class="imagem-roupa" src="../../../assets/img/roupas/">
+
+                    <div class="info-roupa">
+                        <p>Nome da roupa: {{roupa.roupa.nomeRoupa}}</p>
+                        <p>Quantidade: {{roupa.qtdRoupa}}</p>
+                        <p>Valor total: {{roupa.valorTotalRoupa}} R$</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-confirmar-pagamento">
+                <div class="container-confirmar">
+                    <div class="info-pedido">
+                        <p>Nome do Cliente: {{pedido.cliente.nome}}</p>
+                        <p>Id do Pedido: {{pedido.idPedido}}</p>
+                        <p>Valor Total: {{pedido.valorTotal}} R$</p>
+                    </div>
+
+                    <a href="next.html">
+                        <!-- Quando confirmar o pagamento, salvar a data e horário. Atualizar estado do pedido -->
+                        <button class="botao-confirmar">CONFIRMAR PAGAMENTO</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
