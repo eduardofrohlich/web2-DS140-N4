@@ -66,6 +66,20 @@ public class PedidoController {
 		return lista; 
 	} */
 	/*
+
+	@GetMapping("/pedidos/{id}")
+	public PedidoDTO buscarPedidoComId(@PathVariable Long id)
+	{
+		Optional<Pedido> buscaPedido = repoPedido.findById(id);
+		
+		if(buscaPedido.isEmpty())
+			throw new RuntimeException("Não existe pedido com esse id!");
+		
+		PedidoDTO p = mapper.map(buscaPedido, PedidoDTO.class);
+		p.setEstado(OrderStatus.getStatusString(buscaPedido.get().getEstado()));
+		
+		return p; 
+	}
 	
 	@GetMapping("/pedidos/aberto")
 	public List<PedidoDTO> buscarTodosPedidosAberto()
