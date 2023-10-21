@@ -32,12 +32,13 @@
                 <div class="confirmar-pedido">
                     <div class="info-pedido">
                         <p id="valor-total">Valor Total: {{pedido.valorTotal}} R$</p>
-                        <P id="tempo-total">Tempo Total: {{pedido.prazoEntrega}} dias</P>
+                        <P id="tempo-total">Tempo Total: {{pedido.prazoEntrega}} dia(s)</P>
                     </div>
                     
-                    <a href="next.html">
-                        <button class="botao-confirmar">CONFIRMAR</button>
-                    </a>
+                    <div class="botoes-pedido">
+                        <button (click)="aprovar()" class="botao-confirmar">APROVAR</button>
+                        <button (click)="rejeitar()" class="botao-rejeitar">REJEITAR</button>
+                    </div>
                 </div>
             </div>
         </div>

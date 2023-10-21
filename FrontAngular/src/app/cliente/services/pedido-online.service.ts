@@ -46,4 +46,22 @@ export class PedidoOnlineService {
       }
     });
   }
+
+  setRoupasPedido(roupas : RoupasPedido[], pedido : Pedido) : boolean
+  {
+    pedido.roupas = [];
+    
+    roupas.forEach((obj, index, objs) => {
+      if(obj.qtdRoupa != undefined && obj.qtdRoupa > 0)
+      {
+        if(pedido.roupas != undefined)
+          pedido.roupas.push(obj);
+      }
+    });
+
+    if(pedido.roupas.length == 0)
+      return false;
+    else
+      return true;
+  }
 }
