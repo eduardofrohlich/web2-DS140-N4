@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOL - Lavanderia Online</title>
+    <link rel="stylesheet" href="/prototipo/base-style.css">
+</head>
+
+<body>
+    <nav class="menu-sidebar">
+        <div class="logo">
+            <img src="/prototipo/logo.png" alt="Logo">
+        </div>
+        <h2><a href="/prototipo/cliente/tela_inicial_cliente/index.html">LOL Lavanderia Online</a></h2>
+        <ul>
+            <li><a href="#"><i class="menu-item"></i><span class="menu-texto">Página Inicial</span></a></li>
+            <li><a href="#"><i class="menu-item"></i><span class="menu-texto">Meus pedidos</span></a></li>
+            <li><a href="#"><i class="menu-item"></i><span class="menu-texto">Pesquisar pedido</span></a></li>
+            <li><a href="#"><i class="menu-item"></i><span class="menu-texto">Serviços</span></a></li>
+            <li><a href="#"><i class="menu-item"></i><span class="menu-texto">Contato</span></a></li>
+        </ul>
+        <ul class="logout">
+            <li><a href="/prototipo/home/tela_inicial/inicio.html"><i class="menu-item"></i><span class="menu-texto">Sair</span></a></li>
+        </ul>
+    </nav>
+    <div class="content-with-sidebar">
+        <section class="home">
+            <div class="content">
+                <h1>Andamento do Pedido</h1>
+                <div class="roadmap">
+                    <div class="step">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span>Pedido Recebido</span>
+                    </div>
+                    <div class="step">
+                        <i class="fas fa-cogs"></i>
+                        <span>Em Processamento</span>
+                    </div>
+                    <div class="step">
+                        <i class="fas fa-truck"></i>
+                        <span>Em Transporte</span>
+                    </div>
+                    <div class="step">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Entregue</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+    </div>
+
+    <style>
+        .roadmap {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    
+        .step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    
+        .step i {
+            font-size: 36px;
+            background-color: #007bff;
+            color: #fff;
+            padding: 20px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+    
+        .step span {
+            text-align: center;
+        }
+    
+        .step:not(:last-child) {
+            flex: 1;
+        }
+    
+        .step.active i {
+            background-color: #5bc0de;
+        }
+    
+        .step.active span {
+            color: #5bc0de;
+        }
+    </style>
+    
+    
+
+    <script>
+        // Exemplo de código JavaScript para atualizar o progresso do pedido
+        // Suponha que o status atual do pedido seja representado por uma variável, como statusPedido.
+    
+        const steps = document.querySelectorAll('.step');
+        const statusPedido = 'Em Processamento'; // Atualize isso com o status do pedido
+    
+        steps.forEach(step => {
+            if (step.innerText === statusPedido) {
+                step.classList.add('active');
+            }
+        });
+    </script>
+    
+</body>
+
+</html>
