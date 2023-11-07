@@ -5,7 +5,7 @@ import { PedidoOnlineComponent } from './cliente/pedido-online/pedido-online.com
 
 const routes: Routes = [
   {path: '', redirectTo: 'cliente/pedidoonline', pathMatch: 'full'},
-  {path: 'cliente/pagarpedido', component: PagarPedidoComponent},
+  {path: 'cliente/pagarpedido/:id', component: PagarPedidoComponent},
   {path: 'cliente/pedidoonline', component: PedidoOnlineComponent}
 ];
 

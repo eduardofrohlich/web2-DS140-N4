@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
 import { Pedido } from 'src/app/shared';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 const httpHeader = {
   headers: new HttpHeaders({
@@ -18,11 +18,11 @@ const httpHeader = {
 export class PagarPedidoComponent implements OnInit{
   pedido! : Pedido;
 
-  constructor(private http : HttpClient, private router : Router){}
+  constructor(private http : HttpClient, private router : Router, private route : ActivatedRoute){}
 
   ngOnInit(): void {
-    // Pegar o id do pedido pela rota
-    let resposta = this.http.get("http://localhost:8080/pedidos/2");
+    let id = +this.route.snapshot.params['id'];
+    let resposta = this.http.get("http://localhost:8080/pedidos/" + id);
     resposta.subscribe((dados) => this.pedido = dados);
   }
 
@@ -36,5 +36,10 @@ export class PagarPedidoComponent implements OnInit{
         this.router.navigate(['/cliente/pedidoonline']);
       });
     }
+  }
+
+  voltar()
+  {
+    this.router.navigate(['/cliente/pedidoonline']);
   }
 }

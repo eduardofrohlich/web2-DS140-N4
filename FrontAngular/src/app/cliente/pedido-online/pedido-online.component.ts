@@ -29,7 +29,7 @@ export class PedidoOnlineComponent implements OnInit{
 
     this.roupas = [];
 
-    // Pegar o id do cliente pela rota
+    // Pegar o id do cliente logado
     this.pedido = new Pedido(0, new Cliente(1, new Endereco(), '', '', '', '', ''), [], '', 0, 0, '');
     
     // Observable
@@ -68,13 +68,15 @@ export class PedidoOnlineComponent implements OnInit{
   {
     if(this.pedidoService.setRoupasPedido(this.roupas, this.pedido))
     {
-      // Observable
-      this.http.post<Pedido>("http://localhost:8080/pedidos", this.pedido, httpHeader).subscribe((novoPedido) => {
-        this.pedido.idPedido = novoPedido.idPedido;
-        confirm(`Pedido gerado com sucesso!\nId do pedido: ${this.pedido.idPedido}`);
-        this.router.navigate(['/cliente/pagarpedido']);
-      });
-      // Observable
+      if(confirm("Tem certeza que quer aprovar o pedido?"))
+      {
+          // Observable
+          this.http.post<Pedido>("http://localhost:8080/pedidos", this.pedido, httpHeader).subscribe((novoPedido) => {
+            this.pedido.idPedido = novoPedido.idPedido;
+            confirm(`Pedido gerado com sucesso!\nId do pedido: ${this.pedido.idPedido}`);
+          });
+          // Observable
+      }
     }
     else
       confirm("Por favor adicione uma roupa ao pedido!");
@@ -84,18 +86,19 @@ export class PedidoOnlineComponent implements OnInit{
   {
     if(this.pedidoService.setRoupasPedido(this.roupas, this.pedido))
     {
-      // Observable
-      this.http.post<Pedido>("http://localhost:8080/pedidos", this.pedido, httpHeader).subscribe((novoPedido) => {
-        this.pedido.idPedido = novoPedido.idPedido;
-        
-        this.http.put<Pedido>(`http://localhost:8080/pedidos/${this.pedido.idPedido}/estado/rejeitado`, this.pedido, httpHeader).subscribe((pedidoAtualizado => {
-          this.pedido.estado = pedidoAtualizado.estado;
-
-          confirm(`Pedido rejeitado com sucesso!\nId do pedido: ${this.pedido.idPedido}\nEstado: ${this.pedido.estado}`);
-          this.router.navigate(['/cliente/pagarpedido']);
-        }));
-      });
-      // Observable
+      if(confirm("Tem certeza que quer rejeitar o pedido?"))
+      {
+        // Observable
+        this.http.post<Pedido>("http://localhost:8080/pedidos", this.pedido, httpHeader).subscribe((novoPedido) => {
+          this.pedido.idPedido = novoPedido.idPedido;
+          
+          this.http.put<Pedido>(`http://localhost:8080/pedidos/${this.pedido.idPedido}/estado/rejeitado`, this.pedido, httpHeader).subscribe((pedidoAtualizado => {
+            this.pedido.estado = pedidoAtualizado.estado;
+            confirm(`Pedido rejeitado com sucesso!\nId do pedido: ${this.pedido.idPedido}\nEstado: ${this.pedido.estado}`);
+          }));
+        });
+        // Observable
+      }
     }
     else
       confirm("Por favor adicione uma roupa ao pedido!");
