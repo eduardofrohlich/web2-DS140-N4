@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import backend.lavanderia.pedido.entity.Pedido;
 import backend.lavanderia.pedido.repository.PedidoRepository;
+import backend.lavanderia.usuario.entity.Cliente;
 
 
 @Service
@@ -23,5 +24,7 @@ public class PedidoService {
 		return obj.get();
 	}
 	
-
+	public List<Pedido> obterPorCliente(Cliente cliente) {
+		return repository.findByCliente(cliente);
+	}
 }

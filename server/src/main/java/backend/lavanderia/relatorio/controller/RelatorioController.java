@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import backend.lavanderia.relatorio.dto.RelatorioClienteDTO;
+import backend.lavanderia.relatorio.dto.RelatorioClienteFielDTO;
+import backend.lavanderia.relatorio.service.RelatorioService;
 import backend.lavanderia.usuario.entity.Cliente;
 import backend.lavanderia.usuario.service.ClienteService;
 
@@ -21,7 +23,8 @@ public class RelatorioController {
 	
 	@Autowired
 	private ClienteService clienteService;
-	
+	@Autowired
+	private RelatorioService relatorioService;
 	@Autowired
 	private ModelMapper mapper;
 	
@@ -40,9 +43,8 @@ public class RelatorioController {
 //		return x.map(mapper::toApi);
 //	}
 //	
-//	@GetMapping("/clientes-fieis")
-//	public List<RelatorioClienteDTO> listarClientesFieis(){
-//		List<Cliente> x = service.findAll();
-//		return x.map(mapper::toApi);
-//	}
+	@GetMapping("/clientes-fieis")
+	public List<RelatorioClienteFielDTO> listarClientesFieis(){
+		return relatorioService.listarClientesFieis();
+	}
 }
