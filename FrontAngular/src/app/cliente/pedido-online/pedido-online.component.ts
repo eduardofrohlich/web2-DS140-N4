@@ -30,8 +30,8 @@ export class PedidoOnlineComponent implements OnInit{
     this.roupas = [];
 
     // Pegar o id do cliente logado
-    this.pedido = new Pedido(0, new Cliente(1, new Endereco(), '', '', '', '', ''), [], '', 0, 0, '');
-    
+    this.pedido = new Pedido(0, new Cliente(1, '', '', '', '', '', ''), [], '', 0, 0, '');
+
     // Observable
     this.http.get<{[key : string] : Roupa}>("http://localhost:8080/roupas").pipe(
       map((roupaJSON) => {
@@ -91,7 +91,7 @@ export class PedidoOnlineComponent implements OnInit{
         // Observable
         this.http.post<Pedido>("http://localhost:8080/pedidos", this.pedido, httpHeader).subscribe((novoPedido) => {
           this.pedido.idPedido = novoPedido.idPedido;
-          
+
           this.http.put<Pedido>(`http://localhost:8080/pedidos/${this.pedido.idPedido}/estado/rejeitado`, this.pedido, httpHeader).subscribe((pedidoAtualizado => {
             this.pedido.estado = pedidoAtualizado.estado;
             confirm(`Pedido rejeitado com sucesso!\nId do pedido: ${this.pedido.idPedido}\nEstado: ${this.pedido.estado}`);
