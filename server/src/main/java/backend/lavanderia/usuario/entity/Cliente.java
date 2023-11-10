@@ -28,8 +28,9 @@ public class Cliente implements Serializable
 	}
 
 	
-	public Cliente(String endereco, String senha, String email, String nome, String cpf, String telefone) {
+	public Cliente(Long idCliente, String endereco, String senha, String email, String nome, String cpf, String telefone) {
 		super();
+		this.idCliente = idCliente;
 		this.endereco = endereco;
 		this.senha = senha;
 		this.email = email;
