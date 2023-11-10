@@ -1,0 +1,39 @@
+<!-- home.component.html -->
+<div class="content-with-sidebar">
+  <section class="home">
+    <div class="novo-pedido">
+      <a routerLink="/cliente/pedido">Abrir novo pedido</a>
+    </div>
+    <div class="content">
+      <h2>Pedidos abertos</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Pedido</th>
+            <th>Itens</th>
+            <th>Serviços</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Adicione os dados da tabela dinamicamente aqui usando *ngFor -->
+        </tbody>
+      </table>
+    </div>
+  </section>
+  <style>
+    table {
+      width: 100%;
+      position: absolute;
+    }
+
+    th,
+    td {
+      text-align: center;
+      padding: 1.2vw;
+    }
+
+    th {
+      background-color: #d3d3d3;
+    }
+  </style>
+</div>
