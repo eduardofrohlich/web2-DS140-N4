@@ -4,3 +4,4 @@ export * from './funcionario.model';
 export * from './roupa.model';
 export * from './pedido.model';
 export * from './roupas-pedido.model';
+export * from './login.model';
