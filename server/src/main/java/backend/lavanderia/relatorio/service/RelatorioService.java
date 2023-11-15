@@ -1,7 +1,10 @@
 package backend.lavanderia.relatorio.service;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Collections;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +14,8 @@ import backend.lavanderia.pedido.entity.Pedido;
 import backend.lavanderia.pedido.service.PedidoService;
 import backend.lavanderia.relatorio.dto.RelatorioClienteDTO;
 import backend.lavanderia.relatorio.dto.RelatorioClienteFielDTO;
+import backend.lavanderia.relatorio.dto.RelatorioReceitaDTO;
+import backend.lavanderia.relatorio.dto.RelatorioReceitaDatasDTO;
 import backend.lavanderia.usuario.entity.Cliente;
 import backend.lavanderia.usuario.service.ClienteService;
 
@@ -41,21 +46,21 @@ public class RelatorioService {
             double valorTotalGasto = pedidos.stream().mapToDouble(Pedido::getValorTotal).sum();
             result.add(new RelatorioClienteFielDTO(cliente.getNome(), pedidos.size(), valorTotalGasto));
         }
-        return result;
+        Collections.sort(result, (c1, c2) -> Integer.compare(c2.getCount(), c1.getCount()));
+        return result.subList(0, Math.min(result.size(), 3));
 	}
 	
-//	public List<RelatorioReceitaDTO> listarRelatorioReceita(DataReceitaApi api){
-//		List<Pedido> lista = pedidoService.findAll();
-//		List<LocalDate> datas = new ArrayList<>();
-//		List<RelatorioReceitaDTO> result = new ArrayList<>();
-//		if (api.dataInicial()==null && api.dataFinal()==null) {
-//			for(Pedido pedidos : lista) {
-//				LocalDate.parse(pedidos.getDataHora());
-//				datas.add(LocalDate.parse(pedidos.getDataHora(), DateTimeFormatter.ofPattern("dd/MM/yyyy")));
-//				double valorTotalGasto = lista.stream().mapToDouble(Pedido::getValorTotal).sum();
-//				result.add(new RelatorioReceitaDTO());
-//			}
-//		}
-//		return null;
-//	}
+	public List<RelatorioReceitaDTO> listarRelatorioReceita(RelatorioReceitaDatasDTO api){
+			LocalDate data = LocalDate.of(api.dataInicial().getYear(), api.dataInicial().getMonthValue(), api.dataInicial().getDayOfMonth());
+			List<RelatorioReceitaDTO> result = new ArrayList<>();
+			for(LocalDate dataaa = data; !dataaa.isAfter(api.dataFinal());dataaa = dataaa.plusDays(1)){
+				String dataString = dataaa.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+				List<Pedido> pedidos = pedidoService.obterPorDataHora(dataString);
+				if (!(pedidos.isEmpty())) {
+					double valorTotalGasto = pedidos.stream().mapToDouble(Pedido::getValorTotal).sum();
+					result.add(new RelatorioReceitaDTO(dataString, pedidos.size(), valorTotalGasto));
+				}
+			}
+			return result;
+	}
 }

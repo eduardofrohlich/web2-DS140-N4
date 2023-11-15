@@ -11,4 +11,5 @@ import backend.lavanderia.usuario.entity.Cliente;
 public interface PedidoRepository extends JpaRepository<Pedido, Long>
 {
     List<Pedido> findByCliente(@Param("cliente") Cliente cliente);
+    List<Pedido> findByDataHoraContaining(String dataString);
 }

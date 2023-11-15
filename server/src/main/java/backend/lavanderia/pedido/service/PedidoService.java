@@ -27,4 +27,8 @@ public class PedidoService {
 	public List<Pedido> obterPorCliente(Cliente cliente) {
 		return repository.findByCliente(cliente);
 	}
+
+    public List<Pedido> obterPorDataHora(String dataString) {
+        return repository.findByDataHoraContaining(dataString);
+    }
 }
