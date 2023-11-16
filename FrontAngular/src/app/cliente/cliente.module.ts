@@ -4,7 +4,7 @@ import { PagarPedidoComponent } from './pagar-pedido/pagar-pedido.component';
 import { PedidoOnlineComponent } from './pedido-online/pedido-online.component';
 import { PedidoOnlineService } from './services/pedido-online.service';
 import { MenuSidebarComponent } from './menu-sidebar/menu-sidebar.component';
-
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -13,7 +13,8 @@ import { MenuSidebarComponent } from './menu-sidebar/menu-sidebar.component';
     MenuSidebarComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule
   ],
   providers: [
     PedidoOnlineService

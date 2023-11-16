@@ -22,8 +22,7 @@ export class PagarPedidoComponent implements OnInit{
 
   ngOnInit(): void {
     let id = +this.route.snapshot.params['id'];
-    let resposta = this.http.get("http://localhost:8080/pedidos/" + id);
-    resposta.subscribe((dados) => this.pedido = dados);
+    this.http.get("http://localhost:8080/pedidos/" + id).subscribe((dados) => this.pedido = dados);
   }
 
   pagar()
@@ -36,10 +35,5 @@ export class PagarPedidoComponent implements OnInit{
         this.router.navigate(['/cliente/pedidoonline']);
       });
     }
-  }
-
-  voltar()
-  {
-    this.router.navigate(['/cliente/pedidoonline']);
   }
 }
