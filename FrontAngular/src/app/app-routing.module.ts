@@ -4,6 +4,7 @@ import { PagarPedidoComponent } from './cliente/pagar-pedido/pagar-pedido.compon
 import { PedidoOnlineComponent } from './cliente/pedido-online/pedido-online.component';
 import { TelaInicialComponent } from './cliente/tela-inicial/tela-inicial.component';
 import { LoginComponent } from './auth/login/login.component';
+import { MenuSidebarComponent } from './cliente/menu-sidebar/menu-sidebar.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -11,6 +12,9 @@ const routes: Routes = [
   { path: 'cliente/pagarpedido/:id', component: PagarPedidoComponent },
   { path: 'cliente/pedidoonline', component: PedidoOnlineComponent },
   { path: 'cliente/inicial', component: TelaInicialComponent },
+  { path: 'funcionario/inicial', component: TelaInicialComponent },
+
+
 ];
 
 @NgModule({
