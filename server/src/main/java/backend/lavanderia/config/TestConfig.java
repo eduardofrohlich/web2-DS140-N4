@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Configuration;
 
 import backend.lavanderia.pedido.entity.Pedido;
 import backend.lavanderia.pedido.entity.Roupa;
+import backend.lavanderia.pedido.entity.enums.PedidoStatus;
 import backend.lavanderia.pedido.repository.PedidoRepository;
 import backend.lavanderia.pedido.repository.RoupaRepository;
 import backend.lavanderia.usuario.entity.Cliente;
@@ -52,7 +53,7 @@ public class TestConfig implements CommandLineRunner{
 		clothesRepository.saveAll(Arrays.asList(r1, r2, r3, r4, r5));
 		
 		
-		//Pedido p1 = new Pedido(null, c1, null, null, null, null, null)
+		//Pedido p1 = new Pedido(null, c1, r1, PedidoStatus.AGUARDANDO_PAGAMENTO, null, null, null)
 		
 	}
 	

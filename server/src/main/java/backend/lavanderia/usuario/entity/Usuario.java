@@ -3,48 +3,44 @@ package backend.lavanderia.usuario.entity;
 import java.io.Serializable;
 import java.util.Objects;
 
-import jakarta.persistence.*;
+import backend.lavanderia.usuario.cargos.CargosUsuario;
 
-
-@Entity
-@Table(name="Cliente")
-public class Cliente extends Usuario implements Serializable
-{
+public class Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long idCliente;
-	
+	private Long id;
+
 	private String endereco;
 	private String senha;
 	private String email;
 	private String nome;
 	private String cpf;
 	private String telefone;
+	private Integer perfil;
 
-	public Cliente() {
+	public Usuario() {
 		super();
 	}
 
-	public Cliente(Long id, String endereco, String senha, String email, String nome, String cpf, String telefone) {
+	public Usuario(Long id, String endereco, String senha, String email, String nome, String cpf,
+			String telefone, CargosUsuario perfil) {
 		super();
-		this.idCliente = id;
+		this.id = id;
 		this.endereco = endereco;
 		this.senha = senha;
 		this.email = email;
 		this.nome = nome;
 		this.cpf = cpf;
 		this.telefone = telefone;
+		setPerfil(perfil);
 	}
 
-
-	public Long getIdCliente() {
-		return idCliente;
+	public Long getId() {
+		return id;
 	}
 
-	public void setIdCliente(Long idCliente) {
-		this.idCliente = idCliente;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getEndereco() {
@@ -95,9 +91,19 @@ public class Cliente extends Usuario implements Serializable
 		this.telefone = telefone;
 	}
 
+	public CargosUsuario getPerfil() {
+		return CargosUsuario.valueOf(perfil);
+	}
+
+	public void setPerfil(CargosUsuario perfil) {
+		if(perfil != null) {
+			this.perfil = perfil.getCode();
+		}
+	}
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(idCliente);
+		return Objects.hash(id);
 	}
 
 	@Override
@@ -108,9 +114,8 @@ public class Cliente extends Usuario implements Serializable
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Cliente other = (Cliente) obj;
-		return Objects.equals(idCliente, other.idCliente);
+		Usuario other = (Usuario) obj;
+		return Objects.equals(id, other.id);
 	}
 
-	
 }
