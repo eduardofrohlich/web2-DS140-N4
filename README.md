@@ -48,7 +48,28 @@ senha: admin
 
 
 ## Passo a passo para execução do SERVER:
-Ausente
+Primeiramente, crie um banco no [PostgreSQL](https://www.postgresql.org/) utilizando o sql disponível em「Database/SQL.txt」, em seguida, abra a pasta「server」no [Spring Tool Suite](https://spring.io/tools) e navegue até src/main/resources.
 
+![Passo 1](/Database/img/Spring_tutorial_1.PNG)
 
+Abra o arquivo「application.properties」e em:
 
+* spring.datasource.url= : Altere「Nome_Do_Banco」pelo nome que você deu para o banco
+
+* spring.datasource.username= : Altere「Username_Do_Banco」pelo seu username do banco
+
+* spring.datasource.password= : Altere「Senha_Do_Banco」pela sua senha do banco
+
+![Passo 2](/Database/img/Spring_tutorial_2.PNG)
+
+Por fim, clique com o botão direito em「server」, selecione「Run As」e clique em「Spring Boot App」
+
+![Passo 3](/Database/img/Spring_tutorial_3.png)
+
+Se todos os passos foram seguidos corretamente, a seguinte mensagem será exibida confirmando a inicialização do servidor:
+
+![Passo 4](/Database/img/Spring_tutorial_4.png)
+
+# Diagrama Relacional
+
+![Diagrama Relacional](/Database/img/DR.PNG)
