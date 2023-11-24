@@ -4,6 +4,10 @@ import { PagarPedidoComponent } from './cliente/pagar-pedido/pagar-pedido.compon
 import { PedidoOnlineComponent } from './cliente/pedido-online/pedido-online.component';
 import { TelaInicialComponent } from './cliente/tela-inicial/tela-inicial.component';
 import { LoginComponent } from './auth/login/login.component';
+import { RelatorioComponent } from './funcionario/relatorios/relatorio/relatorio.component';
+import { RelatorioClienteComponent } from './funcionario/relatorios/relatorio-cliente/relatorio-cliente.component';
+import { RelatorioReceitaComponent } from './funcionario/relatorios/relatorio-receita/relatorio-receita.component';
+import { RelatorioClienteFielComponent } from './funcionario/relatorios/relatorio-cliente-fiel/relatorio-cliente-fiel.component';
 import { MenuSidebarComponent } from './cliente/menu-sidebar/menu-sidebar.component';
 
 const routes: Routes = [
@@ -12,9 +16,10 @@ const routes: Routes = [
   { path: 'cliente/pagarpedido/:id', component: PagarPedidoComponent },
   { path: 'cliente/pedidoonline', component: PedidoOnlineComponent },
   { path: 'cliente/inicial', component: TelaInicialComponent },
-  { path: 'funcionario/inicial', component: TelaInicialComponent },
-
-
+  { path: 'funcionario/relatorio', component: RelatorioComponent },
+  { path: 'funcionario/relatorio/cliente', component: RelatorioClienteComponent },
+  { path: 'funcionario/relatorio/receita', component: RelatorioReceitaComponent },
+  { path: 'funcionario/relatorio/cliente-fiel', component: RelatorioClienteFielComponent },
 ];
 
 @NgModule({

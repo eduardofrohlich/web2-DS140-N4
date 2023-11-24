@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>LOL - Lavanderia Online</title>
+    
+</head>
+
+<body>
+    <nav class="menu-sidebar">
+        <div class="logo">
+            <img src="../../../../../../prototipo/logo.png" alt="Logo">
+        </div>
+        <h2><a href="/prototipo/funcionario/index.html">LOL Lavanderia Online</a></h2>
+        <ul>
+            <li><a routerLink="/funcionario/incial"><i class="menu-item"></i><span class="menu-texto">Página Inicial</span></a></li>
+            <li><a routerLink="/funcionario/pedidos"><i class="menu-item"></i><span class="menu-texto">Pedidos</span></a></li>
+            <li><a href="/prototipo/funcionario/relatorios/relatorios.html"><i class="menu-item"></i><span class="menu-texto">Relatórios</span></a></li>
+            <li><a href="/prototipo/funcionario/tela_manutencao_funcionarios/manutencao_de_funcionarios.html"><i class="menu-item"></i><span class="menu-texto">Funcionários</span></a></li>
+            <li><a href="/prototipo/funcionario/tela_manutencao_roupas/manutencao_roupas.html"><i class="menu-item"></i><span class="menu-texto">Roupas</span></a></li>
+            <li><a href="#"><i class="menu-item"></i><span class="menu-texto">Serviços</span></a></li>
+            <li><a href="#"><i class="menu-item"></i><span class="menu-texto">Contato</span></a></li>
+        </ul>
+        <ul class="logout">
+            <li><a href="/prototipo/home/tela_inicial/inicio.html"><i class="menu-item"></i><span class="menu-texto">Sair</span></a></li>
+        </ul>
+    </nav>
+    <div class="content-with-sidebar">
+        <section class="home">
+            <div class="content">
+                <h1>Relatórios</h1>
+                <div class="listagem">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Tipo Relatório</th>
+                                <th>Data de inicio</th>
+                                <th>Data de fim</th>
+                                <th>Ação</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Relatório de Receita</td>
+                                <td><input type="date"></td>
+                                <td><input type="date"></td>
+                                <td>
+                                    <a id="botaoReceita" routerLink="/funcionario/relatorio/receita">Ver Relatório</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Relatório de Clientes</td>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    <a id="botaoReceita" routerLink="/funcionario/relatorio/cliente">Ver Relatório</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Relatório de Clientes Fiéis</td>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    <a id="botaoReceita" routerLink='funcionario/relatorio/cliente-fiel'>Ver Relatório</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
