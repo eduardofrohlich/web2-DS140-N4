@@ -9,8 +9,6 @@ import { RelatorioClienteComponent } from './funcionario/relatorios/relatorio-cl
 import { RelatorioReceitaComponent } from './funcionario/relatorios/relatorio-receita/relatorio-receita.component';
 import { RelatorioClienteFielComponent } from './funcionario/relatorios/relatorio-cliente-fiel/relatorio-cliente-fiel.component';
 import { MenuSidebarComponent } from './cliente/menu-sidebar/menu-sidebar.component';
-import { HomeComponent } from './home/home.component';
-import { AuthGuard } from './auth/auth.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -19,18 +17,12 @@ const routes: Routes = [
     redirectTo: 'cliente/pedidoonline',
     pathMatch: 'full',
   },
-  {
-    path: 'home',
-    component: HomeComponent,
-    canActivate: [AuthGuard],
-    data: {
-      role: 'FUNCIONARIO,CLIENTE',
-    },
-  },
   { path: 'cliente/pagarpedido/:id', component: PagarPedidoComponent },
   { path: 'cliente/pedidoonline', component: PedidoOnlineComponent },
   { path: 'cliente/inicial', component: TelaInicialComponent },
   { path: 'funcionario/inicial', component: TelaInicialComponent },
+
+
 ];
 
 @NgModule({

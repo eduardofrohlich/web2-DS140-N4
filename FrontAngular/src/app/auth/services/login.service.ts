@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { Cliente, Login, Usuario } from 'src/app/shared';
+import { Cliente, Login } from 'src/app/shared';
 
 const LS_CHAVE: string = 'usuarioLogado';
 @Injectable({
