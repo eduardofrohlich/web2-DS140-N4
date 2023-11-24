@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-  <link rel="stylesheet" href="login.component.css">
+  <link rel="stylesheet" href="./login.component.css">
   <title>Login</title>
 </head>
 
@@ -13,29 +13,36 @@
   <section class="login">
     <div class="wrapper-login">
       <div class="logo-img">
-
         <h3>LOL</h3>
       </div>
-      <form>
+      <form #formLogin="ngForm">
         <h2>Login</h2>
         <div class="input-box">
           <span class="icon"></span>
-          <input type="text" id="email" required>
-          <label>Digite seu e-mail</label>
+          <input type="text" id="email" [(ngModel)]="login.email" #usuario="ngModel" required>
+          <div *ngIf="usuario.errors && (usuario.dirty || usuario.touched)">
+            <div [hidden]="!usuario.errors['required']">
+              <label>Digite seu e-mail</label>
+            </div>
+          </div>
         </div>
 
         <div class="input-box">
-          <input type="password" id="password" required>
-          <label>Digite sua senha</label>
+          <input type="password" id="password" [(ngModel)]="login.senha" #senha="ngModel" required>
+          <div *ngIf="senha.errors && (senha.dirty || senha.touched)">
+            <div [hidden]="!senha.errors['required']">
+              <label>Digite sua senha</label>
+            </div>
+          </div>
         </div>
 
         <div class="remember-forgot">
           <a href="./esquecesenha.html">Esqueceu sua senha?</a>
         </div>
 
-        <button type="submit" class="btn">Login</button>
+        <button type="submit" class="btn" (click)="logar()">Login</button>
         <div class="register-link">
-          <p>Não é um membro? <a href="../tela_autocadastro/autocadastro.html">Cadastre-se agora</a></p>
+          <p>Não é um membro? <a [routerLink]="['/autocadastro']">Cadastre-se agora</a></p>
         </div>
       </form>
     </div>
