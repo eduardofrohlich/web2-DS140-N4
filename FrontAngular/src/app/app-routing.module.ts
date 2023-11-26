@@ -9,6 +9,8 @@ import { RelatorioClienteComponent } from './funcionario/relatorio-cliente/relat
 import { RelatorioReceitaComponent } from './funcionario/relatorio-receita/relatorio-receita.component';
 import { RelatorioClienteFielComponent } from './funcionario/relatorio-cliente-fiel/relatorio-cliente-fiel.component';
 import { MenuSidebarComponent } from './cliente/menu-sidebar/menu-sidebar.component';
+import { TelaInicialFuncComponent } from './funcionario/tela-inicial-func/tela-inicial-func.component';
+import { VisualizaPedidoComponent } from './funcionario/visualiza-pedido/visualiza-pedido.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -20,6 +22,8 @@ const routes: Routes = [
   { path: 'funcionario/relatorio/cliente', component: RelatorioClienteComponent },
   { path: 'funcionario/relatorio/receita', component: RelatorioReceitaComponent },
   { path: 'funcionario/relatorio/cliente-fiel', component: RelatorioClienteFielComponent },
+  { path: 'funcionario/inicial', component: TelaInicialFuncComponent },
+  { path: 'funcionario/visualiza-pedido', component: VisualizaPedidoComponent },
 ];
 
 @NgModule({

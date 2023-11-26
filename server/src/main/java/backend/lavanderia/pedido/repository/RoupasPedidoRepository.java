@@ -5,7 +5,7 @@ import backend.lavanderia.pedido.entity.RoupasPedidoKey;
 
 import org.springframework.data.jpa.repository.*;
 
-public interface RoupasPedidoRepository extends JpaRepository<RoupasPedido, RoupasPedidoKey>
-{
+// public interface RoupasPedidoRepository extends JpaRepository<RoupasPedido, RoupasPedidoKey>
+// {
 	
-}
+// }
