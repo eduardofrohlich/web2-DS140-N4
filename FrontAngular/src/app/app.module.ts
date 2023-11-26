@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ClienteModule } from './cliente/cliente.module';
 import { AuthModule } from './auth/auth.module';
+import { FuncionarioModule } from './funcionario/funcionario.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -17,6 +18,7 @@ import { AuthModule } from './auth/auth.module';
     HttpClientModule,
     ClienteModule,
     AuthModule,
+    FuncionarioModule
   ],
   providers: [],
   bootstrap: [AppComponent],

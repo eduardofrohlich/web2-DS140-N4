@@ -10,7 +10,7 @@
 <body>
     <nav class="menu-sidebar">
         <div class="logo">
-            <img src="/prototipo/logo.png" alt="Logo">
+            <img src="../../../assets/img/default/logo.png" alt="Logo">
         </div>
         <h2><a href="/prototipo/funcionario/index.html">LOL Lavanderia Online</a></h2>
         <ul>
@@ -29,50 +29,35 @@
     </nav>
     <div class="content-with-sidebar">
         <section class="home">
-            <div class="content" id="content">
+            <div class="content" id="content" #content>
                 <div class="titulo">
-                    <h1>Relatório de Receita da Lavanderia</h1>
+                    <h1>Relatório de Clientes Fiéis da Lavanderia</h1>
                 </div>
                 <div class="listagem">
                     <table>
                         <thead>
                             <tr>
-                                <th>Dia</th>
+                                <th>Nome</th>
                                 <th>Quantidade de Pedidos</th>
-                                <th>Valor</th>
+                                <th>Receita do Cliente</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>22/08/2023</td>
-                                <td>32</td>
-                                <td>R$950.00</td>
-                            </tr>
-                            <tr>
-                                <td>23/08/2023</td>
-                                <td>28</td>
-                                <td>R$900.00</td>
-                            </tr>
-                            <tr>
-                                <td>24/08/2023</td>
-                                <td>26</td>
-                                <td>R$840.00</td>
-                            </tr>
-                            <tr>
-                                <td>25/08/2023</td>
-                                <td>30</td>
-                                <td>R$1050.00</td>
+                            <tr *ngFor="let cliente of clientes">
+                                <td>{{cliente.nome}}</td>
+                                <td>{{cliente.count}}</td>
+                                <td>R${{cliente.sum}}</td>
                             </tr>
                         </tbody>
                     </table>
-                    <h3 hidden>Valor Final: R$2690.00</h3>
+                    <h3 hidden>Valor Final: {{ getTotal() }}</h3>
                 </div>
             </div>
             <div class="valorFinal">
-                <a>Valor Final: R$3740.00</a>
+                <a>Valor Final: R${{ getTotal() }}</a>
             </div>
             <div class="botao">
-                <a onclick="gerarPDFReceita()">Gerar PDF</a>
+                <a onclick="gerarPDFClienteFiel()">Gerar PDF</a>
             </div>
         </section>
     </div>
@@ -138,6 +123,12 @@
             color: #fff;
         }
 
+        .content-with-sidebar {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
         .content {
             width: 100%;
         }
@@ -145,10 +136,12 @@
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.4.1/jspdf.debug.js" integrity="sha384-THVO/sM0mFD9h7dfSndI6TS0PgAGavwKvB5hAxRRvc0o9cPLohB0wb/PTA7LdUHs" crossorigin="anonymous"></script>
     <script>
-        function gerarPDFReceita() {
+        function gerarPDFClienteFiel() {
             var doc = new jsPDF();
             doc.fromHTML(document.querySelector("#content"));
-            doc.save('RelatorioReceita.pdf');
+            doc.fromHTML(document.querySelector("#valorFinal"));
+            doc.save('RelatorioClienteFiel.pdf');
         };
+
     </script>
 </body>

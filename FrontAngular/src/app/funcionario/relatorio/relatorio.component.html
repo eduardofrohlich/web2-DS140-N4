@@ -9,7 +9,7 @@
 <body>
     <nav class="menu-sidebar">
         <div class="logo">
-            <img src="../../../../../../prototipo/logo.png" alt="Logo">
+            <img src="../../../assets/img/default/logo.png" alt="Logo">
         </div>
         <h2><a href="/prototipo/funcionario/index.html">LOL Lavanderia Online</a></h2>
         <ul>
@@ -42,10 +42,10 @@
                         <tbody>
                             <tr>
                                 <td>Relatório de Receita</td>
-                                <td><input type="date"></td>
-                                <td><input type="date"></td>
+                                <td id="dataInicial"><input type="date" [(ngModel)]="dataInicial"></td>
+                                <td id="dataFinal" input type="date" [(ngModel)]="dataFinal"></td>
                                 <td>
-                                    <a id="botaoReceita" routerLink="/funcionario/relatorio/receita">Ver Relatório</a>
+                                    <a id="botaoReceita" (click)="navigateToReceita()" routerLink="funcionario/relatorio/receita" >Ver Relatório</a>
                                 </td>
                             </tr>
                             <tr>
@@ -53,7 +53,7 @@
                                 <td></td>
                                 <td></td>
                                 <td>
-                                    <a id="botaoReceita" routerLink="/funcionario/relatorio/cliente">Ver Relatório</a>
+                                    <a (click)="navigateToCliente()" id="botaoReceita">Ver Relatório</a>
                                 </td>
                             </tr>
                             <tr>
@@ -61,7 +61,7 @@
                                 <td></td>
                                 <td></td>
                                 <td>
-                                    <a id="botaoReceita" routerLink='funcionario/relatorio/cliente-fiel'>Ver Relatório</a>
+                                    <a id="botaoReceita" (click)="navigateToClienteFiel()">Ver Relatório</a>
                                 </td>
                             </tr>
                         </tbody>

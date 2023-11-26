@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOL - Lavanderia Online</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.4.1/jspdf.debug.js" integrity="sha384-THVO/sM0mFD9h7dfSndI6TS0PgAGavwKvB5hAxRRvc0o9cPLohB0wb/PTA7LdUHs" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <nav class="menu-sidebar">
+        <div class="logo">
+            <img src="../../../assets/img/default/logo.png" alt="Logo">
+        </div>
+        <h2><a href="/prototipo/funcionario/index.html">LOL Lavanderia Online</a></h2>
+        <ul>
+            <li><a href="/prototipo/funcionario/index.html"><i class="menu-item"></i><span class="menu-texto">Página Inicial</span></a></li>
+            <li><a href="/prototipo/funcionario/tela_visualiza_pedido/index.html"><i class="menu-item"></i><span class="menu-texto">Pedidos</span></a></li>
+            <li><a href="/prototipo/funcionario/relatorios/relatorios.html"><i class="menu-item"></i><span class="menu-texto">Relatórios</span></a></li>
+            <li><a href="/prototipo/funcionario/tela_manutencao_funcionarios/manutencao_de_funcionarios.html"><i class="menu-item"></i><span class="menu-texto">Funcionários</span></a></li>
+            <li><a href="/prototipo/funcionario/tela_manutencao_roupas/manutencao_roupas.html"><i class="menu-item"></i><span class="menu-texto">Roupas</span></a></li>
+
+            <li><a href="#"><i class="menu-item"></i><span class="menu-texto">Serviços</span></a></li>
+            <li><a href="#"><i class="menu-item"></i><span class="menu-texto">Contato</span></a></li>
+        </ul>
+        <ul class="logout">
+            <li><a href="/prototipo/home/tela_inicial/inicio.html"><i class="menu-item"></i><span class="menu-texto">Sair</span></a></li>
+        </ul>
+    </nav>
+    <div class="content-with-sidebar">
+        <section class="home">
+            <div class="content" id="content" #content>
+                <div class="titulo">
+                    <h1>Relatório de Clientes da Lavanderia</h1>
+                </div>
+                <div class="listagem">
+                    <table id="table">
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Email</th>
+                                <th>CPF</th>
+                                <th>Telefone</th>
+                                <th>Endereço</th>
+                            </tr>
+                        </thead>
+                        <tbody *ngFor="let cliente of clientes">
+                            <tr>
+                                <td>{{cliente.nome}}</td>
+                                <td>{{cliente.email}}</td>
+                                <td>{{cliente.cpf}}</td>
+                                <td>{{cliente.telefone}}</td>
+                                <td>{{cliente.endereco}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="botao">
+                <a (click)="gerarPDFCliente()">Gerar PDF</a>
+            </div>
+        </section>
+    </div>
+</body>

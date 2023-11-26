@@ -114,12 +114,23 @@
   background: #ffffff07;
   color: #000;
 }
-
-
-
-.novo-pedido {
+.titulo {
     display: flex;
-    justify-content: left;
+    justify-content: center;
+}
+
+.valorFinal {
+    display: flex;
+    justify-content: right;
+}
+
+.botao {
+    display: flex;
+    justify-content: right;
+}
+
+.botao a {
+    cursor: pointer;
 }
 
 .home .content {
@@ -146,12 +157,13 @@
     padding: 0.7vh;
     text-align: center;
     border-bottom: 1px solid #ddd;
-
+    font-size: xx-large;
 }
 
 .listagem td {
     text-align: center;
     border-bottom: 1px solid #ddd;
+    font-size: xx-large;
 }
 
 .listagem tr:hover {
@@ -161,16 +173,6 @@
 .listagem th {
     background-color: #38797a9d;
     color: #fff;
-}
-
-.listagem .cancel-button {
-    margin-left: 10px;
-    background-color: #d9534f;
-    color: white;
-    border: none;
-    border-radius: 3vh;
-    padding: 6px 12px;
-    cursor: pointer;
 }
 
 .content-with-sidebar {

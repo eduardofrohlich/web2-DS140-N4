@@ -4,10 +4,10 @@ import { PagarPedidoComponent } from './cliente/pagar-pedido/pagar-pedido.compon
 import { PedidoOnlineComponent } from './cliente/pedido-online/pedido-online.component';
 import { TelaInicialComponent } from './cliente/tela-inicial/tela-inicial.component';
 import { LoginComponent } from './auth/login/login.component';
-import { RelatorioComponent } from './funcionario/relatorios/relatorio/relatorio.component';
-import { RelatorioClienteComponent } from './funcionario/relatorios/relatorio-cliente/relatorio-cliente.component';
-import { RelatorioReceitaComponent } from './funcionario/relatorios/relatorio-receita/relatorio-receita.component';
-import { RelatorioClienteFielComponent } from './funcionario/relatorios/relatorio-cliente-fiel/relatorio-cliente-fiel.component';
+import { RelatorioComponent } from './funcionario/relatorio/relatorio.component';
+import { RelatorioClienteComponent } from './funcionario/relatorio-cliente/relatorio-cliente.component';
+import { RelatorioReceitaComponent } from './funcionario/relatorio-receita/relatorio-receita.component';
+import { RelatorioClienteFielComponent } from './funcionario/relatorio-cliente-fiel/relatorio-cliente-fiel.component';
 import { MenuSidebarComponent } from './cliente/menu-sidebar/menu-sidebar.component';
 
 const routes: Routes = [
