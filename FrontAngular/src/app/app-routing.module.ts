@@ -17,32 +17,156 @@ import { ManutencaoRoupasComponent } from './funcionario/manutencao-roupas/manut
 import { EditarRoupaComponent } from './funcionario/editar-roupa/editar-roupa.component';
 import { EsqueceuSenhaComponent } from './cliente/esqueceu-senha/esqueceu-senha.component';
 import { CadastrarRoupaComponent } from './funcionario/cadastrar-roupa/cadastrar-roupa.component';
+import { MeusPedidosComponent } from './cliente/meus-pedidos/meus-pedidos.component';
+import { LoginRoutes } from './auth/auth-routing.module';
+import { AuthGuard } from './auth/auth.guard';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: 'cliente/pagarpedido/:id', component: PagarPedidoComponent },
-  { path: 'cliente/pedidoonline', component: PedidoOnlineComponent },
-  { path: 'cliente', component: TelaInicialComponent },
-  { path: 'funcionario/relatorio', component: RelatorioComponent },
-  { path: 'funcionario/relatorio/cliente', component: RelatorioClienteComponent },
-  { path: 'funcionario/relatorio/receita', component: RelatorioReceitaComponent },
-  { path: 'funcionario/relatorio/cliente-fiel', component: RelatorioClienteFielComponent },
-  { path: 'funcionario', component: TelaInicialFuncComponent },
-  { path: 'funcionario/visualiza-pedido', component: VisualizaPedidoComponent },
-  { path: 'funcionario/manutencao-func', component: ManutencaoFuncionariosComponent  },
-  { path: 'funcionario/editar-func', component: EditarFuncionarioComponent },
-  { path: 'funcionario/cadastrar-func', component: CadastrarFuncionarioComponent },
-  { path: 'funcionario/manutencao-roupas', component: ManutencaoRoupasComponent },
-  { path: 'funcionario/editar-roupa', component: EditarRoupaComponent },
-  { path: 'esqueceu-senha', component: EsqueceuSenhaComponent },
-  { path: 'funcionario/cadastrar-roupa', component: CadastrarRoupaComponent },
+  {
+    path: 'cliente/pagarpedido/:id',
+    component: PagarPedidoComponent,
+    canActivate: [AuthGuard],
+    data: {
+      role: 'CLIENTE',
+    },
+  },
+  {
+    path: 'cliente/pedidoonline',
+    component: PedidoOnlineComponent,
+    canActivate: [AuthGuard],
+    data: {
+      role: 'CLIENTE',
+    },
+  },
+  {
+    path: 'cliente',
+    component: TelaInicialComponent,
+    canActivate: [AuthGuard],
+    data: {
+      role: 'CLIENTE',
+    },
+  },
+  {
+    path: 'cliente/meus-pedidos',
+    component: MeusPedidosComponent,
+    canActivate: [AuthGuard],
+    data: {
+      role: 'CLIENTE',
+    },
+  },
+  {
+    path: 'funcionario/relatorio',
+    component: RelatorioComponent,
+    canActivate: [AuthGuard],
+    data: {
+      role: 'FUNCIONARIO',
+    },
+  },
+  {
+    path: 'funcionario/relatorio/cliente',
+    component: RelatorioClienteComponent,
+    canActivate: [AuthGuard],
+    data: {
+      role: 'FUNCIONARIO',
+    },
+  },
 
+  {
+    path: 'funcionario/relatorio/receita',
+    component: RelatorioReceitaComponent,
+    canActivate: [AuthGuard],
+    data: {
+      role: 'FUNCIONARIO',
+    },
+  },
+  {
+    path: 'funcionario/relatorio/cliente-fiel',
+    component: RelatorioClienteFielComponent,
+    canActivate: [AuthGuard],
+    data: {
+      role: 'FUNCIONARIO',
+    },
+  },
+  {
+    path: 'funcionario',
+    component: TelaInicialFuncComponent,
+    canActivate: [AuthGuard],
+    data: {
+      role: 'FUNCIONARIO',
+    },
+  },
+  {
+    path: 'funcionario/visualiza-pedido',
+    component: VisualizaPedidoComponent,
+    canActivate: [AuthGuard],
+    data: {
+      role: 'FUNCIONARIO',
+    },
+  },
+  {
+    path: 'funcionario/manutencao-func',
+    component: ManutencaoFuncionariosComponent,
+    canActivate: [AuthGuard],
+    data: {
+      role: 'FUNCIONARIO',
+    },
+  },
+  {
+    path: 'funcionario/editar-func',
+    component: EditarFuncionarioComponent,
+    canActivate: [AuthGuard],
+    data: {
+      role: 'FUNCIONARIO',
+    },
+  },
+  {
+    path: 'funcionario/cadastrar-func',
+    component: CadastrarFuncionarioComponent,
+    canActivate: [AuthGuard],
+    data: {
+      role: 'FUNCIONARIO',
+    },
+  },
+  {
+    path: 'funcionario/manutencao-roupas',
+    component: ManutencaoRoupasComponent,
+    canActivate: [AuthGuard],
+    data: {
+      role: 'FUNCIONARIO',
+    },
+  },
+  {
+    path: 'funcionario/editar-roupa',
+    component: EditarRoupaComponent,
+    canActivate: [AuthGuard],
+    data: {
+      role: 'FUNCIONARIO',
+    },
+  },
+  {
+    path: 'esqueceu-senha',
+    component: EsqueceuSenhaComponent,
+    canActivate: [AuthGuard],
+    data: {
+      role: 'CLIENTE,FUNCIONARIO',
+    },
+  },
+  {
+    path: 'funcionario/cadastrar-roupa',
+    component: CadastrarRoupaComponent,
+    canActivate: [AuthGuard],
+    data: {
+      role: 'FUNCIONARIO',
+    },
+  },
+
+  ...LoginRoutes,
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-
 export class AppRoutingModule {}

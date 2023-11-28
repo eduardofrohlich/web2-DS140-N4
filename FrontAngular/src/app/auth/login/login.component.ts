@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe((params: { [x: string]: any }) => {
+    this.route.queryParams.subscribe((params) => {
       this.message = params['error'];
     });
   }
@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
         if (usu != null) {
           this.loginService.usuarioLogado = usu;
           this.loading = false;
-          this.router.navigate(['/tela-inicial']);
+          this.router.navigate(['/funcionario']);
         } else {
           this.message = 'Usuário/Senha inválidos.';
         }
