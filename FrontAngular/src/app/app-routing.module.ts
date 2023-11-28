@@ -14,15 +14,15 @@ import { VisualizaPedidoComponent } from './funcionario/visualiza-pedido/visuali
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: '', redirectTo: 'cliente/pedidoonline', pathMatch: 'full' },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'cliente/pagarpedido/:id', component: PagarPedidoComponent },
   { path: 'cliente/pedidoonline', component: PedidoOnlineComponent },
-  { path: 'cliente/inicial', component: TelaInicialComponent },
+  { path: 'cliente', component: TelaInicialComponent },
   { path: 'funcionario/relatorio', component: RelatorioComponent },
   { path: 'funcionario/relatorio/cliente', component: RelatorioClienteComponent },
   { path: 'funcionario/relatorio/receita', component: RelatorioReceitaComponent },
   { path: 'funcionario/relatorio/cliente-fiel', component: RelatorioClienteFielComponent },
-  { path: 'funcionario/inicial', component: TelaInicialFuncComponent },
+  { path: 'funcionario', component: TelaInicialFuncComponent },
   { path: 'funcionario/visualiza-pedido', component: VisualizaPedidoComponent },
 ];
 
