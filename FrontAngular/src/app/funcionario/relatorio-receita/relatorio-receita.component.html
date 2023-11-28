@@ -12,13 +12,13 @@
         <div class="logo">
             <img src="../../../assets/img/default/logo.png" alt="Logo">
         </div>
-        <h2><a href="/prototipo/funcionario/index.html">LOL Lavanderia Online</a></h2>
+        <h2><a routerLink="/funcionario/inicial">LOL Lavanderia Online</a></h2>
         <ul>
-            <li><a href="/prototipo/funcionario/index.html"><i class="menu-item"></i><span class="menu-texto">Página Inicial</span></a></li>
-            <li><a href="/prototipo/funcionario/tela_visualiza_pedido/index.html"><i class="menu-item"></i><span class="menu-texto">Pedidos</span></a></li>
-            <li><a href="/prototipo/funcionario/relatorios/relatorios.html"><i class="menu-item"></i><span class="menu-texto">Relatórios</span></a></li>
-            <li><a href="/prototipo/funcionario/tela_manutencao_funcionarios/manutencao_de_funcionarios.html"><i class="menu-item"></i><span class="menu-texto">Funcionários</span></a></li>
-            <li><a href="/prototipo/funcionario/tela_manutencao_roupas/manutencao_roupas.html"><i class="menu-item"></i><span class="menu-texto">Roupas</span></a></li>
+            <li><a routerLink="/funcionario/inicial"><i class="menu-item"></i><span class="menu-texto">Página Inicial</span></a></li>
+            <li><a routerLink="/funcionario/pedidos"><i class="menu-item"></i><span class="menu-texto">Pedidos</span></a></li>
+            <li><a routerLink="/funcionario/relatorio"><i class="menu-item"></i><span class="menu-texto">Relatórios</span></a></li>
+            <li><a routerLink="/funcionario/funcionarios"><i class="menu-item"></i><span class="menu-texto">Funcionários</span></a></li>
+            <li><a routerLink="/funcionario/roupas"><i class="menu-item"></i><span class="menu-texto">Roupas</span></a></li>
 
             <li><a href="#"><i class="menu-item"></i><span class="menu-texto">Serviços</span></a></li>
             <li><a href="#"><i class="menu-item"></i><span class="menu-texto">Contato</span></a></li>
@@ -37,118 +37,27 @@
                     <table>
                         <thead>
                             <tr>
-                                <th>Dia</th>
-                                <th>Quantidade de Pedidos</th>
-                                <th>Valor</th>
+                                <th style="width: 33%;">Dia</th>
+                                <th style="width: 33%;">Quantidade de Pedidos</th>
+                                <th style="width: 33%;">Valor</th>
                             </tr>
                         </thead>
                         <tbody *ngFor="let receita of receitas">
                             <tr>
                                 <td>{{receita.dia}}</td>
                                 <td>{{receita.quantidadePedidos}}</td>
-                                <td>{{receita.receita}}</td>
-                            </tr>
-                            <tr>
-                                <td>23/08/2023</td>
-                                <td>28</td>
-                                <td>R$900.00</td>
-                            </tr>
-                            <tr>
-                                <td>24/08/2023</td>
-                                <td>26</td>
-                                <td>R$840.00</td>
-                            </tr>
-                            <tr>
-                                <td>25/08/2023</td>
-                                <td>30</td>
-                                <td>R$1050.00</td>
+                                <td>R${{receita.receita?.toFixed(2)}}</td>
                             </tr>
                         </tbody>
                     </table>
-                    <h3 hidden>Valor Final: R$2690.00</h3>
                 </div>
             </div>
             <div class="valorFinal">
-                <a>Valor Final: R$3740.00</a>
+                <a>Valor Final: R${{ getTotal().toFixed(2) }}</a>
             </div>
             <div class="botao">
-                <a onclick="gerarPDFReceita()">Gerar PDF</a>
+                <a (click)="gerarPDFReceita()">Gerar PDF</a>
             </div>
         </section>
     </div>
-    <style>
-        .titulo {
-            display: flex;
-            justify-content: center;
-        }
-
-        .valorFinal {
-            display: flex;
-            justify-content: right;
-        }
-
-        .botao {
-            display: flex;
-            justify-content: right;
-        }
-
-        .botao a {
-            cursor: pointer;
-        }
-
-        .home .content {
-            padding-top: 12vh;
-        }
-
-        .content h1 {
-            color: #000;
-            margin-left: 4vh;
-            font-weight: bolder;
-            font-size: 2vw;
-            top: 3.5vh;
-            text-align: left;
-            margin-bottom: 4vh;
-        }
-
-        .listagem table {
-            border-collapse: collapse;
-            width: 100%;
-            margin-bottom: 10vh;
-        }
-
-        .listagem th {
-            padding: 0.7vh;
-            text-align: center;
-            border-bottom: 1px solid #ddd;
-            font-size: xx-large;
-        }
-
-        .listagem td {
-            text-align: center;
-            border-bottom: 1px solid #ddd;
-            font-size: xx-large;
-        }
-
-        .listagem tr:hover {
-            background-color: #f5f5f5;
-        }
-
-        .listagem th {
-            background-color: #38797a9d;
-            color: #fff;
-        }
-
-        .content {
-            width: 100%;
-        }
-    </style>
-    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.4.1/jspdf.debug.js" integrity="sha384-THVO/sM0mFD9h7dfSndI6TS0PgAGavwKvB5hAxRRvc0o9cPLohB0wb/PTA7LdUHs" crossorigin="anonymous"></script>
-    <script>
-        function gerarPDFReceita() {
-            var doc = new jsPDF();
-            doc.fromHTML(document.querySelector("#content"));
-            doc.save('RelatorioReceita.pdf');
-        };
-    </script>
 </body>

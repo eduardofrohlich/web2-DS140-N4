@@ -3,17 +3,15 @@ package backend.lavanderia.relatorio.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.lang.Nullable;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import backend.lavanderia.relatorio.dto.RelatorioClienteDTO;
 import backend.lavanderia.relatorio.dto.RelatorioClienteFielDTO;
 import backend.lavanderia.relatorio.dto.RelatorioReceitaDTO;
-import backend.lavanderia.relatorio.dto.RelatorioReceitaDatasDTO;
 import backend.lavanderia.relatorio.service.RelatorioService;
 
 @CrossOrigin
@@ -30,8 +28,8 @@ public class RelatorioController {
 	}
 	
 	@GetMapping("/receita")
-	public List<RelatorioReceitaDTO> listarReceitas(@RequestBody @Nullable RelatorioReceitaDatasDTO api){
-		return relatorioService.listarRelatorioReceita(api);
+	public List<RelatorioReceitaDTO> listarReceitas(@RequestParam(value = "dataInicial", required = false) String dataInicial, @RequestParam(value="dataFinal", required = false) String dataFinal){
+		return relatorioService.listarRelatorioReceita(dataInicial, dataFinal);
 	}
 
 	@GetMapping("/clientes-fieis")

@@ -19,23 +19,32 @@ const httpHeader = {
 })
 export class RelatorioReceitaComponent {
   receitas!: Receita[];
+  total: number = 0;
   constructor(private route: ActivatedRoute, private relatorioService : RelatorioService) {}
 
   @ViewChild('content', {static: false}) el!:ElementRef;
-  ngOnInit(): void {
-    this.route.params.subscribe(params => {
-      const dataInicial = params['dataInicial'];
-      const dataFinal = params['dataFinal'];
-      this.relatorioService.getReceita(dataInicial, dataFinal).subscribe();
-      //this.receitas=this.relatorioService.getReceita();
-      // Chame o serviço para obter os dados do relatório com base nas datas
-      // Exemplo: this.relatorioService.obterRelatorio(dataInicial, dataFinal).subscribe(result => { /* Exiba os dados na tela */ });
-    });
+  dataInicial: string = '';
+  dataFinal: string = '';
+  ngOnInit() {
+    this.route.queryParams.subscribe(params => {
+      this.dataInicial = params['dataInicial'];
+      this.dataFinal = params['dataFinal'];
+      this.relatorioService.getReceita(this.dataInicial, this.dataFinal).subscribe((data) => {
+        this.receitas = data;
+      },
+      (error) => {
+        console.error('Erro ao obter relatório de receita:', error);
+      }
+    )});
   }
-  gerarPDFCliente() {
-    var doc = new jsPDF('l');
+  
+  getTotal() {
+      return this.receitas.reduce((acc, receita) => acc + (receita.receita ?? 0), 0);
+    }
+  gerarPDFReceita() {
+    var doc = new jsPDF('l', 'pt', 'tabloid');
     doc.html(this.el.nativeElement, {
-      callback: (doc) => {doc.save('RelatorioCliente.pdf');
+      callback: (doc) => {doc.save('RelatorioReceita.pdf');
       }   
     })
   }

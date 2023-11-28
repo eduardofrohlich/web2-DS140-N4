@@ -11,13 +11,13 @@
         <div class="logo">
             <img src="../../../assets/img/default/logo.png" alt="Logo">
         </div>
-        <h2><a href="/prototipo/funcionario/index.html">LOL Lavanderia Online</a></h2>
+        <h2><a routerLink="/funcionario/inicial">LOL Lavanderia Online</a></h2>
         <ul>
-            <li><a routerLink="/funcionario/incial"><i class="menu-item"></i><span class="menu-texto">Página Inicial</span></a></li>
+            <li><a routerLink="/funcionario/inicial"><i class="menu-item"></i><span class="menu-texto">Página Inicial</span></a></li>
             <li><a routerLink="/funcionario/pedidos"><i class="menu-item"></i><span class="menu-texto">Pedidos</span></a></li>
-            <li><a href="/prototipo/funcionario/relatorios/relatorios.html"><i class="menu-item"></i><span class="menu-texto">Relatórios</span></a></li>
-            <li><a href="/prototipo/funcionario/tela_manutencao_funcionarios/manutencao_de_funcionarios.html"><i class="menu-item"></i><span class="menu-texto">Funcionários</span></a></li>
-            <li><a href="/prototipo/funcionario/tela_manutencao_roupas/manutencao_roupas.html"><i class="menu-item"></i><span class="menu-texto">Roupas</span></a></li>
+            <li><a routerLink="/funcionario/relatorio"><i class="menu-item"></i><span class="menu-texto">Relatórios</span></a></li>
+            <li><a routerLink="/funcionario/funcionarios"><i class="menu-item"></i><span class="menu-texto">Funcionários</span></a></li>
+            <li><a routerLink="/funcionario/roupas"><i class="menu-item"></i><span class="menu-texto">Roupas</span></a></li>
             <li><a href="#"><i class="menu-item"></i><span class="menu-texto">Serviços</span></a></li>
             <li><a href="#"><i class="menu-item"></i><span class="menu-texto">Contato</span></a></li>
         </ul>
@@ -43,9 +43,9 @@
                             <tr>
                                 <td>Relatório de Receita</td>
                                 <td id="dataInicial"><input type="date" [(ngModel)]="dataInicial"></td>
-                                <td id="dataFinal" input type="date" [(ngModel)]="dataFinal"></td>
+                                <td id="dataFinal"><input type="date" [(ngModel)]="dataFinal"></td>
                                 <td>
-                                    <a id="botaoReceita" (click)="navigateToReceita()" routerLink="funcionario/relatorio/receita" >Ver Relatório</a>
+                                    <a id="botaoReceita" (click)="gerarRelatorio()">Ver Relatório</a>
                                 </td>
                             </tr>
                             <tr>
@@ -53,7 +53,7 @@
                                 <td></td>
                                 <td></td>
                                 <td>
-                                    <a (click)="navigateToCliente()" id="botaoReceita">Ver Relatório</a>
+                                    <a id="botaoReceita" (click)="navigateToCliente()">Ver Relatório</a>
                                 </td>
                             </tr>
                             <tr>

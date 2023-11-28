@@ -15,21 +15,24 @@ const httpHeader = {
 })
 
 export class RelatorioService {
-  private baseUrl = 'http://localhost:8080/relatorios/receita'; // Substitua pela URL do seu backend
 
   constructor(private http: HttpClient) {}
 
-  getReceita(dataInicial: string, dataFinal: string): Observable<Receita> {
-    const url = `${this.baseUrl}`;
-    const body = { dataInicial, dataFinal };
+  getReceita(dataInicial: string, dataFinal: string): Observable<any> {
 
-    return this.http.post<any>('http://localhost:8080/relatorios/receita', body);
+    let url = 'http://localhost:8080/relatorios/receita';
+
+    if (dataInicial && dataFinal) {
+        url += `?dataInicial=${dataInicial}&dataFinal=${dataFinal}`;
+    }
+    return this.http.get<any>(url, httpHeader);
   }
+  
   getClientes(): Observable<any> {
     return this.http.get<any>('http://localhost:8080/relatorios/clientes', httpHeader).pipe(
       catchError((error) => {
         console.error('Erro ao obter clientes:', error);
-        throw error; // Pode tratar ou relançar o erro conforme necessário
+        throw error;
       })
     );
   }
@@ -38,7 +41,7 @@ export class RelatorioService {
     return this.http.get<any>('http://localhost:8080/relatorios/clientes-fieis', httpHeader).pipe(
       catchError((error) => {
         console.error('Erro ao obter clientes:', error);
-        throw error; // Pode tratar ou relançar o erro conforme necessário
+        throw error;
       })
     );
   }

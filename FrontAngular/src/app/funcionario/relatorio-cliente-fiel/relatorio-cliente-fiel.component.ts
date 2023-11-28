@@ -40,10 +40,10 @@ const httpHeader = {
       this.carregarDados();
     }
    
-    gerarPDFCliente() {
-      var doc = new jsPDF('l');
+    gerarPDFClienteFiel() {
+      var doc = new jsPDF('l', 'pt', 'tabloid');
       doc.html(this.el.nativeElement, {
-        callback: (doc) => {doc.save('RelatorioCliente.pdf');
+        callback: (doc) => {doc.save('RelatorioClienteFiel.pdf');
         }   
       })
     }
