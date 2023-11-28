@@ -1,1 +1,386 @@
-<p>meus-pedidos works!</p>
+<!DOCTYPE html>
+<!DOCTYPE html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LOL - Lavanderia Online</title>
+  <link rel="stylesheet" href="/prototipo/base-style.css">
+</head>
+
+<body>
+  <nav class="menu-sidebar">
+    <div class="logo">
+      <img src="/prototipo/logo.png" alt="Logo">
+    </div>
+    <h2><a href="/prototipo/cliente/tela_inicial_cliente/index.html">LOL Lavanderia Online</a></h2>
+    <ul>
+      <li><a href="/prototipo/cliente/tela_inicial_cliente/index.html"><i class="menu-item"></i><span class="menu-texto">Página Inicial</span></a></li>
+      <li><a href="/prototipo/cliente/tela_meus_pedidos/index.html"><i class="menu-item"></i><span class="menu-texto">Meus pedidos</span></a></li>
+      <li><a href="#"><i class="menu-item"></i><span class="menu-texto">Serviços</span></a></li>
+      <li><a href="#"><i class="menu-item"></i><span class="menu-texto">Contato</span></a></li>
+    </ul>
+    <ul class="logout">
+      <li><a href="/prototipo/home/tela_inicial/inicio.html"><i class="menu-item"></i><span class="menu-texto">Sair</span></a></li>
+    </ul>
+  </nav>
+  <div class="content-with-sidebar">
+    <section class="home">
+      <div class="content">
+        <h1>Meus Pedidos</h1>
+        <div class="seletor-status">
+          <form>
+            <label for="filtro-estados">Filtrar por estado:</label>
+            <select id="filtro-estados">
+              <option value="">Todos</option>
+              <option value="aberto">Aberto</option>
+              <option value="aguardando pagamento">Aguardando pagamento</option>
+              <option value="rejeitado">Rejeitado</option>
+              <option value="pago">Pago</option>
+              <option value="recolhido">Recolhido</option>
+              <option value="finalizado">Finalizado</option>
+              <option value="cancelado">Cancelado</option>
+            </select>
+          </form>
+        </div>
+        <div class="listagem">
+          <table>
+            <thead>
+              <tr>
+                <th>Número do pedido</th>
+                <th>Data do pedido</th>
+                <th>Status</th>
+                <th>Valor total</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>000125</td>
+                <td>20/08/2023</td>
+                <td id="aberto1">Aberto</td>
+                <td>R$ 110,00</td>
+                <td id="btn-cancel1">
+                  <a class="cancel-button" onclick=" openPopup()">Cancelar</a>
+                </td>
+              </tr>
+
+              <tr>
+                <td>000200</td>
+                <td>22/08/2023</td>
+                <td id="estado1" style="color: gray;">Recolhido</td>
+                <td>R$ 100,00</td>
+                <td id="botao1">
+                  <a class="grey-button" onclick="alterarEstado('Aguardando Pagamento', 'estado1', 'botao1')" href="#">Detalhes do pedido</a>
+                </td>
+              </tr>
+              <tr>
+                <td>000201</td>
+                <td>23/08/2023</td>
+                <td id="estado2" style="color: rgb(214, 94, 50);">Pago</td>
+                <td>R$ 100,00</td>
+                <td><a href="#">Pagar pedido</a></td>
+              </tr>
+              <tr>
+                <td>000124</td>
+                <td>19/08/2023</td>
+                <td id="aberto2">Aberto</td>
+                <td>R$ 30,00</td>
+                <td id="btn-cancel2">
+                  <a class="cancel-button" onclick="openPopup()">Cancelar</a>
+                </td>
+              </tr>
+              <tr>
+                <td>000123</td>
+                <td>18/08/2023</td>
+                <td>Aberto</td>
+                <td>R$ 85,00</td>
+                <td id="btn-cancel3">
+                  <a class="cancel-button" onclick="openPopup()">Cancelar</a>
+                </td>
+              </tr>
+              <tr>
+                <td>000122</td>
+                <td>17/08/2023</td>
+                <td>Cancelado</td>
+                <td>R$ 70,00</td>
+                <td>
+                  <a class="grey-button" href="#">Detalhes do pedido</a>
+                </td>
+              </tr>
+              <tr>
+                <td>000121</td>
+                <td>16/08/2023</td>
+                <td>Aberto</td>
+                <td>R$ 40,00</td>
+                <td id="btn-cancel4">
+                  <a class="cancel-button" onclick="openPopup()">Cancelar</a>
+                </td>
+              </tr>
+              <tr>
+                <td>000120</td>
+                <td>15/08/2023</td>
+                <td>Aguardando pagamento</td>
+                <td>R$ 120,00</td>
+                <td><a href="#">Pagar pedido</a></td>
+              </tr>
+              <tr>
+                <td>000119</td>
+                <td>14/08/2023</td>
+                <td>Aguardando pagamento</td>
+                <td>R$ 90,00</td>
+                <td><a href="#">Pagar pedido</a></td>
+              </tr>
+              <tr>
+                <td>000118</td>
+                <td>13/08/2023</td>
+                <td>Pago</td>
+                <td>R$ 55,00</td>
+                <td><a class="grey-button" href="#">Detalhes do pedido</a></td>
+              </tr>
+              <tr>
+                <td>000117</td>
+                <td>12/08/2023</td>
+                <td>Finalizado</td>
+                <td>R$ 70,00</td>
+                <td><a class="grey-button" href="#">Detalhes do pedido</a></td>
+              </tr>
+              <tr>
+                <td>000116</td>
+                <td>11/08/2023</td>
+                <td>Finalizado</td>
+                <td>R$ 60,00</td>
+                <td><a class="grey-button" href="#">Detalhes do pedido</a></td>
+              </tr>
+              <tr>
+                <td>000115</td>
+                <td>10/08/2023</td>
+                <td>Recolhido</td>
+                <td>R$ 45,00</td>
+                <td><a class="grey-button" href="#">Detalhes do pedido</a></td>
+              </tr>
+              <tr>
+                <td>000114</td>
+                <td>09/08/2023</td>
+                <td>Aguardando pagamento</td>
+                <td>R$ 90,00</td>
+                <td><a href="#">Pagar pedido</a></td>
+              </tr>
+              <tr>
+                <td>000113</td>
+                <td>08/08/2023</td>
+                <td>Aguardando pagamento</td>
+                <td>R$ 120,00</td>
+                <td><a href="#">Pagar pedido</a></td>
+              </tr>
+              <tr>
+                <td>000112</td>
+                <td>07/08/2023</td>
+                <td>Pago</td>
+                <td>R$ 35,00</td>
+                <td><a class="grey-button" href="#">Detalhes do pedido</a></td>
+              </tr>
+              <tr>
+                <td>000111</td>
+                <td>06/08/2023</td>
+                <td>Pago</td>
+                <td>R$ 60,00</td>
+                <td><a class="grey-button" href="#">Detalhes do pedido</a></td>
+              </tr>
+              <tr>
+                <td>000110</td>
+                <td>05/08/2023</td>
+                <td>Finalizado</td>
+                <td>R$ 80,00</td>
+                <td><a class="grey-button" href="#">Detalhes do pedido</a></td>
+              </tr>
+              <tr>
+                <td>000109</td>
+                <td>04/08/2023</td>
+                <td>Finalizado</td>
+                <td>R$ 25,00</td>
+                <td><a class="grey-button" href="#">Detalhes do pedido</a></td>
+              </tr>
+              <tr>
+                <td>000108</td>
+                <td>03/08/2023</td>
+                <td>Finalizado</td>
+                <td>R$ 75,00</td>
+                <td><a class="grey-button" href="#">Detalhes do pedido</a></td>
+              </tr>
+              <tr>
+                <td>000107</td>
+                <td>02/08/2023</td>
+                <td>Recolhido</td>
+                <td>R$ 100,00</td>
+                <td><a class="grey-button" href="#">Detalhes do pedido</a></td>
+              </tr>
+              <tr>
+                <td>000106</td>
+                <td>01/08/2023</td>
+                <td>Recolhido</td>
+                <td>R$ 50,00</td>
+                <td><a class="grey-button" href="#">Detalhes do pedido</a></td>
+              </tr>
+              <tr>
+                <td>000105</td>
+                <td>28/07/2023</td>
+                <td>Aguardando pagamento</td>
+                <td>R$ 100,00</td>
+                <td><a href="#">Pagar pedido</a></td>
+              </tr>
+              <tr>
+                <td>000104</td>
+                <td>27/07/2023</td>
+                <td>Pago</td>
+                <td>R$ 50,00</td>
+                <td><a class="grey-button" href="#">Detalhes do pedido</a></td>
+              </tr>
+              <tr>
+                <td>000103</td>
+                <td>26/07/2023</td>
+                <td>Pago</td>
+                <td>R$ 100,00</td>
+                <td><a class="grey-button" href="#">Detalhes do pedido</a></td>
+              </tr>
+              <tr>
+                <td>000102</td>
+                <td>25/07/2023</td>
+                <td>Finalizado</td>
+                <td>R$ 50,00</td>
+                <td><a class="grey-button" href="#">Detalhes do pedido</a></td>
+              </tr>
+              <tr>
+                <td>000101</td>
+                <td>24/07/2023</td>
+                <td>Recolhido</td>
+                <td>R$ 50,00</td>
+                <td><a class="grey-button" href="#">Detalhes do pedido</a></td>
+              </tr>
+              <tr>
+                <td>000100</td>
+                <td>22/07/2023</td>
+                <td>Rejeitado</td>
+                <td>R$ 50,00</td>
+                <td><a class="grey-button" href="#">Detalhes do pedido</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <div class="overlay" id="overlay">
+      <div class="popup" id="popup">
+        <img src="./assets/atencao.png">
+        <h2>Cancelar Pedido</h2>
+        <p>Você tem certeza que deseja cancelar seu pedido?</p>
+        <button type="button" class="btn-yes" onclick="closePopupYes()">Sim</button>
+        <button type="button" onclick="closePopup()">Não</button>
+      </div>
+
+      <div class="popup" id="popup2">
+        <img src="assets/sucesso.png">
+        <h2>Cancelar Pedido</h2>
+        <p>Pedido cancelado com sucesso!</p>
+        <button type="button" class="btn-yes" onclick="closePopupCancel()">Ok</button>
+      </div>
+    </div>
+
+  </div>
+
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const filtroEstados = document.getElementById("filtro-estados");
+      const linhasPedidos = document.querySelectorAll("tbody tr");
+
+      filtroEstados.addEventListener("change", function () {
+        const estadoSelecionado = filtroEstados.value;
+
+        linhasPedidos.forEach(function (linha) {
+          const statusPedido = linha.querySelector("td:nth-child(3)").textContent;
+
+          if (estadoSelecionado === "" || estadoSelecionado === statusPedido.toLowerCase()) {
+            linha.style.display = "table-row";
+          } else {
+            linha.style.display = "none";
+          }
+        });
+      });
+    });
+
+    let popup = document.getElementById('popup');
+
+    function openPopup() {
+      document.getElementById('overlay').style.display = 'flex';
+      document.getElementById('popup').classList.add('open-popup');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closePopup() {
+      document.getElementById('overlay').style.display = 'none'; //
+      document.getElementById('popup').classList.remove('open-popup');
+      document.body.style.overflow = 'auto';
+    }
+
+
+    function closePopupYes() {
+      alterarEstado('Cancelado', 'aberto1', 'btn-cancel1');
+      popup.classList.remove("open-popup");
+      let popup2 = document.getElementById('popup2');
+      popup2.classList.add("open-popup");
+
+      let cancelarBotao = document.getElementById("btn-cancel" + selectedRowId);
+      cancelarBotao.innerHTML = "<a class='cancel-button' onclick='cancelOrder(\"" + selectedRowId + "\")'>Cancelar</a>";
+      closePopup();
+    }
+
+    function closePopupCancel() {
+      let popup2 = document.getElementById('popup2');
+      popup2.classList.remove("open-popup");
+      closePopup();
+    }
+
+    function cancelOrder(rowId) {
+      let statusCell = document.getElementById(rowId).querySelector("td:nth-child(3)");
+      statusCell.textContent = "Cancelado";
+      statusCell.style.color = "red";
+
+      let buttonCell = document.getElementById(rowId).querySelector("td:nth-child(5)");
+      buttonCell.innerHTML = "<a class='grey-button' href='#'>Detalhar Pedido</a>";
+    }
+
+
+
+    /*
+      Alterar os estados do pedido.
+      novoEstado == O próximo estado que o pedido deve assumir.
+      idLinhaEstado == O id da linha que contém o nome do estado (coluna status)
+      botaoEstado == O id do botao que chama a função. Serve para alterar o botão para ativar a função do novo estado.
+    */
+    function alterarEstado(novoEstado = "", idLinhaEstado = "", botaoEstado = "") {
+      let alterarNomeEstado = document.getElementById(idLinhaEstado);
+      alterarNomeEstado.innerHTML = novoEstado;
+
+      if (novoEstado == "Finalizado") {
+        document.getElementById(idLinhaEstado).style.color = "green";
+        document.getElementById(botaoEstado).innerHTML = "";
+      }
+      else if (novoEstado == "Aguardando Pagamento") {
+        document.getElementById(idLinhaEstado).style.color = "blue";
+        document.getElementById(botaoEstado).innerHTML = "<a class='grey-button' style='background-color: rgb(94, 184, 211);' onclick='alterarEstado(\"Pago\", \"" + idLinhaEstado + "\", \"" + botaoEstado + "\")' href='#'>Pagar</a>";
+      }
+      else if (novoEstado == "Pago") {
+        document.getElementById(idLinhaEstado).style.color = "rgb(214, 94, 50)";
+        document.getElementById(botaoEstado).innerHTML = "<a class='grey-button' style='background-color: rgb(214, 94, 50);' onclick='alterarEstado(\"Finalizado\", \"" + idLinhaEstado + "\", \"" + botaoEstado + "\")' href='#'>Finalizar Pedido</a>";
+      }
+      else if (novoEstado == "Cancelado") {
+        document.getElementById(idLinhaEstado).style.color = "red";
+        document.getElementById(botaoEstado).innerHTML = "<a class='grey-button' href='#'>Detalhes do pedido</a>";
+      }
+    }
+
+  </script>
+</body>

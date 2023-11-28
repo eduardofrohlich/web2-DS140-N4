@@ -18,18 +18,25 @@
   padding: 20px;
 }
 
-.logo-img {
-  position: relative;
-  text-align: center;
+.login .logo-img {
+  position: fixed;
+  top: 5.5%;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  z-index: 1;
+}
+
+.login .logo-img img {
+  width: 150px;
+  margin: 0 auto;
 }
 
 .logo-img img {
-  padding-bottom: 40px;
-  width: 15%;
+  width: 25%;
   position: absolute;
-  top: 60%;
-  left: 37%;
-  transform: translate(-50%, -50%);
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, 0%);
 }
 
 .login form {

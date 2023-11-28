@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editar Roupa</title>
+</head>
+
+<body>
+  <div class="container-cad">
+    <h2>Editar Roupa</h2>
+    <form name="form-cad" id="form-funcionario">
+      <div class="form-group">
+        <label for="nome">Nome da peça</label>
+        <input type="name" id="nome" name="nome" value="Camisa Social" required />
+      </div>
+      <div class="form-group">
+        <label for="preco">Preço</label>
+        <input type="text" value="R$ 13,00"  />
+      </div>
+
+
+      <div class="inline-group">
+        <div class="form-group" id="dataNasc">
+          <label for="dataNasc">Prazo</label>
+          <input type="price" id="dataNasc" name="dataNasc" value="15 dias" required />
+        </div>
+      </div>
+
+      <div>
+        <a href="./manutencao_roupas.html">
+          <button type="button" id="btn1" class="submit-btn">Cancelar</button>
+        </a>
+        <a href="./manutencao_roupas.html">
+          <button type="submit" id="btn-form" class="submit-btn btn2">Salvar</button>
+        </a>
+      </div>
+    </form>
+  </div>
+
+  <style>
+
+  </style>
+  <script>
+    function mascaraMoeda(event) {
+      const onlyDigits = event.target.value
+        .split("")
+        .filter(s => /\d/.test(s))
+        .join("")
+        .padStart(3, "0")
+      const digitsFloat = onlyDigits.slice(0, -2) + "." + onlyDigits.slice(-2)
+      event.target.value = maskCurrency(digitsFloat)
+    }
+
+    function maskCurrency(valor, locale = 'pt-BR', currency = 'BRL') {
+      return new Intl.NumberFormat(locale, {
+        style: 'currency',
+        currency
+      }).format(valor)
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Funcionário</title>
+
+</head>
+<body>
+    <div class="container-cad">
+        <h2>Cadastro de Funcionário</h2>
+        <form name="form-cad" id="form-funcionario">
+            <div class="form-group">
+                <label for="nomeCompleto">Nome Completo</label>
+                <input type="text"  id="nomeCompleto" name="nomeCompleto" required />
+            </div>
+
+            <div class="form-group">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email" required />
+            </div>
+
+            <div class="inline-group">
+                <div class="form-group" id="dataNasc">
+                    <label for="dataNasc">Data de nascimento</label>
+                    <input type="date" id="dataNasc" name="dataNasc" required/>
+                </div>
+                <div class="form-group">
+                    <label for="senha">Senha</label>
+                    <input type="text" name="senha" id="senha" required/>
+                </div>
+            </div>
+
+            <div>
+                <a href="../tela_manutencao_funcionarios/manutencao_de_funcionarios.html">
+                    <button type="button" id="btn1" class="submit-btn">Cancelar</button>
+                </a>
+                <button type="submit"  id="btn-form" class="submit-btn btn2" >Enviar</button>
+            </div>
+        </form>
+    </div>
+
+    <style>
+
+
+
+
+    </style>
+</body>
+</html>
