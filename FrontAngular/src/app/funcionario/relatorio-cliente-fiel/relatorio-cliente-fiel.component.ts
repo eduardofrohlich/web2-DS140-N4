@@ -2,7 +2,7 @@ import { Component, ViewChild, ElementRef, OnInit} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
-import jsPDF from 'jspdf';
+import jsPDF from 'jspdf'; //executar no terminal: npm install jspdf
 import { RelatorioService } from '../services/relatorio.service';
 import { Clientefiel } from 'src/app/shared'
 
@@ -30,21 +30,21 @@ const httpHeader = {
       this.getTotal();
     }
 
-    
+
     getTotal() {
       return this.clientes.reduce((acc, cliente) => acc + (cliente.sum ?? 0), 0);
     }
-    
+
 
     ngOnInit(): void {
       this.carregarDados();
     }
-   
+
     gerarPDFCliente() {
       var doc = new jsPDF('l');
       doc.html(this.el.nativeElement, {
         callback: (doc) => {doc.save('RelatorioCliente.pdf');
-        }   
+        }
       })
     }
 
