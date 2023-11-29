@@ -1,89 +1,75 @@
 <!DOCTYPE html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LOL - Lavanderia Online</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LOL - Lavanderia Online</title>
 </head>
 
 <body>
-    <nav class="menu-sidebar">
-        <div class="logo">
-          <img src="/assets/img/default/logo.png" alt="Logo">
-        </div>
-        <h2><a href="/prototipo/funcionario/index.html">LOL Lavanderia Online</a></h2>
-        <ul>
-            <li><a href="/prototipo/funcionario/index.html"><i class="menu-item"></i><span class="menu-texto">Página Inicial</span></a></li>
-            <li><a href="/prototipo/funcionario/tela_visualiza_pedido/index.html"><i class="menu-item"></i><span class="menu-texto">Pedidos</span></a></li>
-            <li><a href="/prototipo/funcionario/relatorios/relatorios.html"><i class="menu-item"></i><span class="menu-texto">Relatórios</span></a></li>
-            <li><a href="/prototipo/funcionario/tela_manutencao_funcionarios/manutencao_de_funcionarios.html"><i class="menu-item"></i><span class="menu-texto">Funcionários</span></a></li>
-            <li><a href="/prototipo/funcionario/tela_manutencao_roupas/manutencao_roupas.html"><i class="menu-item"></i><span class="menu-texto">Roupas</span></a></li>
-
-            <li><a href="#"><i class="menu-item"></i><span class="menu-texto">Serviços</span></a></li>
-            <li><a href="#"><i class="menu-item"></i><span class="menu-texto">Contato</span></a></li>
-        </ul>
-        <ul class="logout">
-            <li><a href="/prototipo/home/tela_inicial/inicio.html"><i class="menu-item"></i><span class="menu-texto">Sair</span></a></li>
-        </ul>
-    </nav>
-    <div class="content-with-sidebar">
-        <section class="home">
-            <div class="content">
-                <h1>Pedidos abertos</h1>
-                <div class="listagem">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Número do pedido</th>
-                                <th>Data do pedido</th>
-                                <th>Status</th>
-                                <th>Valor total</th>
-                                <th>Ações</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>000125</td>
-                                <td>20/08/2023</td>
-                                <td>Aberto</td>
-                                <td>R$ 110,00</td>
-                                <td>
-                                    <a class="cancel-button" href="../funcionario/recolhimento.html">Registrar recolhimento</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>000124</td>
-                                <td>19/08/2023</td>
-                                <td>Aberto</td>
-                                <td>R$ 30,00</td>
-                                <td>
-                                    <a class="cancel-button" href="../funcionario/recolhimento.html">Registrar recolhimento</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>000123</td>
-                                <td>18/08/2023</td>
-                                <td>Aberto</td>
-                                <td>R$ 85,00</td>
-                                <td>
-                                    <a class="cancel-button" href="../funcionario/recolhimento.html">Registrar recolhimento</a>
-                                </td>
-                            </tr>
-                            <td>000121</td>
-                            <td>16/08/2023</td>
-                            <td>Aberto</td>
-                            <td>R$ 40,00</td>
-                            <td>
-                                <a class="cancel-button" href="../funcionario/recolhimento.html">Registrar recolhimento</a>
-                            </td>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </section>
+  <nav class="menu-sidebar">
+    <div class="logo">
+      <img src="/assets/img/default/logo.png" alt="Logo">
     </div>
-    <style>
+    <h2><a href="/prototipo/funcionario/index.html">LOL Lavanderia Online</a></h2>
+    <ul>
+      <li><a href="/prototipo/funcionario/index.html"><i class="menu-item"></i><span class="menu-texto">Página
+            Inicial</span></a></li>
+      <li><a href="/prototipo/funcionario/tela_visualiza_pedido/index.html"><i class="menu-item"></i><span
+            class="menu-texto">Pedidos</span></a></li>
+      <li><a href="/prototipo/funcionario/relatorios/relatorios.html"><i class="menu-item"></i><span
+            class="menu-texto">Relatórios</span></a></li>
+      <li><a href="/prototipo/funcionario/tela_manutencao_funcionarios/manutencao_de_funcionarios.html"><i
+            class="menu-item"></i><span class="menu-texto">Funcionários</span></a></li>
+      <li><a href="/prototipo/funcionario/tela_manutencao_roupas/manutencao_roupas.html"><i class="menu-item"></i><span
+            class="menu-texto">Roupas</span></a></li>
 
-    </style>
+      <li><a href="#"><i class="menu-item"></i><span class="menu-texto">Serviços</span></a></li>
+      <li><a href="#"><i class="menu-item"></i><span class="menu-texto">Contato</span></a></li>
+    </ul>
+    <ul class="logout">
+      <li><a href="/prototipo/home/tela_inicial/inicio.html"><i class="menu-item"></i><span
+            class="menu-texto">Sair</span></a></li>
+    </ul>
+  </nav>
+  <div class="content-with-sidebar">
+    <section class="home">
+      <div class="content">
+        <h1>Pedidos abertos</h1>
+        <div class="listagem">
+          <table>
+            <thead>
+              <tr>
+                <th>Número do pedido</th>
+                <th>Cliente</th>
+                <th>Data do pedido</th>
+                <th>Status</th>
+                <th>Prazo de entrega</th>
+                <th>Valor total</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let pedido of pedidos">
+                <td>{{ pedido.idPedido }}</td>
+                <td>{{ pedido.cliente }}</td>
+                <td>{{ pedido.dataHora }}</td>
+                <td>{{ pedido.estado }}</td>
+                <td>{{ pedido.prazoEntrega }}</td>
+                <td>{{ pedido.valorTotal }}</td>
+                <td>
+                  <a class="cancel-button" href="../funcionario/recolhimento.html">Registrar recolhimento</a>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </div>
+  <style>
+
+  </style>
 </body>
