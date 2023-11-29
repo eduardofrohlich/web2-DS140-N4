@@ -6,9 +6,9 @@ import java.util.List;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import backend.lavanderia.pedido.dto.PedidoAbertoDTO;
@@ -18,8 +18,8 @@ import backend.lavanderia.pedido.entity.enums.PedidoStatus;
 import backend.lavanderia.pedido.repository.PedidoRepository;
 import backend.lavanderia.pedido.service.PedidoService;
 
+@CrossOrigin
 @RestController
-@RequestMapping(value = "/pedidos")
 public class PedidoController {
 
 	@Autowired
@@ -40,7 +40,7 @@ public class PedidoController {
 		return lista;
 	}
 
-	@GetMapping(value = "/abertos")
+	@GetMapping(value = "/pedidos-abertos")
 	public List<PedidoAbertoDTO> obterPedidosAbertos() {
 		List<Pedido> buscaLista = repoPedido.findAll();
 		List<PedidoAbertoDTO> lista = new ArrayList<>();

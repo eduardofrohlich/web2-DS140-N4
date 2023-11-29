@@ -8,17 +8,14 @@ const httpHeader = {
   })
 };
 
-@Injectable({
-  providedIn: 'root'
-})
-
+@Injectable({ providedIn: 'root'})
 export class PedidosService {
 
   constructor(private http: HttpClient) { }
 
 
   getAbertos(): Observable<any> {
-    return this.http.get<any>('http://localhost:8080/pedidos/abertos', httpHeader).pipe(
+    return this.http.get<any>('http://localhost:8080/pedidos-abertos', httpHeader).pipe(
       catchError((error) => {
         console.error('Erro ao obter clientes:', error);
         throw error;
