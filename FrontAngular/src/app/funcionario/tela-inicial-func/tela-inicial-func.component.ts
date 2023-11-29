@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Pedido } from 'src/app/shared';
 import { PedidosService } from '../services/pedidos.service';
+import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute, Router } from '@angular/router';
+import { PedidoAberto } from 'src/app/shared/models/pedido-aberto.model';
 
 @Component({
   selector: 'app-tela-inicial-func',
@@ -9,14 +12,18 @@ import { PedidosService } from '../services/pedidos.service';
 })
 export class TelaInicialFuncComponent implements OnInit {
 
-  pedidos: Pedido[] = [];
+  pedidos!: PedidoAberto[];
 
-  constructor(private pedidoService: PedidosService) { }
+  @ViewChild('content', {static: false}) el!:ElementRef;
+  constructor(private http : HttpClient, private router : Router, private route : ActivatedRoute,private pedidoService: PedidosService) { }
 
   ngOnInit(): void {
+    this.carregarDados();
+  }
+
+  carregarDados() {
     this.pedidoService.getAbertos().subscribe((pedidos) => {
       this.pedidos = pedidos;
     });
   }
-
 }

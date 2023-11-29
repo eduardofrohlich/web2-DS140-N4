@@ -19,7 +19,7 @@ public class RoupasPedido implements Serializable
 	private Pedido pedido;
 	
 	@Id
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name="FK_idRoupa", referencedColumnName="idRoupa")
 	private Roupa roupa;
 	

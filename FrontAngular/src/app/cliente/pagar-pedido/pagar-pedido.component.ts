@@ -30,8 +30,8 @@ export class PagarPedidoComponent implements OnInit{
     if(confirm("Tem certeza que quer pagar o pedido?"))
     {
       this.http.put<Pedido>(`http://localhost:8080/pedidos/${this.pedido.idPedido}/estado/pago`, this.pedido, httpHeader).subscribe((pedidoAtualizado) => {
-        this.pedido.estado = pedidoAtualizado.estado;
-        confirm(`o pedido foi pago!\nId do pedido: ${this.pedido.idPedido}\nEstado do pedido: ${this.pedido.estado}`);
+        this.pedido.pedidoStatus = pedidoAtualizado.pedidoStatus;
+        confirm(`o pedido foi pago!\nId do pedido: ${this.pedido.idPedido}\nEstado do pedido: ${this.pedido.pedidoStatus}`);
         this.router.navigate(['/cliente/pedidoonline']);
       });
     }

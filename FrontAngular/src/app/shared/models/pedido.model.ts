@@ -6,7 +6,7 @@ export class Pedido {
         public idPedido? : number,
         public cliente? : Cliente,
         public roupas? : RoupasPedido[],
-        public estado? : string,
+        public pedidoStatus? : string,
         public valorTotal? : number,
         public prazoEntrega? : number,
         public dataHora? : string

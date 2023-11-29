@@ -14,6 +14,7 @@ import backend.lavanderia.pedido.entity.RoupasPedido;
 import backend.lavanderia.pedido.entity.enums.PedidoStatus;
 import backend.lavanderia.pedido.repository.PedidoRepository;
 import backend.lavanderia.pedido.repository.RoupaRepository;
+import backend.lavanderia.pedido.repository.RoupasPedidoRepository;
 import backend.lavanderia.usuario.entity.Cliente;
 import backend.lavanderia.usuario.entity.Funcionario;
 import backend.lavanderia.usuario.repository.ClienteRepository;
@@ -34,6 +35,8 @@ public class TestConfig implements CommandLineRunner {
 	@Autowired
 	private RoupaRepository clothesRepository;
 
+	@Autowired
+	private RoupasPedidoRepository clothesOrderRepository;
 
 	@Override
 	public void run(String... args) throws Exception {
@@ -140,8 +143,8 @@ public class TestConfig implements CommandLineRunner {
 		rp19.setPedido(p28);
 		rp20.setPedido(p29);
 
-		// clothesOrderRepository.saveAll(Arrays.asList(rp1, rp2, rp3, rp4, rp5, rp6, rp7, rp8, rp9, rp10,
-		// 		rp11, rp12, rp13, rp14, rp15, rp16, rp17, rp18, rp19, rp20));
+		clothesOrderRepository.saveAll(Arrays.asList(rp1, rp2, rp3, rp4, rp5, rp6, rp7, rp8, rp9, rp10,
+				rp11, rp12, rp13, rp14, rp15, rp16, rp17, rp18, rp19, rp20));
 
 	}
 

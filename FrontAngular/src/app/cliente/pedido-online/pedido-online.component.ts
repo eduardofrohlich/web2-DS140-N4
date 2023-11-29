@@ -93,8 +93,8 @@ export class PedidoOnlineComponent implements OnInit{
           this.pedido.idPedido = novoPedido.idPedido;
 
           this.http.put<Pedido>(`http://localhost:8080/pedidos/${this.pedido.idPedido}/estado/rejeitado`, this.pedido, httpHeader).subscribe((pedidoAtualizado => {
-            this.pedido.estado = pedidoAtualizado.estado;
-            confirm(`Pedido rejeitado com sucesso!\nId do pedido: ${this.pedido.idPedido}\nEstado: ${this.pedido.estado}`);
+            this.pedido.pedidoStatus = pedidoAtualizado.pedidoStatus;
+            confirm(`Pedido rejeitado com sucesso!\nId do pedido: ${this.pedido.idPedido}\nEstado: ${this.pedido.pedidoStatus}`);
           }));
         });
         // Observable

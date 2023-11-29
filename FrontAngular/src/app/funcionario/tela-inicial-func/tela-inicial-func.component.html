@@ -52,11 +52,11 @@
             </thead>
             <tbody>
               <tr *ngFor="let pedido of pedidos">
-                <td>{{ pedido.idPedido }}</td>
-                <td>{{ pedido.cliente }}</td>
-                <td>{{ pedido.dataHora }}</td>
-                <td>{{ pedido.estado }}</td>
-                <td>{{ pedido.prazoEntrega }}</td>
+                <td>{{ pedido.numPedido }}</td>
+                <td>{{ pedido.nomeCliente }}</td>
+                <td>{{ pedido.dataPedido }}</td>
+                <td>{{ pedido.status }}</td>
+                <td>{{ pedido.valorTotal }}</td>
                 <td>{{ pedido.valorTotal }}</td>
                 <td>
                   <a class="cancel-button" href="../funcionario/recolhimento.html">Registrar recolhimento</a>
