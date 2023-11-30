@@ -15,7 +15,7 @@ export class PedidosService {
   constructor(private http: HttpClient) { }
 
   getPedidos(): Observable<any> {
-    return this.http.get<any>('http://localhost:8080/pedidos/', httpHeader).pipe(
+    return this.http.get<any>('http://localhost:8080/pedidos/todos', httpHeader).pipe(
       catchError((error) => {
         console.error('Erro ao obter clientes:', error);
         throw error;

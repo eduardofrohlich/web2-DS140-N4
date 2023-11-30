@@ -8,11 +8,9 @@ import java.util.Optional;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,7 +18,6 @@ import backend.lavanderia.pedido.dto.PedidoDTO;
 import backend.lavanderia.pedido.entity.Pedido;
 import backend.lavanderia.pedido.entity.enums.PedidoStatus;
 import backend.lavanderia.pedido.repository.PedidoRepository;
-import backend.lavanderia.pedido.service.OrderStatus;
 import backend.lavanderia.pedido.service.PedidoService;
 
 @CrossOrigin
@@ -37,14 +34,12 @@ public class PedidoController {
 	@Autowired
 	private ModelMapper mapper;
 
-	@GetMapping(value = "")
+	@GetMapping(value = "/todos")
 	public List<PedidoDTO> obterPedidos() {
 		List<Pedido> buscaLista = repoPedido.findAll();
 		List<PedidoDTO> lista = new ArrayList<>();
 		for (Pedido pedido : buscaLista) {
-			if (pedido.getPedidoStatus() == PedidoStatus.ABERTO) {
-				lista.add(mapper.map(pedido, PedidoDTO.class));
-			}
+			lista.add(mapper.map(pedido, PedidoDTO.class));
 		}
 		return lista;
 	}
