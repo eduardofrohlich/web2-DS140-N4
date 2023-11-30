@@ -50,20 +50,23 @@
                 <th>Ações</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody *ngIf="pedidos && pedidos.length > 0">
               <tr *ngFor="let pedido of pedidos">
-                <td>{{ pedido.numPedido }}</td>
-                <td>{{ pedido.nomeCliente }}</td>
-                <td>{{ pedido.dataPedido }}</td>
-                <td>{{ pedido.status }}</td>
-                <td>{{ pedido.prazo }}</td>
+
+                <td>{{ pedido.idPedido }}</td>
+                <td>{{ pedido.cliente?.nome }}</td>
+                <td>{{ pedido.dataHora }}</td>
+                <td>{{ pedido.pedidoStatus }}</td>
+                <td>{{ pedido.prazoEntrega }}</td>
                 <td>{{ pedido.valorTotal }}</td>
                 <td>
-                  <a class="cancel-button" href="../funcionario/recolhimento.html">Registrar recolhimento</a>
-                </td>
+                  <button (click)="atualizarEstado(pedido)"
+                    class="botao-confirmar">Registrar recolhimento</button>
               </tr>
-
             </tbody>
+            <div *ngIf="!pedidos || pedidos.length === 0">
+              <p style="font-size: larger;">Não há pedidos abertos.</p>
+            </div>
           </table>
         </div>
       </div>

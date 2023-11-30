@@ -28,4 +28,24 @@ public enum PedidoStatus {
 		throw new IllegalArgumentException("Código PedidoStatus inválido!");
 	}
 	
+	public static PedidoStatus getFromString(String status) {
+		switch (status) {
+		case "ABERTO":
+			return PedidoStatus.ABERTO;
+		case "REJEITADO":
+			return PedidoStatus.REJEITADO;
+		case "CANCELADO":
+			return PedidoStatus.CANCELADO;
+		case "RECOLHIDO":
+			return PedidoStatus.RECOLHIDO;
+		case "AGUARDANDO_PAGAMENTO":
+			return PedidoStatus.AGUARDANDO_PAGAMENTO;
+		case "PAGO":
+			return PedidoStatus.PAGO;
+		case "FINALIZADO":
+			return PedidoStatus.FINALIZADO;
+		default:
+			throw new IllegalArgumentException("Código PedidoStatus inválido!");
+		}
+	}
 }

@@ -45,15 +45,7 @@
   color: #fff;
 }
 
-.listagem .cancel-button {
-  margin-left: 10px;
-  background-color: #d9534f;
-  color: white;
-  border: none;
-  border-radius: 3vh;
-  padding: 6px 12px;
-  cursor: pointer;
-}
+
 
 .content-with-sidebar {
   display: flex;

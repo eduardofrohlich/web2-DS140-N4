@@ -104,13 +104,28 @@
   background: #393f439d;
 }
 
+.home button {
+  color: #fff;
+  font-weight: 500;
+  padding: 1vh 4vw;
+  margin: 2vh;
+  border-radius: 3vw;
+  font-weight: bolder;
+  transition: 0.5s;
+  display: block;
+  background: #393f439d;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  min-width: 95%;
+}
 .content-with-sidebar .home .novo-pedido {
   position: absolute;
   top: 3%;
   right: 0;
 }
 
-.home a:hover {
+.home button:hover {
   background: #ffffff07;
   color: #000;
 }
