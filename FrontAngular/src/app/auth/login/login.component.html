@@ -10,31 +10,42 @@
 </head>
 
 <body>
-  <section class="login">
+  <section *ngIf="message" class="login">
+    {{message}}
     <div class="wrapper-login">
       <div class="logo-img">
         <img src="/assets/img/default/logo.png" alt="Logo_Lol">
       </div>
-      <form>
-        <h2>Login</h2>
+      <h2>Login</h2>
+      <form #formLogin="ngForm">
         <div class="input-box">
           <span class="icon"></span>
-          <input type="text" id="email" required>
-          <label>Digite seu e-mail</label>
+          <input type="text" id="email" name="email" [(ngModel)]="login.email" #usuario="ngModel" required>
+          <label for="usuario">Digite seu e-mail</label>
+          <div *ngIf="usuario.errors && (usuario.dirty || usuario.touched)">
+            <div [hidden]="!usuario.errors['required']">
+              Digite o e-mail
+            </div>
+          </div>
         </div>
 
         <div class="input-box">
-          <input type="password" id="password" required>
-          <label>Digite sua senha</label>
+          <input type="password" id="senha" name="senha" [(ngModel)]="login.senha" #senha="ngModel" required>
+          <label for="senha">Digite sua senha</label>
+          <div *ngIf="senha.errors && (senha.dirty || senha.touched)">
+            <div [hidden]="!senha.errors['required']">
+              Digite a senha
+            </div>
+          </div>
         </div>
 
         <div class="remember-forgot">
           <a routerLink="/esqueceu-senha">Esqueceu sua senha?</a>
         </div>
 
-        <button type="submit" class="btn">Login</button>
+        <button type="submit" class="btn" (click)="logar()" [disabled]="!formLogin.form.valid">Login</button>
         <div class="register-link">
-          <p>Não é um membro? <a href="../tela_autocadastro/autocadastro.html">Cadastre-se agora</a></p>
+          <p>Não é um membro? <a [routerLink]="['/autocadastro']">Cadastre-se agora</a></p>
         </div>
       </form>
     </div>

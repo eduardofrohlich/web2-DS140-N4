@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
     private route: ActivatedRoute
   ) {
     if (this.loginService.usuarioLogado) {
-      this.router.navigate(['/tela-inicial']);
+      this.router.navigate(['/home']);
     }
   }
 
@@ -38,7 +38,11 @@ export class LoginComponent implements OnInit {
         if (usu != null) {
           this.loginService.usuarioLogado = usu;
           this.loading = false;
-          this.router.navigate(['/tela-inicial']);
+          if (usu.perfil == 'CLIENTE') {
+            this.router.navigate(['/cliente']);
+          } else if (usu.perfil == 'FUNCIONARIO') {
+            this.router.navigate(['/funcionario']);
+          }
         } else {
           this.message = 'Usuário/Senha inválidos.';
         }

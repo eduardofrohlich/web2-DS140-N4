@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ClienteModule } from './cliente/cliente.module';
 import { AuthModule } from './auth/auth.module';
 import { FuncionarioModule } from './funcionario/funcionario.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [AppComponent],
@@ -15,10 +16,11 @@ import { FuncionarioModule } from './funcionario/funcionario.module';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    RouterModule,
     HttpClientModule,
     ClienteModule,
     AuthModule,
-    FuncionarioModule
+    FuncionarioModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
