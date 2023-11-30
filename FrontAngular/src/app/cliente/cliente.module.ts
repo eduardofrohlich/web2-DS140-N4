@@ -6,13 +6,15 @@ import { PedidoOnlineService } from './services/pedido-online.service';
 import { RouterModule } from '@angular/router';
 import { MeusPedidosComponent } from './meus-pedidos/meus-pedidos.component';
 import { EsqueceuSenhaComponent } from './esqueceu-senha/esqueceu-senha.component';
+import { CadastrarClienteComponent } from './cadastrar-cliente/cadastrar-cliente.component';
 
 @NgModule({
   declarations: [
     PagarPedidoComponent,
     PedidoOnlineComponent,
     MeusPedidosComponent,
-    EsqueceuSenhaComponent
+    EsqueceuSenhaComponent,
+    CadastrarClienteComponent
   ],
   imports: [
     CommonModule,
