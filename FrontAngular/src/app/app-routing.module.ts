@@ -17,6 +17,7 @@ import { ManutencaoRoupasComponent } from './funcionario/manutencao-roupas/manut
 import { EditarRoupaComponent } from './funcionario/editar-roupa/editar-roupa.component';
 import { EsqueceuSenhaComponent } from './cliente/esqueceu-senha/esqueceu-senha.component';
 import { CadastrarRoupaComponent } from './funcionario/cadastrar-roupa/cadastrar-roupa.component';
+import { CadastrarClienteComponent } from './cliente/cadastrar-cliente/cadastrar-cliente.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -38,7 +39,7 @@ const routes: Routes = [
   { path: 'esqueceu-senha', component: EsqueceuSenhaComponent },
   { path: 'funcionario/cadastrar-roupa', component: CadastrarRoupaComponent },
   { path: 'logout', component: LoginComponent },
-
+  { path: 'cliente/cadastrar-cliente', component: CadastrarClienteComponent},
 
 ];
 
