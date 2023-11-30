@@ -4,11 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro</title>
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"
-            integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
-            crossorigin="anonymous"></script>
-
-
    <!-- Adicionando Javascript -->
    <script>
 
@@ -80,67 +75,67 @@
 <body>
     <div class="container-cad">
         <h2>Cadastro</h2>
-        <form #formCliente name="form-cad" method="POST" action="#">
+        <form  name="form-cad">
             <div class="form-group">
                 <label for="nomeCompleto">Nome Completo</label>
-                <input type="text" name="nomeCompleto" required />
+                <input type="text" [(ngModel)]="nome" name="nomeCompleto" required/>
             </div>
 
             <div class="form-group">
                 <label for="email">E-mail</label>
-                <input type="email" id="email" name="email" required />
+                <input type="email" [(ngModel)]="email" id="email" name="email" required />
             </div>
 
             <div class="inline-group">
                 <div class="form-group" id="cpf">
                     <label for="cpf">CPF</label>
-                    <input type="text"  name="cpf" required/>
+                    <input type="text" [(ngModel)]="cpf" name="cpf" required/>
                 </div>
                 <div class="form-group">
                     <label for="telefone">Telefone</label>
-                    <input type="tel" name="telefone" required/>
+                    <input type="tel" [(ngModel)]="telefone" name="telefone" required/>
                 </div>
             </div>
 
             <div class="form-group">
                 <label for="cep">Cep</label>
-                <input type="text" id="cep" value="" size="10" maxlength="9" required/>
+                <input type="text" [(ngModel)]="cpf" id="cep" value="" size="10" maxlength="9" required/>
             </div>
 
             <div class="inline-group">
                 <div class="form-group">
                     <label for="rua">Rua</label>
-                    <input type="text" name="rua" id="rua" size="60" required/>
+                    <input type="text" [(ngModel)]="rua" name="rua" id="rua" size="60" required/>
                 </div>
     
                 <div class="form-group" id="numCasa">
                     <label for="numCasa">Número</label>
-                    <input type="text" name="numCasa" required/>
+                    <input type="text" [(ngModel)]="numCasa" name="numCasa" required/>
                 </div>
             </div>
 
             <div class="inline-group">
                 <div class="form-group" id="b">
                     <label for="bairro">Bairro</label>
-                    <input type="text" name="bairro" id="bairro" size="40" required />
+                    <input type="text" [(ngModel)]="bairro" name="bairro" id="bairro" size="40" required />
                 </div>
     
                 <div class="form-group">
                     <label for="cidade">Cidade</label>
-                    <input name="cidade" type="text" id="cidade" size="40" required />
+                    <input name="cidade" [(ngModel)]="cidade" type="text" id="cidade" size="40" required />
                 </div>
     
                 <div class="form-group" id="estado">
                     <label for="uf">Estado</label>
-                    <input name="uf" type="text" id="uf" size="2" required />
+                    <input name="uf" [(ngModel)]="uf" type="text" id="uf" size="2" required />
                 </div>
             </div>
     
             <div>
-                <a routerLink = "\login">
+                <a routerLink = "/login">
                     <button type="button" id="btn1" class="submit-btn">Cancelar</button>
                 </a>
-                <button type="submit" id="btn2" class="submit-btn">Enviar</button>
+                <button type="submit" id="btn2" class="submit-btn" (click)="Enviar()">Enviar</button>
             </div>
         </form>
     </div>

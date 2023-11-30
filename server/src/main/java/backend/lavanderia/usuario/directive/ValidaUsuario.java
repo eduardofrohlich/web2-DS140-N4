@@ -23,15 +23,10 @@ public class ValidaUsuario
 		
 		validaCpf(cliente.getCpf());
 		
-		if(cliente.getTelefone().length() < 8 || cliente.getTelefone().length() > 9)
+		if(cliente.getTelefone().length() < 8 || cliente.getTelefone().length() > 11)
 			throw new RuntimeException("O telefone deve ter menos de 9 caracteres e mais de 8 caracteres!");
 		
-		try {
-			int converteNumero = Integer.parseInt(cliente.getTelefone());
-		}
-		catch(NumberFormatException e) {
-			throw new RuntimeException("O telefone deve conter somente números!");
-		}
+
 	}
 	
 	public static void usuario(FuncionarioDTO funcionario) throws RuntimeException

@@ -27,6 +27,16 @@ public class Cliente extends Usuario implements Serializable
 		super();
 	}
 
+	public Cliente(String endereco, String senha, String email, String nome, String cpf, String telefone) {
+		super();
+		this.endereco = endereco;
+		this.senha = senha;
+		this.email = email;
+		this.nome = nome;
+		this.cpf = cpf;
+		this.telefone = telefone;
+	}
+	
 	public Cliente(Long id, String endereco, String senha, String email, String nome, String cpf, String telefone) {
 		super();
 		this.idCliente = id;

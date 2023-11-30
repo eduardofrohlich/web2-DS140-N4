@@ -61,12 +61,13 @@ public class ClienteController
 			throw new IllegalArgumentException("O cliente já existe!");
 		
 		ValidaUsuario.usuario(cliente);
-
+		Cliente clienteCriado = new Cliente(cliente.getEndereco(), cliente.getSenha(), cliente.getEmail(), cliente.getNome(), cliente.getCpf(), cliente.getTelefone());
 
 		cliente.setSenha(Criptografia.criptografarSenha(cliente.getSenha()));
+		clienteCriado.setSenha(cliente.getSenha());
 		
-		Cliente clienteInserido = repoCliente.save(mapper.map(cliente, Cliente.class));
+		repoCliente.save(clienteCriado);
 		
-		return mapper.map(clienteInserido, ClienteDTO.class);
+		return cliente;
 	}
 }

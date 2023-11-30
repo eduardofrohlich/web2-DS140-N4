@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { MeusPedidosComponent } from './meus-pedidos/meus-pedidos.component';
 import { EsqueceuSenhaComponent } from './esqueceu-senha/esqueceu-senha.component';
 import { CadastrarClienteComponent } from './cadastrar-cliente/cadastrar-cliente.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { CadastrarClienteComponent } from './cadastrar-cliente/cadastrar-cliente
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    FormsModule
   ],
   providers: [
     PedidoOnlineService
