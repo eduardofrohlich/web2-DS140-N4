@@ -26,14 +26,16 @@ export class TelaInicialFuncComponent implements OnInit {
   }
 
   atualizarEstado(pedido: Pedido) {
-    if (confirm("Tem certeza que quer pagar o pedido?")) {
+    if (confirm("Tem certeza que quer registrar o recolhimento?")) {
       if (pedido.idPedido !== undefined && pedido.pedidoStatus !== undefined) {
         const id: number = pedido.idPedido;
         const estado: string = pedido.pedidoStatus.toString();
           this.pedidoService.atualizarEstado(id, estado);
+          this.pedidos.splice(this.pedidos.indexOf(pedido), 1);
         } else {
           console.error('Pedido não encontrado na lista.');
         }
       }
   }
+
 }

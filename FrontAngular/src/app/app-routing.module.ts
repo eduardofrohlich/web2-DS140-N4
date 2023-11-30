@@ -37,6 +37,8 @@ const routes: Routes = [
   { path: 'funcionario/editar-roupa', component: EditarRoupaComponent },
   { path: 'esqueceu-senha', component: EsqueceuSenhaComponent },
   { path: 'funcionario/cadastrar-roupa', component: CadastrarRoupaComponent },
+  { path: 'logout', component: LoginComponent },
+
 
 ];
 
