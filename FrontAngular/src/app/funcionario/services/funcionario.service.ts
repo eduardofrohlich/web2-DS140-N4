@@ -28,7 +28,19 @@ export class FuncionarioService {
 
 
   getFuncionarioById(id: number): Observable<any> {
-    return 1;
+    const url = `http://localhost:8080/funcionario/${id}`;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json' // Defina os headers conforme necessário
+      })
+    };
+
+    return this.http.get<any>(url, httpOptions).pipe(
+      catchError((error) => {
+        console.error('Erro ao obter funcionário:', error);
+        return throwError(error);
+      })
+    );
   }
 
 }
