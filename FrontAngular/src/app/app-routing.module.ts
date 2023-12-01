@@ -19,6 +19,7 @@ import { EsqueceuSenhaComponent } from './cliente/esqueceu-senha/esqueceu-senha.
 import { CadastrarRoupaComponent } from './funcionario/cadastrar-roupa/cadastrar-roupa.component';
 import { CadastrarClienteComponent } from './cliente/cadastrar-cliente/cadastrar-cliente.component';
 import { DetalhesFuncionarioComponent } from './funcionario/detalhes-funcionario/detalhes-funcionario.component';
+import { DetalhesRoupaComponent } from './funcionario/detalhes-roupa/detalhes-roupa.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -34,7 +35,7 @@ const routes: Routes = [
   { path: 'funcionario/pedidos', component: VisualizaPedidoComponent },
   { path: 'funcionario/manutencao/funcionarios', component: ManutencaoFuncionariosComponent  },
   { path: 'funcionario/cadastrar-funcionario', component: CadastrarFuncionarioComponent },
-  { path: 'funcionario/manutencao-roupas', component: ManutencaoRoupasComponent },
+  { path: 'funcionario/manutencao/roupas', component: ManutencaoRoupasComponent },
   { path: 'funcionario/editar-roupa', component: EditarRoupaComponent },
   { path: 'esqueceu-senha', component: EsqueceuSenhaComponent },
   { path: 'funcionario/cadastrar-roupa', component: CadastrarRoupaComponent },
@@ -42,6 +43,9 @@ const routes: Routes = [
   { path: 'cliente/cadastrar-cliente', component: CadastrarClienteComponent},
   { path: 'funcionario/manutencao/funcionarios/detalhes-funcionario/:id', component: DetalhesFuncionarioComponent },
   { path: 'funcionario/manutencao/funcionarios/editar-funcionario/:id', component: EditarFuncionarioComponent },
+  { path: 'funcionario/manutencao/roupas/detalhes-roupa/:id', component: DetalhesRoupaComponent },
+  { path: 'funcionario/manutencao/roupas/editar-roupa/:id', component: EditarRoupaComponent },
+
 ];
 
 @NgModule({

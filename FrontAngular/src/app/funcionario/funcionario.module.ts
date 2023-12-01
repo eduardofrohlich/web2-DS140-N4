@@ -14,6 +14,8 @@ import { RelatorioService } from './services/relatorio.service';
 import { EditarFuncionarioComponent } from './editar-funcionario/editar-funcionario.component';
 import { CadastrarFuncionarioComponent } from './cadastrar-funcionario/cadastrar-funcionario.component';
 import { NgxMaskDirective, provideNgxMask, NgxMaskPipe } from 'ngx-mask';
+import { DetalhesRoupaComponent } from './detalhes-roupa/detalhes-roupa.component';
+import { EditarRoupaComponent } from './editar-roupa/editar-roupa.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,8 @@ import { NgxMaskDirective, provideNgxMask, NgxMaskPipe } from 'ngx-mask';
     RelatorioReceitaComponent,
     EditarFuncionarioComponent,
     CadastrarFuncionarioComponent,
+    DetalhesRoupaComponent,
+    EditarRoupaComponent,
   ],
   imports: [
     CommonModule,

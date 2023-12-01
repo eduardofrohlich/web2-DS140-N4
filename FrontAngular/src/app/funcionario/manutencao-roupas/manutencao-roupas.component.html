@@ -74,30 +74,13 @@
                 <th>Ações</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody *ngFor="let roupa of roupas">
               <tr>
-                <td>Calça jeans</td>
-                <td>R$19,00</td>
-                <td>9 dias</td>
+                <td>{{roupa.nomeRoupa}}</td>
+                <td>{{roupa.valor}}</td>
+                <td>{{roupa.prazo}}</td>
                 <td>
-                  <a class="grey-button" href="../tela_manutencao_roupas/info.html">Detalhes</a>
-                </td>
-              </tr>
-              <tr>
-                <td>Camisa social</td>
-                <td>R$9,00</td>
-                <td>4 dias</td>
-                <td>
-                  <a class="grey-button" href="../tela_manutencao_roupas/info.html">Detalhes</a>
-                </td>
-              </tr>
-              <tr>
-                <td>Bermuda</td>
-                <td>R$7,50</td>
-                <td>4 dias</td>
-                <td>
-                  <a class="grey-button" href="../tela_manutencao_roupas/info.html">Detalhes</a>
-                </td>
+                  <button (click)="exibirDetalhes(roupa.idRoupa)" class="botao-confirmar">Exibir detalhes</button>
               </tr>
             </tbody>
           </table>

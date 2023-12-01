@@ -37,33 +37,34 @@
   <div class="content-with-sidebar">
     <section class="home">
       <div class="content">
-        <h1>Dados do Funcionário</h1>
+        <h1>Dados da Roupa</h1>
         <div class="container-cad">
 
           <div class="form-group">
-            <label for="nomeCompleto">Nome Completo:</label>
-            <span>{{funcionario.nome}}</span>
+            <label for="nomeCompleto">Nome da Roupa:</label>
+            <span>{{roupa.nomeRoupa}}</span>
           </div>
 
           <div class="form-group">
-            <label for="email">E-mail:</label>
-            <span>{{funcionario.email}}</span>
+            <label for="email">Prazo:</label>
+            <span>{{roupa.prazo}}</span>
           </div>
 
           <div class="inline-group">
             <div class="form-group" id="dataNasc">
-              <label for="dataNasc">Data de nascimento:</label>
-              <span>{{funcionario.dataNascimento}}</span>
+              <label for="dataNasc">Valor:</label>
+              <span>{{roupa.valor}}</span>
             </div>
             <div class="form-group">
-              <label for="senha">Senha:</label>
-              <span>{{funcionario.senha}}</span>
+              <label for="senha">Imagem:</label>
+              <div class="logo">
+                <img [src]="'/assets/img/roupas/' + roupa.imagem" alt="Logo">
+              </div>
             </div>
           </div>
 
             <div>
               <button (click)="editar()">Editar</button>
-              <button (click)="excluir()">Deletar</button>
               <button (click)="return()">Cancelar</button>
             </div>
         </div>
