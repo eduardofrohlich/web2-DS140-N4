@@ -30,12 +30,8 @@ const routes: Routes = [
   { path: 'cliente/pagarpedido/:id', component: PagarPedidoComponent },
   { path: 'cliente/pedidoonline', component: PedidoOnlineComponent },
   {
-    path: 'cliente',
+    path: 'cliente/:id',
     component: TelaInicialComponent,
-    canActivate: [AuthGuard],
-    data: {
-      role: Perfil.CLIENTE,
-    },
   },
   { path: 'funcionario/relatorio', component: RelatorioComponent },
   {
@@ -53,10 +49,6 @@ const routes: Routes = [
   {
     path: 'funcionario',
     component: TelaInicialFuncComponent,
-    canActivate: [AuthGuard],
-    data: {
-      role: Perfil.FUNCIONARIO,
-    },
   },
   { path: 'funcionario/pedidos', component: VisualizaPedidoComponent },
   {

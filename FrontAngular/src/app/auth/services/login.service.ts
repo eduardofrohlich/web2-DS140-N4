@@ -1,8 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Login } from 'src/app/shared';
-import { Perfil, Usuario } from 'src/app/shared/models/usuario.model~';
+import { Usuario } from 'src/app/shared/models/usuario.model~';
 
 const LS_CHAVE: string = 'usuarioLogado';
 @Injectable({
@@ -16,7 +16,7 @@ export class LoginService {
       'Content-Type': 'application/json',
     }),
   };
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient) { }
 
   public get usuarioLogado(): Usuario {
     let usu = localStorage[LS_CHAVE];

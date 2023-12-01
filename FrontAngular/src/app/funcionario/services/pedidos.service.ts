@@ -11,6 +11,7 @@ const httpHeader = {
 @Injectable({ providedIn: 'root' })
 export class PedidosService {
 
+
   constructor(private http: HttpClient) { }
 
   getPedidos(): Observable<any> {
@@ -31,7 +32,17 @@ export class PedidosService {
     );
   }
 
-  atualizarEstado(pedidoId: number | undefined, estado : string | undefined) {
+
+  getAbertosByUser(idCliente: number | undefined): Observable<any> {
+    return this.http.get<any>('http://localhost:8080/pedidos/abertos/' + idCliente, httpHeader).pipe(
+      catchError((error) => {
+        console.error('Erro ao obter clientes:', error);
+        throw error;
+      })
+    );
+  }
+
+  atualizarEstado(pedidoId: number | undefined, estado: string | undefined) {
     if (pedidoId === undefined) {
       throw new Error('ID do pedido não fornecido');
     }
@@ -39,13 +50,13 @@ export class PedidosService {
     const targetEstado = getNextEstado(estado);
 
     this.http.get<any>(`http://localhost:8080/pedidos/${idStr}/estado/${targetEstado}`, {}).pipe(
-        catchError((error) => {
-          console.error(`Erro ao atualizar para ${targetEstado}:`, error);
-          throw error;
-        })
-      ).subscribe(() => {
-        console.log(`Atualização para ${targetEstado} concluída`);
-      });
+      catchError((error) => {
+        console.error(`Erro ao atualizar para ${targetEstado}:`, error);
+        throw error;
+      })
+    ).subscribe(() => {
+      console.log(`Atualização para ${targetEstado} concluída`);
+    });
   }
 
 }

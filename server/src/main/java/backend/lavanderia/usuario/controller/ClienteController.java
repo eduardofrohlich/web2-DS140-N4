@@ -15,59 +15,67 @@ import org.springframework.web.bind.annotation.RestController;
 
 import backend.lavanderia.usuario.directive.ValidaUsuario;
 import backend.lavanderia.usuario.dto.ClienteDTO;
+import backend.lavanderia.usuario.dto.FuncionarioDTO;
 import backend.lavanderia.usuario.entity.Cliente;
+import backend.lavanderia.usuario.entity.Funcionario;
 import backend.lavanderia.usuario.repository.ClienteRepository;
 import backend.lavanderia.usuario.service.Criptografia;
 
-
 @CrossOrigin
 @RestController
-public class ClienteController 
-{
+public class ClienteController {
 	@Autowired
 	private ClienteRepository repoCliente;
-	
+
 	@Autowired
 	private ModelMapper mapper;
-	
+
 	@GetMapping("/clientes")
-	public List<ClienteDTO> obterTodosClientes()
-	{
+	public List<ClienteDTO> obterTodosClientes() {
 		List<Cliente> buscaLista = repoCliente.findAll();
 		List<ClienteDTO> lista = new ArrayList<>();
-		
-		for(Cliente cliente : buscaLista)
+
+		for (Cliente cliente : buscaLista)
 			lista.add(mapper.map(cliente, ClienteDTO.class));
-		
+
 		return lista;
 	}
-	
+
 	// Login
 	@GetMapping("/clientes/{email}/{senha}")
-	public ClienteDTO identificarCliente(@PathVariable("email") String email, @PathVariable("senha") String senha)
-	{
+	public ClienteDTO identificarCliente(@PathVariable("email") String email, @PathVariable("senha") String senha) {
 		Optional<Cliente> buscaCliente = repoCliente.findByEmailAndSenha(email, Criptografia.criptografarSenha(senha));
-		
-		if(buscaCliente.isEmpty())
+
+		if (buscaCliente.isEmpty())
 			throw new RuntimeException("Não existe cliente com esse email e senha!");
-		
+
 		return mapper.map(buscaCliente, ClienteDTO.class);
 	}
-	
+
+	@GetMapping("/clientes/{id}")
+	public ClienteDTO getById(@PathVariable("id") String longId) {
+		Optional<Cliente> buscaCliente = repoCliente.findById(Long.valueOf(longId));
+
+		if (buscaCliente.isEmpty())
+			throw new RuntimeException("Não existe funcionario com esse id!");
+
+		return mapper.map(buscaCliente, ClienteDTO.class);
+	};
+
 	@PostMapping("/clientes")
-	public ClienteDTO inserirCliente(@RequestBody ClienteDTO cliente)
-	{
-		if(!repoCliente.findByCpf(cliente.getCpf()).isEmpty())
+	public ClienteDTO inserirCliente(@RequestBody ClienteDTO cliente) {
+		if (!repoCliente.findByCpf(cliente.getCpf()).isEmpty())
 			throw new IllegalArgumentException("O cliente já existe!");
-		
+
 		ValidaUsuario.usuario(cliente);
-		Cliente clienteCriado = new Cliente(cliente.getEndereco(), cliente.getSenha(), cliente.getEmail(), cliente.getNome(), cliente.getCpf(), cliente.getTelefone());
+		Cliente clienteCriado = new Cliente(cliente.getEndereco(), cliente.getSenha(), cliente.getEmail(),
+				cliente.getNome(), cliente.getCpf(), cliente.getTelefone());
 
 		cliente.setSenha(Criptografia.criptografarSenha(cliente.getSenha()));
 		clienteCriado.setSenha(cliente.getSenha());
-		
+
 		repoCliente.save(clienteCriado);
-		
+
 		return cliente;
 	}
 }

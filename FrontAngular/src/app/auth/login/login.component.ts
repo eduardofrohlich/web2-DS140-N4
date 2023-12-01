@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
           this.loginService.usuarioLogado = usu;
           this.loading = false;
           if (usu.perfil === "CLIENTE") {
-            this.router.navigate(['/cliente']);
+            this.router.navigate(['/cliente/' + usu.id]);
           } else if (usu.perfil === "FUNCIONARIO") {
             this.router.navigate(['/funcionario']);
           }
