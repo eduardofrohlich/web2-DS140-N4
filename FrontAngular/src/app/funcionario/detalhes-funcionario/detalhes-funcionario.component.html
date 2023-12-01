@@ -14,65 +14,67 @@
 <body>
   <nav class="menu-sidebar">
     <div class="logo">
-      <img src="/prototipo/logo.png" alt="Logo">
+      <div class="logo">
+        <img src="/assets/img/default/logo.png" alt="Logo">
+      </div>
     </div>
     <h2><a href="/prototipo/funcionario/index.html">LOL Lavanderia Online</a></h2>
     <ul>
-      <li><a href="/prototipo/funcionario/index.html"><i class="menu-item"></i><span class="menu-texto">Página Inicial</span></a></li>
-      <li><a href="/prototipo/funcionario/tela_visualiza_pedido/index.html"><i class="menu-item"></i><span class="menu-texto">Pedidos</span></a></li>
-      <li><a href="/prototipo/funcionario/relatorios/relatorios.html"><i class="menu-item"></i><span class="menu-texto">Relatórios</span></a></li>
-      <li><a href="/prototipo/funcionario/tela_manutencao_funcionarios/manutencao_de_funcionarios.html"><i class="menu-item"></i><span class="menu-texto">Funcionários</span></a></li>
-      <li><a href="/prototipo/funcionario/tela_manutencao_roupas/manutencao_roupas.html"><i class="menu-item"></i><span class="menu-texto">Roupas</span></a></li>
+      <li><a href="/prototipo/funcionario/index.html"><i class="menu-item"></i><span class="menu-texto">Página
+            Inicial</span></a></li>
+      <li><a href="/prototipo/funcionario/tela_visualiza_pedido/index.html"><i class="menu-item"></i><span
+            class="menu-texto">Pedidos</span></a></li>
+      <li><a href="/prototipo/funcionario/relatorios/relatorios.html"><i class="menu-item"></i><span
+            class="menu-texto">Relatórios</span></a></li>
+      <li><a href="/prototipo/funcionario/tela_manutencao_funcionarios/manutencao_de_funcionarios.html"><i
+            class="menu-item"></i><span class="menu-texto">Funcionários</span></a></li>
+      <li><a href="/prototipo/funcionario/tela_manutencao_roupas/manutencao_roupas.html"><i class="menu-item"></i><span
+            class="menu-texto">Roupas</span></a></li>
 
       <li><a href="#"><i class="menu-item"></i><span class="menu-texto">Serviços</span></a></li>
       <li><a href="#"><i class="menu-item"></i><span class="menu-texto">Contato</span></a></li>
     </ul>
     <ul class="logout">
-      <li><a href="/prototipo/home/tela_inicial/inicio.html"><i class="menu-item"></i><span class="menu-texto">Sair</span></a></li>
+      <li><a href="/prototipo/home/tela_inicial/inicio.html"><i class="menu-item"></i><span
+            class="menu-texto">Sair</span></a></li>
     </ul>
   </nav>
   <div class="content-with-sidebar">
     <section class="home">
       <div class="content">
         <h1>Dados do Funcionário</h1>
-        <div class="container-cad" >
+        <div class="container-cad">
 
-          <form name="form-cad" id="form-funcionario">
+          <div class="form-group">
+            <label for="nomeCompleto">Nome Completo:</label>
+            <span>{{funcionario.nome}}</span>
+          </div>
+
+          <div class="form-group">
+            <label for="email">E-mail:</label>
+            <span>{{funcionario.email}}</span>
+          </div>
+
+          <div class="inline-group">
+            <div class="form-group" id="dataNasc">
+              <label for="dataNasc">Data de nascimento:</label>
+              <span>{{funcionario.dataNascimento}}</span>
+            </div>
             <div class="form-group">
-              <label for="nomeCompleto">Nome Completo</label>
-              <input type="text" id="nomeCompleto" name="nomeCompleto" value={{func.nome}} disabled required />
+              <label for="senha">Senha:</label>
+              <span>{{funcionario.senha}}</span>
             </div>
-
-            <div class="form-group">
-              <label for="email">E-mail</label>
-              <input type="email" id="email" name="email" value={{func.email}} disabled required />
-            </div>
-
-            <div class="inline-group">
-              <div class="form-group" id="dataNasc">
-                <label for="dataNasc">Data de nascimento</label>
-                <input type="date" id="dataNasc" name="dataNasc" value={{func.dataNascimento}} disabled required />
-              </div>
-              <div class="form-group">
-                <label for="senha">Senha</label>
-                <input type="text" name="senha" id={{func.senha}} disabled required />
-              </div>
-            </div>
+          </div>
 
             <div>
-              <a href="../tela_manutencao_funcionarios/manutencao_de_funcionarios.html">
-                <button type="button" id="btn1" class="submit-btn">Cancelar</button>
-              </a>
-              <button type="submit" id="btn2" class="submit-btn btn2">Editar</button>
-              <button type="button" id="btn3" class="submit-btn">Deletar</button>
+              <button (click)="editar()">Editar</button>
+              <button (click)="excluir()">Deletar</button>
+              <button (click)="return()">Cancelar</button>
             </div>
-          </form>
         </div>
       </div>
     </section>
   </div>
-
-
 </body>
 
 </html>

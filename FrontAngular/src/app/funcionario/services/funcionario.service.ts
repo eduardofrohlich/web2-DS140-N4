@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, catchError, map, throwError } from 'rxjs';
+import { Funcionario } from 'src/app/shared';
 
 
 const httpHeader = {
@@ -26,21 +27,26 @@ export class FuncionarioService {
     );
   }
 
-
-  getFuncionarioById(id: number): Observable<any> {
-    const url = `http://localhost:8080/funcionario/${id}`;
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json' // Defina os headers conforme necessário
-      })
-    };
-
-    return this.http.get<any>(url, httpOptions).pipe(
+  excluirFuncionario(id: number | undefined): Observable<any> {
+    const url = 'http://localhost:8080/funcionarios/excluir/' + id;
+    return this.http.get<any>(url, httpHeader).pipe(
       catchError((error) => {
-        console.error('Erro ao obter funcionário:', error);
-        return throwError(error);
+        console.error('Erro ao obter funcionarios:', error);
+        throw error;
       })
     );
   }
+
+  editarFuncionario(funcionario: Funcionario): Observable<any> {
+    const url = 'http://localhost:8080/funcionarios/editar';
+    return this.http.post<Funcionario>(url, funcionario, httpHeader).pipe(
+      catchError((error) => {
+        console.error('Erro ao editar funcionario:', error);
+        throw error;
+      })
+    );
+  }
+  
+
 
 }

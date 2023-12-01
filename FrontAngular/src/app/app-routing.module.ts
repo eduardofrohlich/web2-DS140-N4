@@ -33,7 +33,6 @@ const routes: Routes = [
   { path: 'funcionario', component: TelaInicialFuncComponent },
   { path: 'funcionario/pedidos', component: VisualizaPedidoComponent },
   { path: 'funcionario/manutencao/funcionarios', component: ManutencaoFuncionariosComponent  },
-  { path: 'funcionario/editar-func', component: EditarFuncionarioComponent },
   { path: 'funcionario/cadastrar-func', component: CadastrarFuncionarioComponent },
   { path: 'funcionario/manutencao-roupas', component: ManutencaoRoupasComponent },
   { path: 'funcionario/editar-roupa', component: EditarRoupaComponent },
@@ -41,7 +40,9 @@ const routes: Routes = [
   { path: 'funcionario/cadastrar-roupa', component: CadastrarRoupaComponent },
   { path: 'logout', component: LoginComponent },
   { path: 'cliente/cadastrar-cliente', component: CadastrarClienteComponent},
-  { path: 'funcionario/manutencao/funcionarios/detalhes-funcionario', component: DetalhesFuncionarioComponent },
+  { path: 'funcionario/manutencao/funcionarios/detalhes-funcionario/:id', component: DetalhesFuncionarioComponent },
+  { path: 'funcionario/manutencao/funcionarios/editar-funcionario/:id', component: EditarFuncionarioComponent },
+
 
 ];
 

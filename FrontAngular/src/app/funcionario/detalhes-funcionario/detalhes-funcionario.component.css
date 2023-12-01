@@ -61,3 +61,22 @@
 .content {
   width: 100%;
 }
+
+.form-group {
+  display: flex;
+  margin-top: 3vh;
+  justify-content: center;
+}
+
+.form-group label {
+  margin-bottom: 0;
+  font-weight: bold;
+  margin-right: 1vh;
+}
+
+.form-group span {
+  padding: 0px 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+

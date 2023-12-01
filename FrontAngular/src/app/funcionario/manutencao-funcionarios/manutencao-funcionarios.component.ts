@@ -26,7 +26,8 @@ export class ManutencaoFuncionariosComponent implements OnInit {
     this.carregarDados();
   }
 
-  exibirDetalhes(func : Funcionario) {
-    this.router.navigate(['../funcionarios/detalhes-funcionario', func.idFuncionario], { relativeTo: this.route });
+  exibirDetalhes(id: number | undefined) {
+    this.router.navigate(['./detalhes-funcionario', id], { relativeTo: this.route });
   }
+
 }
