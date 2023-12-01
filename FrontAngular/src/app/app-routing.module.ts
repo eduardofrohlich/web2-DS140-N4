@@ -23,6 +23,7 @@ import { DetalhesRoupaComponent } from './funcionario/detalhes-roupa/detalhes-ro
 import { LoginRoutes } from './auth/auth-routing.module';
 import { AuthGuard } from './auth/auth.guard';
 import { Perfil } from './shared/models/usuario.model~';
+import { MeusPedidosComponent } from './cliente/meus-pedidos/meus-pedidos.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -32,6 +33,10 @@ const routes: Routes = [
   {
     path: 'cliente/:id',
     component: TelaInicialComponent,
+  },
+  {
+    path: 'cliente/pedidos/:id',
+    component: MeusPedidosComponent,
   },
   { path: 'funcionario/relatorio', component: RelatorioComponent },
   {
@@ -91,4 +96,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

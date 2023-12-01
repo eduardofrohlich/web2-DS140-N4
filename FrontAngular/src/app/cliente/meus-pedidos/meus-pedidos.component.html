@@ -6,23 +6,25 @@
   <meta http-equiv="X-UA-Compatible">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>LOL - Lavanderia Online</title>
-  <link rel="stylesheet" href="/prototipo/base-style.css">
 </head>
 
 <body>
   <nav class="menu-sidebar">
     <div class="logo">
-      <img src="/prototipo/logo.png" alt="Logo">
+      <img src="/assets/img/default/logo.png" alt="Logo">
     </div>
-    <h2><a href="/prototipo/cliente/tela_inicial_cliente/index.html">LOL Lavanderia Online</a></h2>
+    <h2><a [routerLink]="['/cliente', id]">LOL Lavanderia Online</a></h2>
     <ul>
-      <li><a href="/prototipo/cliente/tela_inicial_cliente/index.html"><i class="menu-item"></i><span class="menu-texto">Página Inicial</span></a></li>
-      <li><a href="/prototipo/cliente/tela_meus_pedidos/index.html"><i class="menu-item"></i><span class="menu-texto">Meus pedidos</span></a></li>
+      <li><a [routerLink]="['/cliente', id]"><i class="menu-item"></i><span class="menu-texto">Página Inicial</span></a>
+      </li>
+      <li><a [routerLink]="['/cliente/pedidos', id]"><i class="menu-item"></i><span class="menu-texto">Meus
+            pedidos</span></a></li>
       <li><a href="#"><i class="menu-item"></i><span class="menu-texto">Serviços</span></a></li>
       <li><a href="#"><i class="menu-item"></i><span class="menu-texto">Contato</span></a></li>
     </ul>
     <ul class="logout">
-      <li><a href="/prototipo/home/tela_inicial/inicio.html"><i class="menu-item"></i><span class="menu-texto">Sair</span></a></li>
+      <li><a href="/logout"><i class="menu-item"></i><span
+            class="menu-texto">Sair</span></a></li>
     </ul>
   </nav>
   <div class="content-with-sidebar">
@@ -55,7 +57,26 @@
                 <th>Ações</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody *ngIf="pedidos && pedidos.length > 0">
+              <tr *ngFor="let pedido of pedidos">
+
+                <td>#{{ pedido.idPedido }}</td>
+                <td>{{ pedido.dataHora }}</td>
+                <td>{{ pedido.pedidoStatus === 'AGUARDANDO_PAGAMENTO' ? 'AGUARDANDO PAGAMENTO' : pedido.pedidoStatus }}</td>
+                <td>{{ pedido.valorTotal }}</td>
+                <td>
+                  <button (click)="atualizarEstado(pedido)" [style]="{ 'background-color': getCorEstado(pedido) }">
+                    {{ getMensagemBotao(pedido) }}
+                  </button>
+                </td>
+
+              </tr>
+            </tbody>
+            <div *ngIf="!pedidos || pedidos.length === 0">
+              <p style="font-size: larger;">Não há pedidos abertos.</p>
+            </div>
+            <!-- <tbody>
+
               <tr>
                 <td>000125</td>
                 <td>20/08/2023</td>
@@ -72,7 +93,8 @@
                 <td id="estado1" style="color: gray;">Recolhido</td>
                 <td>R$ 100,00</td>
                 <td id="botao1">
-                  <a class="grey-button" onclick="alterarEstado('Aguardando Pagamento', 'estado1', 'botao1')" href="#">Detalhes do pedido</a>
+                  <a class="grey-button" onclick="alterarEstado('Aguardando Pagamento', 'estado1', 'botao1')"
+                    href="#">Detalhes do pedido</a>
                 </td>
               </tr>
               <tr>
@@ -265,7 +287,7 @@
                 <td>R$ 50,00</td>
                 <td><a class="grey-button" href="#">Detalhes do pedido</a></td>
               </tr>
-            </tbody>
+            </tbody> -->
           </table>
         </div>
       </div>

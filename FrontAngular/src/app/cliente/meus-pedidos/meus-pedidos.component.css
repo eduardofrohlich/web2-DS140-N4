@@ -27,7 +27,6 @@
   font-weight: bolder;
   font-size: 2vw;
   top: 3.5vh;
-  text-align: left;
 }
 
 .seletor-status label {
@@ -43,10 +42,26 @@
   margin-bottom: 2vh;
   margin: 2vh 0 3vh 0;
   padding: 1vh 1vh;
-  position: relative;
   background: #38797a00;
   border-radius: 3vh;
   border: 1px solid #000;
+}
+
+.fim {
+  margin-left: 10px;
+}
+
+.btn-filtro {
+  color: #fff;
+  text-decoration: none;
+  padding: 1vh 6vh;
+  font-weight: 500;
+  font-weight: bolder;
+  transition: 0.5s;
+  background: #7c898a9d;
+  border: none;
+  border-radius: 3vh;
+  margin-left: 0;
 }
 
 .seletor-status a {
@@ -62,6 +77,10 @@
   margin-left: 0;
 }
 
+.personalizado {
+  display: none;
+}
+
 .listagem table {
   border-collapse: collapse;
   width: 98%;
@@ -69,12 +88,6 @@
   margin-left: 2vh;
 }
 
-.listagem th {
-  padding: 0.7vh;
-  text-align: center;
-  border-bottom: 1px solid #ddd;
-
-}
 
 .listagem td {
   text-align: center;
@@ -88,50 +101,9 @@
 .listagem th {
   background-color: #38797a9d;
   color: #fff;
-}
-
-.listagem .cancel-button {
-  margin-left: 10px;
-  background-color: #d9534f;
-  color: white;
-  border: none;
-  border-radius: 3vh;
-  padding: 6px 12px;
-  cursor: pointer;
-}
-
-.listagem a {
-  background: #38797a9d;
+  padding: 0.7vh;
   text-align: center;
-  display: grid;
-  place-items: center;
-  border-radius: 3vh;
-  text-decoration: none;
-}
-
-.listagem .grey-button {
-  background: #1a191986;
-  text-align: center;
-  border-radius: 3vh;
-  text-decoration: none;
-  padding: 10px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: 0.5s;
-}
-
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  display: none;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
+  border-bottom: 1px solid #ddd;
 }
 
 .popup {
@@ -148,10 +120,9 @@
   visibility: hidden;
   transition: transform 0.4s, top 0.4s;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  z-index: 1001;
 }
 
-.popup.open-popup {
+.open-popup {
   visibility: visible;
   top: 50%;
   transform: translate(-50%, -50%) scale(1);
@@ -205,5 +176,6 @@
 }
 
 .content {
-  width: 100%;
+  width: 97%;
 }
+

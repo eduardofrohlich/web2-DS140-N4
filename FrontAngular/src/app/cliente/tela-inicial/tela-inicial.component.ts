@@ -28,7 +28,7 @@ export class TelaInicialComponent implements OnInit {
   }
 
   carregarDados() {
-    this.pedidoService.getAbertosByUser(this.id).subscribe((pedidos) => {
+    this.pedidoService.getAbertosByCliente(this.id).subscribe((pedidos) => {
       let targetPedidos = pedidos;
       this.pedidos = targetPedidos;
     });

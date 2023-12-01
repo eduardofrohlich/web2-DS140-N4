@@ -12,6 +12,7 @@ const httpHeader = {
 export class PedidosService {
 
 
+
   constructor(private http: HttpClient) { }
 
   getPedidos(): Observable<any> {
@@ -33,10 +34,20 @@ export class PedidosService {
   }
 
 
-  getAbertosByUser(idCliente: number | undefined): Observable<any> {
+  getAbertosByCliente(idCliente: number | undefined): Observable<any> {
     return this.http.get<any>('http://localhost:8080/pedidos/abertos/' + idCliente, httpHeader).pipe(
       catchError((error) => {
-        console.error('Erro ao obter clientes:', error);
+        console.error('Erro ao obter pedidos:', error);
+        throw error;
+      })
+    );
+  }
+
+
+  getByCliente(idCliente: number | undefined): Observable<any> {
+    return this.http.get<any>('http://localhost:8080/pedidos/cliente/' + idCliente, httpHeader).pipe(
+      catchError((error) => {
+        console.error('Erro ao obter pedidos:', error);
         throw error;
       })
     );
