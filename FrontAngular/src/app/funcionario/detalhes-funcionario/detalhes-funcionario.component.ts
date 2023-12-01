@@ -21,7 +21,8 @@ export class DetalhesFuncionarioComponent implements OnInit {
   }
 
   editar() {
-    this.router.navigate(['funcionario/manutencao/funcionarios/editar-funcionario/', this.funcionario.idFuncionario]);
+    const url = 'funcionario/manutencao/funcionarios/editar-funcionario/' + this.funcionario.idFuncionario;
+    this.router.navigate([url]);
   }
 
   excluir() {

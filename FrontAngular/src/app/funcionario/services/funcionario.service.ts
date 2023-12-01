@@ -37,16 +37,22 @@ export class FuncionarioService {
     );
   }
 
-  editarFuncionario(funcionario: Funcionario): Observable<any> {
-    const url = 'http://localhost:8080/funcionarios/editar';
-    return this.http.post<Funcionario>(url, funcionario, httpHeader).pipe(
-      catchError((error) => {
-        console.error('Erro ao editar funcionario:', error);
-        throw error;
-      })
-    );
+  dataNascForHttp (dataNasc: string | undefined): string {
+    if (dataNasc === undefined) {
+      return '';
+    }
+    const data = dataNasc.split('/');
+    return data[0] + '-' + data[1] + '-' + data[2];
   }
-  
+  editarFuncionario(funcionario: Funcionario): Observable<any> {
+    const nome = funcionario.nome;
+    const email = funcionario.email;
+    const dataNasc = this.dataNascForHttp(funcionario.dataNascimento);
+    const senha = funcionario.senha;
+    const url = 'http://localhost:8080/funcionarios/editar/' + funcionario.idFuncionario + '/' + nome + '/' + email + '/' + dataNasc + '/' + senha;
+    return this.http.get<any>(url, httpHeader);
+  }
+
 
 
 }

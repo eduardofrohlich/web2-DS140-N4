@@ -42,8 +42,6 @@ const routes: Routes = [
   { path: 'cliente/cadastrar-cliente', component: CadastrarClienteComponent},
   { path: 'funcionario/manutencao/funcionarios/detalhes-funcionario/:id', component: DetalhesFuncionarioComponent },
   { path: 'funcionario/manutencao/funcionarios/editar-funcionario/:id', component: EditarFuncionarioComponent },
-
-
 ];
 
 @NgModule({

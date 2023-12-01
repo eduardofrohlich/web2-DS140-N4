@@ -11,6 +11,7 @@ import { RelatorioClienteComponent } from './relatorio-cliente/relatorio-cliente
 import { RelatorioClienteFielComponent } from './relatorio-cliente-fiel/relatorio-cliente-fiel.component'
 import { FormsModule } from '@angular/forms';
 import { RelatorioService } from './services/relatorio.service';
+import { EditarFuncionarioComponent } from './editar-funcionario/editar-funcionario.component';
 @NgModule({
   declarations: [
     ManutencaoFuncionariosComponent,
@@ -20,7 +21,8 @@ import { RelatorioService } from './services/relatorio.service';
     RelatorioComponent,
     RelatorioClienteComponent,
     RelatorioClienteFielComponent,
-    RelatorioReceitaComponent
+    RelatorioReceitaComponent,
+    EditarFuncionarioComponent,
   ],
   imports: [
     CommonModule,

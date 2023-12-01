@@ -18,7 +18,8 @@ import { FuncionarioModule } from './funcionario/funcionario.module';
     HttpClientModule,
     ClienteModule,
     AuthModule,
-    FuncionarioModule
+    FuncionarioModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

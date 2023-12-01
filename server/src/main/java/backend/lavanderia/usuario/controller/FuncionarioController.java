@@ -63,6 +63,33 @@ public class FuncionarioController {
 		return ResponseEntity.ok().build();
 	}
 
+	@GetMapping("/funcionarios/editar/{id}/{nome}/{email}/{dataNasc}/{senha}")
+	public String editarFuncionario(
+			@PathVariable("id") String id,
+			@PathVariable("nome") String nome,
+			@PathVariable("email") String email,
+			@PathVariable("dataNasc") String dataNasc,
+			@PathVariable("senha") String senha) {
+
+		Optional<Funcionario> buscaFuncionario = repoFuncionario.findById(Long.valueOf(id));
+		if (buscaFuncionario.isEmpty())
+			return "Não existe funcionario com esse id!";
+
+		buscaFuncionario.get().setNome(nome);
+		buscaFuncionario.get().setEmail(email);
+		buscaFuncionario.get().setSenha(senha);
+
+		buscaFuncionario.get().setDataNascimento(getDataNascimento(dataNasc));
+
+		repoFuncionario.save(buscaFuncionario.get());
+
+		return "OK";
+	}
+
+	private String getDataNascimento(String dataNasc) {
+		return dataNasc.substring(0, 2) + "/" + dataNasc.substring(3, 5) + "/" + dataNasc.substring(6, 10);
+	}
+
 	// Login
 	@GetMapping("/funcionarios/{email}/{senha}")
 	public FuncionarioDTO identificarFuncionario(@PathVariable("email") String email,
