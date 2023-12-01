@@ -11,10 +11,11 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  @ViewChild('formLogin') formLogin!: NgForm;
-  login: Login = new Login();
+  login!: Login;
   loading: boolean = false;
   message!: string | undefined;
+  email : any;
+  senha : any;
 
   constructor(
     private loginService: LoginService,
@@ -37,15 +38,15 @@ export class LoginComponent implements OnInit {
   }
 
   logar(): void {
+    this.login = new Login(this.email, this.senha);
     this.loading = true;
-    if (this.formLogin.form.valid) {
       this.loginService.login(this.login).subscribe((usu) => {
         if (usu != null) {
           this.loginService.usuarioLogado = usu;
           this.loading = false;
-          if (usu.perfil == Perfil.CLIENTE) {
+          if (usu.perfil === "CLIENTE") {
             this.router.navigate(['/cliente']);
-          } else if (usu.perfil == Perfil.FUNCIONARIO) {
+          } else if (usu.perfil === "FUNCIONARIO") {
             this.router.navigate(['/funcionario']);
           }
         } else {
@@ -54,5 +55,5 @@ export class LoginComponent implements OnInit {
         }
       });
     }
-  }
+
 }

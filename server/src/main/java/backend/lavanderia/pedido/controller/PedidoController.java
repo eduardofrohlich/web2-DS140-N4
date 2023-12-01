@@ -56,6 +56,19 @@ public class PedidoController {
 		return lista;
 	}
 
+	@GetMapping(value = "/abertos/{idCliente}")
+	public List<PedidoDTO> obterPedidosAbertosCliente(@PathVariable("idCliente") Long idCliente) {
+		List<Pedido> buscaLista = repoPedido.findAll();
+		List<PedidoDTO> lista = new ArrayList<>();
+		for (Pedido pedido : buscaLista) {
+			if (pedido.getCliente().getIdCliente() == idCliente && pedido.getPedidoStatus() == PedidoStatus.ABERTO) {
+				lista.add(mapper.map(pedido, PedidoDTO.class));
+			}
+		}
+		return lista;
+	}
+
+
 	@GetMapping("/{idPedido}/estado/{novoEstado}")
 	public PedidoDTO atualizarEstadoPedido(@PathVariable("idPedido") String idPedido,
 			@PathVariable("novoEstado") String novoEstado) {

@@ -5,11 +5,10 @@ import java.util.List;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import backend.lavanderia.login.model.Login;
 import backend.lavanderia.usuario.cargos.CargosUsuario;
 import backend.lavanderia.usuario.entity.Usuario;
 
@@ -18,10 +17,10 @@ import backend.lavanderia.usuario.entity.Usuario;
 public class UsuarioREST {
 	public static List<Usuario> lista = new ArrayList<>();
 
-	@PostMapping("/login")
-	Usuario login(@RequestBody Login login) {
+	@GetMapping("/login/{email}/{senha}")
+	Usuario login(@PathVariable("email") String email, @PathVariable("senha") String senha) {
 		Usuario usuario = lista.stream().filter(
-				us -> us.getEmail().equals(login.getEmail()) && us.getSenha().equals(login.getSenha()))
+				us -> us.getEmail().equals(email) && us.getSenha().equals(senha))
 				.findAny().orElse(null);
 		return usuario;
 	}

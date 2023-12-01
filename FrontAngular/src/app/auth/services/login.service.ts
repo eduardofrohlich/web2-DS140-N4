@@ -9,7 +9,8 @@ const LS_CHAVE: string = 'usuarioLogado';
   providedIn: 'root',
 })
 export class LoginService {
-  BASE_URL = 'http://localhost:8080/login';
+
+  BASE_URL = 'http://localhost:8080/login/';
   httpOPTIONS = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
@@ -29,9 +30,8 @@ export class LoginService {
   }
 
   login(login: Login): Observable<Usuario | null> {
-    return this.httpClient.post<Usuario>(
-      this.BASE_URL,
-      login,
+    return this.httpClient.get<Usuario>(
+      this.BASE_URL + login.email + '/' + login.senha,
       this.httpOPTIONS
     );
   }

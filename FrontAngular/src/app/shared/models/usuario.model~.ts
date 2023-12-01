@@ -12,6 +12,6 @@ export class Usuario {
     public nome?: string,
     public cpf?: string,
     public telefone?: string,
-    public perfil?: Perfil
+    public perfil?: Perfil | string
   ) {}
 }
