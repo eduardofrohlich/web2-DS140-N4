@@ -22,7 +22,7 @@ export class DetalhesFuncionarioComponent implements OnInit {
 
   editar() {
     const url = 'funcionario/manutencao/funcionarios/editar-funcionario/' + this.funcionario.idFuncionario;
-    this.router.navigate([url]);
+    this. router.navigate([url]);
   }
 
   excluir() {

@@ -33,7 +33,7 @@ const routes: Routes = [
   { path: 'funcionario', component: TelaInicialFuncComponent },
   { path: 'funcionario/pedidos', component: VisualizaPedidoComponent },
   { path: 'funcionario/manutencao/funcionarios', component: ManutencaoFuncionariosComponent  },
-  { path: 'funcionario/cadastrar-func', component: CadastrarFuncionarioComponent },
+  { path: 'funcionario/cadastrar-funcionario', component: CadastrarFuncionarioComponent },
   { path: 'funcionario/manutencao-roupas', component: ManutencaoRoupasComponent },
   { path: 'funcionario/editar-roupa', component: EditarRoupaComponent },
   { path: 'esqueceu-senha', component: EsqueceuSenhaComponent },

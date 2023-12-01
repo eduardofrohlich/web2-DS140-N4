@@ -3,7 +3,7 @@ import { Endereco } from "./endereco.model";
 export class Funcionario {
     constructor(
         public idFuncionario? : number,
-        public endereco? : Endereco,
+        public endereco? : string,
         public senha? : string,
         public email? : string,
         public nome? : string,

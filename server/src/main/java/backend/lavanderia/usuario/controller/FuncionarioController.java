@@ -86,8 +86,35 @@ public class FuncionarioController {
 		return "OK";
 	}
 
+	@GetMapping("/funcionarios/cadastrar/{nome}/{email}/{dataNasc}/{senha}/{endereco}/{telefone}/{cpf}")
+	public String cadastrarFuncionario(
+			@PathVariable("nome") String nome,
+			@PathVariable("email") String email,
+			@PathVariable("dataNasc") String dataNasc,
+			@PathVariable("senha") String senha,
+			@PathVariable("endereco") String endereco,
+			@PathVariable("telefone") String telefone,
+			@PathVariable("cpf") String cpf) {
+
+		Funcionario funcionario = new Funcionario();
+		funcionario.setNome(nome);
+		funcionario.setEmail(email);
+		funcionario.setSenha(senha);
+		funcionario.setEndereco(endereco);
+		funcionario.setTelefone(telefone);
+		funcionario.setCpf(cpf);
+		funcionario.setDataNascimento(getDataNascimento(dataNasc));
+
+		repoFuncionario.save(funcionario);
+
+		return "OK";
+	}
+
 	private String getDataNascimento(String dataNasc) {
-		return dataNasc.substring(0, 2) + "/" + dataNasc.substring(3, 5) + "/" + dataNasc.substring(6, 10);
+		String dia = dataNasc.substring(0, 2);
+		String mes = dataNasc.substring(2, 4);
+		String ano = dataNasc.substring(4, 8);
+		return dia + "/" + mes + "/" + ano;
 	}
 
 	// Login

@@ -12,6 +12,9 @@ import { RelatorioClienteFielComponent } from './relatorio-cliente-fiel/relatori
 import { FormsModule } from '@angular/forms';
 import { RelatorioService } from './services/relatorio.service';
 import { EditarFuncionarioComponent } from './editar-funcionario/editar-funcionario.component';
+import { CadastrarFuncionarioComponent } from './cadastrar-funcionario/cadastrar-funcionario.component';
+import { NgxMaskDirective, provideNgxMask, NgxMaskPipe } from 'ngx-mask';
+
 @NgModule({
   declarations: [
     ManutencaoFuncionariosComponent,
@@ -23,14 +26,18 @@ import { EditarFuncionarioComponent } from './editar-funcionario/editar-funciona
     RelatorioClienteFielComponent,
     RelatorioReceitaComponent,
     EditarFuncionarioComponent,
+    CadastrarFuncionarioComponent,
   ],
   imports: [
     CommonModule,
     RouterModule,
-    FormsModule
+    FormsModule,
+    NgxMaskDirective,
+    NgxMaskPipe
   ],
   providers: [
-    RelatorioService
+    RelatorioService,
+    provideNgxMask(),
   ]
 })
 
