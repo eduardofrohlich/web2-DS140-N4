@@ -15,9 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import backend.lavanderia.usuario.directive.ValidaUsuario;
 import backend.lavanderia.usuario.dto.ClienteDTO;
-import backend.lavanderia.usuario.dto.FuncionarioDTO;
 import backend.lavanderia.usuario.entity.Cliente;
-import backend.lavanderia.usuario.entity.Funcionario;
 import backend.lavanderia.usuario.repository.ClienteRepository;
 import backend.lavanderia.usuario.service.Criptografia;
 
@@ -41,16 +39,6 @@ public class ClienteController {
 		return lista;
 	}
 
-	// Login
-	@GetMapping("/clientes/{email}/{senha}")
-	public ClienteDTO identificarCliente(@PathVariable("email") String email, @PathVariable("senha") String senha) {
-		Optional<Cliente> buscaCliente = repoCliente.findByEmailAndSenha(email, Criptografia.criptografarSenha(senha));
-
-		if (buscaCliente.isEmpty())
-			throw new RuntimeException("Não existe cliente com esse email e senha!");
-
-		return mapper.map(buscaCliente, ClienteDTO.class);
-	}
 
 	@GetMapping("/clientes/{id}")
 	public ClienteDTO getById(@PathVariable("id") String longId) {

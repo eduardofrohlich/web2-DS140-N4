@@ -46,7 +46,7 @@
               <tr *ngFor="let pedido of pedidos">
                 <td>{{ pedido.idPedido }}</td>
                 <td>{{ pedido.dataHora }}</td>
-                <td>{{ pedido.valorTotal }}</td>
+                <td>R$ {{ pedido.valorTotal }},00</td>
               </tr>
             </tbody>
             <div *ngIf="!pedidos || pedidos.length === 0">
