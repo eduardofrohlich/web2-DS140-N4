@@ -75,31 +75,31 @@
 <body>
     <div class="container-cad">
         <h2>Cadastro</h2>
-        <form  name="form-cad">
+        <form #formCliente="ngForm" name="form-cad">
             <div class="form-group">
                 <label for="nomeCompleto">Nome Completo</label>
-                <input type="text" [(ngModel)]="nome" name="nomeCompleto" required/>
+                <input type="text" [(ngModel)]="cliente.nome" name="nomeCompleto" required/>
             </div>
 
             <div class="form-group">
                 <label for="email">E-mail</label>
-                <input type="email" [(ngModel)]="email" id="email" name="email" required />
+                <input type="email" [(ngModel)]="cliente.email" id="email" name="email" required />
             </div>
 
             <div class="inline-group">
                 <div class="form-group" id="cpf">
                     <label for="cpf">CPF</label>
-                    <input type="text" [(ngModel)]="cpf" name="cpf" required/>
+                    <input type="text" [(ngModel)]="cliente.cpf" name="cpf" required/>
                 </div>
                 <div class="form-group">
                     <label for="telefone">Telefone</label>
-                    <input type="tel" [(ngModel)]="telefone" name="telefone" required/>
+                    <input type="tel" [(ngModel)]="cliente.telefone" name="telefone" required/>
                 </div>
             </div>
 
             <div class="form-group">
                 <label for="cep">Cep</label>
-                <input type="text" [(ngModel)]="cpf" id="cep" value="" size="10" maxlength="9" required/>
+                <input type="text"  id="cep" value="" size="10" maxlength="9" required/>
             </div>
 
             <div class="inline-group">
@@ -117,7 +117,7 @@
             <div class="inline-group">
                 <div class="form-group" id="b">
                     <label for="bairro">Bairro</label>
-                    <input type="text" [(ngModel)]="bairro" name="bairro" id="bairro" size="40" required />
+                    <input type="text"  [(ngModel)]="bairro" name="bairro" id="bairro" size="40" required />
                 </div>
     
                 <div class="form-group">
