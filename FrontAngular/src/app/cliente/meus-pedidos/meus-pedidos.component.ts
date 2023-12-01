@@ -66,8 +66,7 @@ export class MeusPedidosComponent {
         }
       }
     } else {
-      this.router.navigate(['cliente/meus-pedidos/detalhe', pedido.idPedido]);
-    }
+      this.router.navigate([`cliente/meus-pedidos/detalhe/${pedido.idPedido}/${this.id}`]);    }
   }
 
 }

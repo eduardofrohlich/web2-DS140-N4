@@ -40,7 +40,7 @@ const routes: Routes = [
     component: MeusPedidosComponent,
   },
   {
-    path: 'cliente/meus-pedidos/detalhe/:id',
+    path: 'cliente/meus-pedidos/detalhe/:id/:cliente',
     component: DetalhesPedidoComponent,
   },
 

@@ -13,22 +13,25 @@ export class DetalhesPedidoComponent {
 
   pedido!: Pedido;
   id!: any;
+  cliente : any;
 
   constructor(private http: HttpClient, private pedidosService: PedidosService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.id = +this.route.snapshot.params['id'];
-    this.http.get("http://localhost:8080/pedidos/" + this.id).subscribe((dados) => this.pedido = dados);
+    this.cliente = +this.route.snapshot.params['cliente'];
+
+    this.http.get("http://localhost:8080/pedidos/" + this.route.snapshot.params['id']).subscribe((dados) => this.pedido = dados);
   }
 
   return() {
-    this.router.navigate(['/cliente/pedidos'], { relativeTo: this.route });
+    this.router.navigate(['/cliente/pedidos/' + this.route.snapshot.params['cliente']], { relativeTo: this.route });
   }
   getStringRoupas(roupas: RoupasPedido[] | undefined): string {
     if (roupas) {
       let stringBuilder = "";
       for (let i = 0; i < roupas.length; i++) {
-        const roupa = roupas[i]?.roupa; 
+        const roupa = roupas[i]?.roupa;
         if (roupa && roupa?.nomeRoupa) {
           stringBuilder += roupa.nomeRoupa;
           if (i !== roupas.length - 1) {
