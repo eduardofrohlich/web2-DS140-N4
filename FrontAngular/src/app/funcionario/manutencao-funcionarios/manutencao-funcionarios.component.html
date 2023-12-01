@@ -38,17 +38,23 @@
     </div>
     <h2><a href="/prototipo/funcionario/index.html">LOL Lavanderia Online</a></h2>
     <ul>
-      <li><a href="/prototipo/funcionario/index.html"><i class="menu-item"></i><span class="menu-texto">Página Inicial</span></a></li>
-      <li><a href="/prototipo/funcionario/tela_visualiza_pedido/index.html"><i class="menu-item"></i><span class="menu-texto">Pedidos</span></a></li>
-      <li><a href="/prototipo/funcionario/relatorios/relatorios.html"><i class="menu-item"></i><span class="menu-texto">Relatórios</span></a></li>
-      <li><a href="/prototipo/funcionario/tela_manutencao_funcionarios/manutencao_de_funcionarios.html"><i class="menu-item"></i><span class="menu-texto">Funcionários</span></a></li>
-      <li><a href="/prototipo/funcionario/tela_manutencao_roupas/manutencao_roupas.html"><i class="menu-item"></i><span class="menu-texto">Roupas</span></a></li>
+      <li><a href="/prototipo/funcionario/index.html"><i class="menu-item"></i><span class="menu-texto">Página
+            Inicial</span></a></li>
+      <li><a href="/prototipo/funcionario/tela_visualiza_pedido/index.html"><i class="menu-item"></i><span
+            class="menu-texto">Pedidos</span></a></li>
+      <li><a href="/prototipo/funcionario/relatorios/relatorios.html"><i class="menu-item"></i><span
+            class="menu-texto">Relatórios</span></a></li>
+      <li><a href="/prototipo/funcionario/tela_manutencao_funcionarios/manutencao_de_funcionarios.html"><i
+            class="menu-item"></i><span class="menu-texto">Funcionários</span></a></li>
+      <li><a href="/prototipo/funcionario/tela_manutencao_roupas/manutencao_roupas.html"><i class="menu-item"></i><span
+            class="menu-texto">Roupas</span></a></li>
 
       <li><a href="#"><i class="menu-item"></i><span class="menu-texto">Serviços</span></a></li>
       <li><a href="#"><i class="menu-item"></i><span class="menu-texto">Contato</span></a></li>
     </ul>
     <ul class="logout">
-      <li><a href="/prototipo/home/tela_inicial/inicio.html"><i class="menu-item"></i><span class="menu-texto">Sair</span></a></li>
+      <li><a href="/prototipo/home/tela_inicial/inicio.html"><i class="menu-item"></i><span
+            class="menu-texto">Sair</span></a></li>
     </ul>
   </nav>
   <div class="content-with-sidebar">
@@ -74,22 +80,13 @@
                 <th>Ações</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody *ngFor="let funcionario of funcionarios">
               <tr>
-                <td>Maria da Silva</td>
-                <td>mariasilvagmail.com</td>
-                <td>20/07/1994</td>
+                <td>{{funcionario.nome}}</td>
+                <td>{{funcionario.email}}</td>
+                <td>{{funcionario.dataNascimento}}</td>
                 <td>
-                  <a class="grey-button" href="../tela_manutencao_funcionarios/info.html">Detalhes</a>
-                </td>
-              </tr>
-              <tr>
-                <td>Joao da Costa Medeiros</td>
-                <td>joaomedeirosgmail.com</td>
-                <td>21/06/1989</td>
-                <td>
-                  <a class="grey-button" href="../tela_manutencao_funcionarios/info.html">Detalhes</a>
-                </td>
+                  <button (click)="exibirDetalhes(funcionario)" class="botao-confirmar">Exibir detalhes</button>
               </tr>
             </tbody>
           </table>

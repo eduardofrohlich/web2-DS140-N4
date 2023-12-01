@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, catchError, map, throwError } from 'rxjs';
-import { Pedido } from 'src/app/shared';
 
 const httpHeader = {
   headers: new HttpHeaders({
