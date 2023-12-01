@@ -66,7 +66,7 @@
                 <td>#{{ pedido.idPedido }}</td>
                 <td>{{ pedido.dataHora }}</td>
                 <td>{{ pedido.pedidoStatus === 'AGUARDANDO_PAGAMENTO' ? 'AGUARDANDO PAGAMENTO' : pedido.pedidoStatus }}</td>
-                <td>{{ pedido.valorTotal }}</td>
+                <td>R${{ pedido.valorTotal}},00</td>
                 <td>
                   <button (click)="atualizarEstado(pedido)" [style]="{ 'background-color': getCorEstado(pedido) }">
                     {{ getMensagemBotao(pedido) }}

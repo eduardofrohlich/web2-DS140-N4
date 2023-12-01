@@ -24,6 +24,7 @@ import { LoginRoutes } from './auth/auth-routing.module';
 import { AuthGuard } from './auth/auth.guard';
 import { Perfil } from './shared/models/usuario.model~';
 import { MeusPedidosComponent } from './cliente/meus-pedidos/meus-pedidos.component';
+import { DetalhesPedidoComponent } from './cliente/detalhes-pedido/detalhes-pedido.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -38,6 +39,11 @@ const routes: Routes = [
     path: 'cliente/pedidos/:id',
     component: MeusPedidosComponent,
   },
+  {
+    path: 'cliente/meus-pedidos/detalhe/:id',
+    component: DetalhesPedidoComponent,
+  },
+
   { path: 'funcionario/relatorio', component: RelatorioComponent },
   {
     path: 'funcionario/relatorio/cliente',

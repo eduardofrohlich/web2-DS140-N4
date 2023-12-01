@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Informações do Funcionário</title>
+
+  <script>
+  </script>
+
+</head>
+
+<body>
+  <nav class="menu-sidebar">
+    <div class="logo">
+      <div class="logo">
+        <img src="/assets/img/default/logo.png" alt="Logo">
+      </div>
+    </div>
+    <h2><a [routerLink]="['/cliente', id]">LOL Lavanderia Online</a></h2>
+    <ul>
+      <li><a [routerLink]="['/cliente', id]"><i class="menu-item"></i><span class="menu-texto">Página Inicial</span></a>
+      </li>
+      <li><a [routerLink]="['/cliente/pedidos', id]"><i class="menu-item"></i><span class="menu-texto">Meus
+            pedidos</span></a></li>
+
+      <li><a href="#"><i class="menu-item"></i><span class="menu-texto">Serviços</span></a></li>
+      <li><a href="#"><i class="menu-item"></i><span class="menu-texto">Contato</span></a></li>
+    </ul>
+    <ul class="logout">
+      <li><a href="/logout"><i class="menu-item"></i><span
+            class="menu-texto">Sair</span></a></li>
+    </ul>
+  </nav>
+  <div class="content-with-sidebar">
+    <section class="home">
+      <div class="content">
+        <h1>Dados da Roupa</h1>
+        <div class="container-cad">
+          <div class="form-group">
+            <label for="nomeCompleto">Numero do Pedido:</label>
+            <span># {{pedido.idPedido}}</span>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Prazo:</label>
+            <span>{{getStringRoupas(pedido.roupas)}}</span>
+          </div>
+
+          <div class="inline-group">
+            <div class="form-group" id="dataNasc">
+              <label for="dataNasc">Valor:</label>
+              <span>R${{pedido.valorTotal}},00</span>
+            </div>
+          </div>
+            <div>
+              <button (click)="return()">Voltar</button>
+            </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</body>
+
+</html>

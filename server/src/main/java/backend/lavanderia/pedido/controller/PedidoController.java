@@ -80,6 +80,15 @@ public class PedidoController {
 		return lista;
 	}
 
+	@GetMapping(value = "/{idPedido}")
+	public PedidoDTO obterPedido(@PathVariable("idPedido") Long idPedido) {
+		Optional<Pedido> buscaPedido = repoPedido.findById(idPedido);
+		if (buscaPedido.isEmpty())
+			throw new RuntimeException("Não existe pedido com esse id!");
+		PedidoDTO p = mapper.map(buscaPedido.get(), PedidoDTO.class);
+		p.setPedidoStatus(buscaPedido.get().getPedidoStatus());
+		return p;
+	}
 
 	@GetMapping("/{idPedido}/estado/{novoEstado}")
 	public PedidoDTO atualizarEstadoPedido(@PathVariable("idPedido") String idPedido,

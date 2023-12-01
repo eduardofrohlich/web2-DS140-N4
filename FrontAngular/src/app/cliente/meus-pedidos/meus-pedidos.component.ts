@@ -56,16 +56,17 @@ export class MeusPedidosComponent {
   }
 
   atualizarEstado(pedido: Pedido) {
-    if (confirm("Tem certeza que quer pagar o pedido?")) {
-      if (pedido.idPedido !== undefined && pedido.pedidoStatus !== undefined) {
-        const id: number = pedido.idPedido;
-        const estado: string = pedido.pedidoStatus.toString();
-        this.pedidoService.atualizarEstado(id, estado);
-        this.carregarDados();
-
-      } else {
-        console.error('Pedido não encontrado na lista.');
+    if (pedido.pedidoStatus === 'AGUARDANDO_PAGAMENTO') {
+      if (confirm("Tem certeza que quer pagar o pedido?")) {
+        if (pedido.idPedido !== undefined && pedido.pedidoStatus !== undefined) {
+          const id: number = pedido.idPedido;
+          const estado: string = pedido.pedidoStatus.toString();
+          this.pedidoService.atualizarEstado(id, estado);
+          this.router.navigate(['cliente/pagar-pedido', pedido.idPedido]);
+        }
       }
+    } else {
+      this.router.navigate(['cliente/meus-pedidos/detalhe', pedido.idPedido]);
     }
   }
 
