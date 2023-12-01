@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import backend.lavanderia.usuario.directive.ValidaUsuario;
 import backend.lavanderia.usuario.dto.ClienteDTO;
 import backend.lavanderia.usuario.entity.Cliente;
+import backend.lavanderia.usuario.entity.Funcionario;
 import backend.lavanderia.usuario.repository.ClienteRepository;
 import backend.lavanderia.usuario.service.Criptografia;
 
@@ -38,7 +39,6 @@ public class ClienteController {
 
 		return lista;
 	}
-
 
 	@GetMapping("/clientes/{id}")
 	public ClienteDTO getById(@PathVariable("id") String longId) {
@@ -66,4 +66,28 @@ public class ClienteController {
 
 		return cliente;
 	}
+
+	@GetMapping("/clientes/cadastrar/{nome}/{email}/{senha}/{endereco}/{telefone}/{cpf}")
+	public String cadastrarFuncionario(
+			@PathVariable("nome") String nome,
+			@PathVariable("email") String email,
+			@PathVariable("senha") String senha,
+			@PathVariable("endereco") String endereco,
+			@PathVariable("telefone") String telefone,
+			@PathVariable("cpf") String cpf) {
+
+		Cliente cliente = new Cliente();
+		cliente.setNome(nome);
+		cliente.setEmail(email);
+		cliente.setSenha(senha);
+		cliente.setEndereco(endereco);
+		cliente.setTelefone(telefone);
+		cliente.setCpf(cpf);
+
+		repoCliente.save(cliente);
+
+		return "OK";
+	}
+
+
 }
