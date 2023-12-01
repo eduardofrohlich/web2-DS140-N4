@@ -49,8 +49,8 @@
                             <tr>
                                 <td>{{cliente.nome}}</td>
                                 <td>{{cliente.email}}</td>
-                                <td>{{cliente.cpf}}</td>
-                                <td>{{cliente.telefone}}</td>
+                                <td>{{formatCpf(cliente.cpf)}}</td>
+                                <td>{{formatTelefone(cliente.telefone)}}</td>
                                 <td>{{cliente.endereco}}</td>
                             </tr>
                         </tbody>

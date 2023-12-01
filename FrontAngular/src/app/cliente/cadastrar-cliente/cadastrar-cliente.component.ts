@@ -49,7 +49,7 @@ export class CadastrarClienteComponent implements OnInit {
   concatenaEndereco(): string {
     return `${this.rua} ${this.numCasa}`;
   }
-
+  
   Enviar(){
     let senhaGerada = this.geraSenhaAleatoria();
     const dadosFormulario = {
