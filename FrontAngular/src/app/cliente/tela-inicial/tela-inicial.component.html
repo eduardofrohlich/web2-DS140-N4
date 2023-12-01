@@ -12,77 +12,52 @@
     <div class="logo">
       <img src="/assets/img/default/logo.png" alt="Logo">
     </div>
-    <h2><a href="/prototipo/cliente/tela_inicial_cliente/index.html">LOL Lavanderia Online</a></h2>
+    <h2><a href="/cliente">LOL Lavanderia Online</a></h2>
     <ul>
-      <li><a href="/prototipo/cliente/tela_inicial_cliente/index.html"><i class="menu-item"></i><span
+      <li><a href="/cliente"><i class="menu-item"></i><span
             class="menu-texto">Página Inicial</span></a></li>
-      <li><a href="/prototipo/cliente/tela_meus_pedidos/index.html"><i class="menu-item"></i><span
+      <li><a href="/cliente/pedidos"><i class="menu-item"></i><span
             class="menu-texto">Meus pedidos</span></a></li>
       <li><a href="#"><i class="menu-item"></i><span class="menu-texto">Serviços</span></a></li>
       <li><a href="#"><i class="menu-item"></i><span class="menu-texto">Contato</span></a></li>
     </ul>
     <ul class="logout">
-      <li><a href="/prototipo/home/tela_inicial/inicio.html"><i class="menu-item"></i><span
+      <li><a href="/logout"><i class="menu-item"></i><span
             class="menu-texto">Sair</span></a></li>
     </ul>
   </nav>
   <div class="content-with-sidebar">
     <section class="home">
       <div class="novo-pedido">
-        <a href="/prototipo/cliente/tela_pedido_online/HTML/pedido.html">Abrir novo pedido</a>
+        <a href="/cliente/pedido_online">Abrir novo pedido</a>
       </div>
       <div class="content">
         <h2>Pedidos abertos</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>Pedido</th>
-              <th>Itens</th>
-              <th>Serviços</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><a href="#">#698</a></td>
-              <td>Meia (6)<br>
-                Calça (2)<br>
-                Camiseta (4)<br>
-                Bermuda (4)</td>
-              <td> Passar Roupas</td>
-            </tr>
-            <tr>
-              <td><a href="#">#912</a></td>
-              <td>Meia (1) <br> Blusa (3) <br> Roupa Intima (5) <br> Sutiã (3)</td>
-              <td>Lavagem Comum </td>
-            </tr>
-            <tr>
-              <td><a href="#">#567</a></td>
-              <td>Jaqueta (2)</td>
-              <td>Lavagem a Seco </td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="listagem">
+          <table>
+            <thead>
+              <tr>
+                <th>Número do pedido</th>
+                <th>Data do pedido</th>
+                <th>Valor total</th>
+              </tr>
+            </thead>
+            <tbody *ngIf="pedidos && pedidos.length > 0">
+              <tr *ngFor="let pedido of pedidos">
+                <td>{{ pedido.idPedido }}</td>
+                <td>{{ pedido.dataHora }}</td>
+                <td>{{ pedido.valorTotal }}</td>
+              </tr>
+            </tbody>
+            <div *ngIf="!pedidos || pedidos.length === 0">
+              <p style="font-size: larger;">Não há pedidos abertos.</p>
+            </div>
+          </table>
+        </div>
       </div>
 
     </section>
     <style>
-      table {
-        width: 100%;
-        position: absolute;
-      }
 
-      th,
-      td {
-        text-align: center;
-        padding: 1.2vw;
-      }
-
-      th {
-        background-color: #d3d3d3;
-      }
-
-      content.h2 {
-        size: 2vw;
-      }
     </style>
   </div>

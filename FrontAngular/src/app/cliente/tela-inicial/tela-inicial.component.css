@@ -1,0 +1,18 @@
+table {
+  width: 100%;
+  position: absolute;
+}
+
+th,
+td {
+  text-align: center;
+  padding: 1.2vw;
+}
+
+th {
+  background-color: #d3d3d3;
+}
+
+content.h2 {
+  size: 2vw;
+}

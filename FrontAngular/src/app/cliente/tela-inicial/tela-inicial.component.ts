@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { PedidosService } from 'src/app/funcionario/services/pedidos.service';
+import { Pedido } from 'src/app/shared';
+
 
 @Component({
   selector: 'app-tela-inicial',
@@ -7,9 +10,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TelaInicialComponent implements OnInit {
 
-  constructor() { }
 
-  ngOnInit() {
+  pedidos!: Pedido[];
+
+  @ViewChild('content', { static: false }) el!: ElementRef;
+  constructor(private pedidoService: PedidosService) { }
+
+  ngOnInit(): void {
+    this.carregarDados();
   }
+
+  carregarDados() {
+    this.pedidoService.getAbertos().subscribe((pedidos) => {
+      let targetPedidos = pedidos;
+      this.pedidos = targetPedidos;
+    });
+  }
+
 
 }

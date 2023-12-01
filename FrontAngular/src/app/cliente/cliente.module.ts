@@ -8,6 +8,7 @@ import { MeusPedidosComponent } from './meus-pedidos/meus-pedidos.component';
 import { EsqueceuSenhaComponent } from './esqueceu-senha/esqueceu-senha.component';
 import { CadastrarClienteComponent } from './cadastrar-cliente/cadastrar-cliente.component';
 import { FormsModule } from '@angular/forms';
+import { TelaInicialComponent } from './tela-inicial/tela-inicial.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { FormsModule } from '@angular/forms';
     PedidoOnlineComponent,
     MeusPedidosComponent,
     EsqueceuSenhaComponent,
-    CadastrarClienteComponent
+    CadastrarClienteComponent,
+    TelaInicialComponent,
   ],
   imports: [
     CommonModule,
