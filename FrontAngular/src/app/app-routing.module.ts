@@ -20,37 +20,83 @@ import { CadastrarRoupaComponent } from './funcionario/cadastrar-roupa/cadastrar
 import { CadastrarClienteComponent } from './cliente/cadastrar-cliente/cadastrar-cliente.component';
 import { DetalhesFuncionarioComponent } from './funcionario/detalhes-funcionario/detalhes-funcionario.component';
 import { DetalhesRoupaComponent } from './funcionario/detalhes-roupa/detalhes-roupa.component';
+import { LoginRoutes } from './auth/auth-routing.module';
+import { AuthGuard } from './auth/auth.guard';
+import { Perfil } from './shared/models/usuario.model~';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'cliente/pagarpedido/:id', component: PagarPedidoComponent },
   { path: 'cliente/pedidoonline', component: PedidoOnlineComponent },
-  { path: 'cliente', component: TelaInicialComponent },
+  {
+    path: 'cliente',
+    component: TelaInicialComponent,
+    canActivate: [AuthGuard],
+    data: {
+      role: Perfil.CLIENTE,
+    },
+  },
   { path: 'funcionario/relatorio', component: RelatorioComponent },
-  { path: 'funcionario/relatorio/cliente', component: RelatorioClienteComponent },
-  { path: 'funcionario/relatorio/receita', component: RelatorioReceitaComponent },
-  { path: 'funcionario/relatorio/cliente-fiel', component: RelatorioClienteFielComponent },
-  { path: 'funcionario', component: TelaInicialFuncComponent },
+  {
+    path: 'funcionario/relatorio/cliente',
+    component: RelatorioClienteComponent,
+  },
+  {
+    path: 'funcionario/relatorio/receita',
+    component: RelatorioReceitaComponent,
+  },
+  {
+    path: 'funcionario/relatorio/cliente-fiel',
+    component: RelatorioClienteFielComponent,
+  },
+  {
+    path: 'funcionario',
+    component: TelaInicialFuncComponent,
+    canActivate: [AuthGuard],
+    data: {
+      role: Perfil.FUNCIONARIO,
+    },
+  },
   { path: 'funcionario/pedidos', component: VisualizaPedidoComponent },
-  { path: 'funcionario/manutencao/funcionarios', component: ManutencaoFuncionariosComponent  },
-  { path: 'funcionario/cadastrar-funcionario', component: CadastrarFuncionarioComponent },
-  { path: 'funcionario/manutencao/roupas', component: ManutencaoRoupasComponent },
+  {
+    path: 'funcionario/manutencao/funcionarios',
+    component: ManutencaoFuncionariosComponent,
+  },
+  {
+    path: 'funcionario/cadastrar-funcionario',
+    component: CadastrarFuncionarioComponent,
+  },
+  {
+    path: 'funcionario/manutencao/roupas',
+    component: ManutencaoRoupasComponent,
+  },
   { path: 'funcionario/editar-roupa', component: EditarRoupaComponent },
   { path: 'esqueceu-senha', component: EsqueceuSenhaComponent },
   { path: 'funcionario/cadastrar-roupa', component: CadastrarRoupaComponent },
   { path: 'logout', component: LoginComponent },
-  { path: 'cliente/cadastrar-cliente', component: CadastrarClienteComponent},
-  { path: 'funcionario/manutencao/funcionarios/detalhes-funcionario/:id', component: DetalhesFuncionarioComponent },
-  { path: 'funcionario/manutencao/funcionarios/editar-funcionario/:id', component: EditarFuncionarioComponent },
-  { path: 'funcionario/manutencao/roupas/detalhes-roupa/:id', component: DetalhesRoupaComponent },
-  { path: 'funcionario/manutencao/roupas/editar-roupa/:id', component: EditarRoupaComponent },
-
+  { path: 'cliente/cadastrar-cliente', component: CadastrarClienteComponent },
+  {
+    path: 'funcionario/manutencao/funcionarios/detalhes-funcionario/:id',
+    component: DetalhesFuncionarioComponent,
+  },
+  {
+    path: 'funcionario/manutencao/funcionarios/editar-funcionario/:id',
+    component: EditarFuncionarioComponent,
+  },
+  {
+    path: 'funcionario/manutencao/roupas/detalhes-roupa/:id',
+    component: DetalhesRoupaComponent,
+  },
+  {
+    path: 'funcionario/manutencao/roupas/editar-roupa/:id',
+    component: EditarRoupaComponent,
+  },
+  ...LoginRoutes,
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-
 export class AppRoutingModule {}

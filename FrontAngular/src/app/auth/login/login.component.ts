@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Login } from 'src/app/shared';
+import { Perfil } from 'src/app/shared/models/usuario.model~';
 import { LoginService } from '../services/login.service';
 import { Router, ActivatedRoute } from '@angular/router';
 
@@ -13,7 +14,7 @@ export class LoginComponent implements OnInit {
   @ViewChild('formLogin') formLogin!: NgForm;
   login: Login = new Login();
   loading: boolean = false;
-  message!: string;
+  message!: string | undefined;
 
   constructor(
     private loginService: LoginService,
@@ -21,12 +22,16 @@ export class LoginComponent implements OnInit {
     private route: ActivatedRoute
   ) {
     if (this.loginService.usuarioLogado) {
-      this.router.navigate(['/tela-inicial']);
+      if (this.loginService.usuarioLogado.perfil == 1) {
+        this.router.navigate(['/cliente']);
+      } else if (this.loginService.usuarioLogado.perfil == 2) {
+        this.router.navigate(['/funcionario']);
+      }
     }
   }
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe((params: { [x: string]: any }) => {
+    this.route.queryParams.subscribe((params) => {
       this.message = params['error'];
     });
   }
@@ -38,12 +43,16 @@ export class LoginComponent implements OnInit {
         if (usu != null) {
           this.loginService.usuarioLogado = usu;
           this.loading = false;
-          this.router.navigate(['/tela-inicial']);
+          if (usu.perfil == Perfil.CLIENTE) {
+            this.router.navigate(['/cliente']);
+          } else if (usu.perfil == Perfil.FUNCIONARIO) {
+            this.router.navigate(['/funcionario']);
+          }
         } else {
           this.message = 'Usuário/Senha inválidos.';
+          this.loading = false;
         }
       });
     }
-    this.loading = false;
   }
 }

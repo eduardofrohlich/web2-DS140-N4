@@ -1,3 +1,8 @@
+export enum Perfil {
+  CLIENTE = 1,
+  FUNCIONARIO = 2,
+}
+
 export class Usuario {
   constructor(
     public id?: number,
@@ -7,6 +12,6 @@ export class Usuario {
     public nome?: string,
     public cpf?: string,
     public telefone?: string,
-    public perfil?: number
+    public perfil?: Perfil
   ) {}
 }
