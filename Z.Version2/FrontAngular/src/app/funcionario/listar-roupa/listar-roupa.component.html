@@ -1,0 +1,82 @@
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        //search
+        const filtro = document.getElementById("search-input");
+        const linhas = document.querySelectorAll("tbody tr");
+
+        filtro.addEventListener("input", function () {
+        const roupa = filtro.value;
+
+        linhas.forEach(function (linha) {
+            const nome = linha.querySelector("td:nth-child(1)").textContent.toLocaleLowerCase();
+
+            if (roupa === "" || nome.includes(roupa)) {
+            linha.style.display = "table-row";
+            } else {
+            linha.style.display = "none";
+            }
+        });
+        });
+
+    });
+</script>
+
+<nav class="menu-sidebar">
+<div class="logo">
+    <img src="/assets/img/default/logo.png" alt="Logo_Lol">
+</div>
+<h2><a href="/prototipo/funcionario/index.html">LOL Lavanderia Online</a></h2>
+<ul>
+    <li><a href="/prototipo/funcionario/index.html"><i class="menu-item"></i><span class="menu-texto">Página Inicial</span></a></li>
+    <li><a href="/prototipo/funcionario/tela_visualiza_pedido/index.html"><i class="menu-item"></i><span class="menu-texto">Pedidos</span></a></li>
+    <li><a href="/prototipo/funcionario/relatorios/relatorios.html"><i class="menu-item"></i><span class="menu-texto">Relatórios</span></a></li>
+    <li><a href="/prototipo/funcionario/tela_manutencao_funcionarios/manutencao_de_funcionarios.html"><i class="menu-item"></i><span class="menu-texto">Funcionários</span></a></li>
+    <li><a href="/prototipo/funcionario/tela_manutencao_roupas/manutencao_roupas.html"><i class="menu-item"></i><span class="menu-texto">Roupas</span></a></li>
+
+    <li><a href="#"><i class="menu-item"></i><span class="menu-texto">Serviços</span></a></li>
+    <li><a href="#"><i class="menu-item"></i><span class="menu-texto">Contato</span></a></li>
+</ul>
+<ul class="logout">
+    <li><a href="/prototipo/home/tela_inicial/inicio.html"><i class="menu-item"></i><span class="menu-texto">Sair</span></a></li>
+</ul>
+</nav>
+<div class="content-with-sidebar">
+<section class="home">
+    <div class="content">
+        <div class="novo-pedido">
+            <a [routerLink]="['/funcionario/roupa/cadastrar']">Cadastrar Peça de roupa</a>
+        </div>
+        <h1>Peças de roupa</h1>
+        <div class="seletor-status">
+            <form>
+            <label for="search-input">Filtrar por nome:</label>
+            <input type="text" id="search-input" placeholder="Digite o nome da peça de roupa." autocomplete="off">
+            </form>
+        </div>
+        <div class="listagem">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nome da peça</th>
+                        <th>Preço</th>
+                        <th>Prazo</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let roupa of roupas">
+                        <td>{{roupa.nomeRoupa}}</td>
+                        <td>{{roupa.valor}}</td>
+                        <td>{{roupa.prazo}}</td>
+                        <td>
+                            <a [routerLink]="['/funcionario/roupa/editar', roupa.idRoupa]">Editar</a>
+                            <a (click)="remover(roupa)">Remover</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+</div>

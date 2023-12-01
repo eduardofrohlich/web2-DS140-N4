@@ -1,0 +1,59 @@
+.novo-pedido {
+    display: flex;
+    justify-content: left;
+  }
+  
+  .home .content {
+    padding-top: 12vh;
+  }
+  
+  .content h1 {
+    color: #000;
+    margin-left: 4vh;
+    font-weight: bolder;
+    font-size: 2vw;
+    top: 3.5vh;
+    text-align: left;
+    margin-bottom: 4vh;
+  }
+  
+  .listagem table {
+    border-collapse: collapse;
+    width: 98%;
+    margin-bottom: 10vh;
+    margin-left: 2vh;
+  }
+  
+  .listagem th {
+    padding: 0.7vh;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+  
+  }
+  
+  .listagem td {
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .listagem tr:hover {
+    background-color: #f5f5f5;
+  }
+  
+  .listagem th {
+    background-color: #38797a9d;
+    color: #fff;
+  }
+  
+  
+  
+  .content-with-sidebar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .content {
+    width: 100%;
+  }
+  

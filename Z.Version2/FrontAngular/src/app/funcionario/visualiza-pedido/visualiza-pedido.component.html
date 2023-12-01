@@ -1,0 +1,193 @@
+<nav class="menu-sidebar">
+<div class="logo">
+    <img src="/assets/img/default/logo.png" alt="Logo">
+</div>
+<h2><a href="/funcionario/">LOL Lavanderia Online</a></h2>
+<ul>
+    <li><a href="/funcionario/"><i class="menu-item"></i><span class="menu-texto">Página Inicial</span></a></li>
+    <li><a href="/funcionario/pedidos"><i class="menu-item"></i><span class="menu-texto">Pedidos</span></a></li>
+    <li><a href="/funcionario/relatorio"><i class="menu-item"></i><span class="menu-texto">Relatórios</span></a></li>
+    <li><a href="/funcionario/funcionarios"><i class="menu-item"></i><span class="menu-texto">Funcionários</span></a>
+    </li>
+    <li><a href="/funcionario/roupas"><i class="menu-item"></i><span class="menu-texto">Roupas</span></a></li>
+
+    <li><a href="#"><i class="menu-item"></i><span class="menu-texto">Serviços</span></a></li>
+    <li><a href="#"><i class="menu-item"></i><span class="menu-texto">Contato</span></a></li>
+</ul>
+<ul class="logout">
+    <li><a href="/logout"><i class="menu-item"></i><span
+        class="menu-texto">Sair</span></a></li>
+</ul>
+</nav>
+<div class="content-with-sidebar">
+<section class="home">
+    <div class="novo-pedido">
+    <a href="/prototipo/cliente/tela_pedido_online/HTML/pedido.html">Abrir novo pedido</a>
+    </div>
+    <div class="content">
+    <h1>Histórico de Pedidos</h1>
+    <div class="seletor-status">
+        <form>
+        <label for="filtro-estados">Filtrar por:</label>
+        <select id="filtro-estados">
+            <option value="todos">Todos</option>
+            <option value="hoje">Hoje</option>
+            <option value="periodo-personalizado">Período personalizado</option>
+        </select>
+
+        <div class="personalizado">
+            <label for="data-inicio">Data início:</label>
+            <input type="date" id="data-inicio" name="data-inicio">
+            <label for="data-fim">Data fim:</label>
+            <input type="date" id="data-fim" name="data-fim">
+            <a class="btn-filtro" onclick="filtrarPorData()">Filtrar</a>
+        </div>
+        </form>
+
+    </div>
+
+
+    <div class="listagem">
+        <table>
+        <thead>
+            <tr>
+            <th>Número do pedido</th>
+            <th>Nome do Cliente</th>
+            <th>Data de Visualização</th>
+            <th>Status</th>
+            <th>Valor total</th>
+            <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let pedido of pedidos">
+
+            <td>{{pedido.idPedido}}</td>
+            <td>{{pedido.cliente?.nome}}</td>
+            <td>{{pedido.dataHora}}</td>
+
+            <!-- Escala de cores dos estados -->
+            <td *ngIf="pedido.estado=='ABERTO'" style="color: rgb(194, 194, 57);">{{pedido.estado}}</td>
+            <td *ngIf="pedido.estado=='REJEITADO' || pedido.estado=='CANCELADO'" style="color: rgb(226, 81, 71);">{{pedido.estado}}</td>
+            <td *ngIf="pedido.estado=='RECOLHIDO'" style="color: rgb(172, 172, 172);">{{pedido.estado}}</td>
+            <td *ngIf="pedido.estado=='AGUARDANDO PAGAMENTO'" style="color: rgb(102, 127, 211);">{{pedido.estado}}</td>  
+            <td *ngIf="pedido.estado=='PAGO'" style="color: rgb(241, 173, 46);">{{pedido.estado}}</td>
+            <td *ngIf="pedido.estado=='FINALIZADO'" style="color: rgb(147, 196, 73);">{{pedido.estado}}</td>
+
+            <td>{{pedido.valorTotal}}</td>
+
+            <!-- Botões de ação-->
+            <td *ngIf="pedido.estado=='ABERTO'">
+                <button class="btn-yes" (click)="confirmarRecolhimento(pedido)">Confirmar Recolhimento</button>
+            </td>
+            <td *ngIf="pedido.estado=='RECOLHIDO'">
+                <button class="btn-yes" (click)="confirmarLavagem(pedido)">Confirmar Lavagem</button>
+            </td>
+            <td *ngIf="pedido.estado=='PAGO'">
+                <button class="btn-yes" (click)="finalizar(pedido)">Finalizar</button>
+            </td>
+            <!-- Gambiarra para não quebrar a linha -->
+            <td *ngIf="pedido.estado!=='ABERTO' && pedido.estado!=='RECOLHIDO' && pedido.estado!=='PAGO'">
+                <button class="btn-yes" style="background-color: white; color: white;">NO ACTION</button>
+            </td>
+
+            </tr>
+        </tbody>
+        <div *ngIf="!pedidos || pedidos.length === 0">
+            <p style="font-size: larger;">Não há pedidos abertos.</p>
+        </div>
+        </table>
+    </div>
+    </div>
+</section>
+<div class="popup" id="popup">
+    <img src="./assets/atencao.png">
+    <h2>Cancelar Pedido</h2>
+    <p>Você tem certeza que deseja cancelar seu pedido?</p>
+    <button type="button" class="btn-yes" onclick="closePopupYes()">Sim</button>
+    <button type="button" onclick="closePopup()">Não</button>
+</div>
+
+<div class="popup" id="popup2">
+    <img src="assets/sucesso.png">
+    <h2>Cancelar Pedido</h2>
+    <p>Pedido cancelado com sucesso!</p>
+    <button type="button" class="btn-yes" onclick="closePopupCancel()">Ok</button>
+</div>
+
+
+</div>
+
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const filtroEstados = document.getElementById("filtro-estados");
+    const linhasPedidos = document.querySelectorAll("tbody tr");
+    const dataInicioInput = document.getElementById("data-inicio");
+    const dataFimInput = document.getElementById("data-fim");
+    const divPersonalizada = document.querySelector(".personalizado");
+
+    let estadoSelecionado = filtroEstados.value; // Declare a variável fora da função
+
+    function toggleDivPersonalizada() {
+    if (estadoSelecionado === "periodo-personalizado") {
+        divPersonalizada.style.display = "block";
+    } else {
+        divPersonalizada.style.display = "none";
+    }
+    }
+
+    filtroEstados.addEventListener("change", function () {
+    estadoSelecionado = filtroEstados.value; // Atualize o valor da variável
+    toggleDivPersonalizada();
+
+    linhasPedidos.forEach(function (linha) {
+        const statusPedido = linha.querySelector("td:nth-child(3)").textContent;
+
+        if (estadoSelecionado === "todos" || estadoSelecionado === statusPedido.toLowerCase()) {
+        linha.style.display = "table-row";
+        } else {
+        linha.style.display = "none";
+        }
+    });
+    });
+
+    dataInicioInput.addEventListener("change", function () {
+    filtrarPorData();
+    });
+
+    dataFimInput.addEventListener("change", function () {
+    filtrarPorData();
+    });
+
+    function filtrarPorData() {
+    const dataInicio = document.getElementById("data-inicio").value;
+    const dataFim = document.getElementById("data-fim").value;
+
+    linhasPedidos.forEach(function (linha) {
+        const dataPedido = linha.querySelector("td:nth-child(2)").textContent;
+        const dataPedidoFormatada = formatarData(dataPedido);
+
+        if (
+        (dataInicio === "" || dataPedidoFormatada >= dataInicio) &&
+        (dataFim === "" || dataPedidoFormatada <= dataFim)
+        ) {
+        linha.style.display = "table-row";
+        } else {
+        linha.style.display = "none";
+        }
+    });
+    }
+
+    function formatarData(data) {
+    const partesData = data.split("-");
+    if (partesData.length === 3) {
+        return `${partesData[2]}/${partesData[1]}/${partesData[0]}`;
+    }
+    return data;
+    }
+
+    toggleDivPersonalizada();
+});
+</script>

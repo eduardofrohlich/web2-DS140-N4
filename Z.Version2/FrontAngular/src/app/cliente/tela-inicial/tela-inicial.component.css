@@ -1,0 +1,25 @@
+table {
+    width: 100%;
+    position: absolute;
+}
+
+th,
+td {
+    text-align: center;
+    padding: 1.2vw;
+}
+
+th {
+    background-color: #d3d3d3;
+}
+
+content.h2 {
+    size: 2vw;
+}
+
+/* Fazer ficar bonito... */
+.espaco{
+    display: block;
+    margin-bottom: 2px;
+    padding-bottom: 2px;
+}

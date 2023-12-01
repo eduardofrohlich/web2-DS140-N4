@@ -1,0 +1,110 @@
+<nav class="menu-sidebar">
+<div class="logo">
+    <img src="/prototipo/logo.png" alt="Logo">
+</div>
+<h2><a href="/prototipo/cliente/tela_inicial_cliente/index.html">LOL Lavanderia Online</a></h2>
+<ul>
+    <li><a href="/prototipo/cliente/tela_inicial_cliente/index.html"><i class="menu-item"></i><span class="menu-texto">Página Inicial</span></a></li>
+    <li><a href="/prototipo/cliente/tela_meus_pedidos/index.html"><i class="menu-item"></i><span class="menu-texto">Meus pedidos</span></a></li>
+    <li><a href="#"><i class="menu-item"></i><span class="menu-texto">Serviços</span></a></li>
+    <li><a href="#"><i class="menu-item"></i><span class="menu-texto">Contato</span></a></li>
+</ul>
+<ul class="logout">
+    <li><a href="/prototipo/home/tela_inicial/inicio.html"><i class="menu-item"></i><span class="menu-texto">Sair</span></a></li>
+</ul>
+</nav>
+<div class="content-with-sidebar">
+<section class="home">
+    <div class="content">
+    <h1>Meus Pedidos</h1>
+    <div class="seletor-status">
+        <form>
+        <label for="filtro-estados">Filtrar por estado:</label>
+        <select id="filtro-estados" [(ngModel)]="estadoSelecionado" [ngModelOptions]="{standalone: true}" (ngModelChange)="filtrar()">
+            <option value="todos">Todos</option>
+            <option value="aberto">Aberto</option>
+            <option value="aguardando pagamento">Aguardando pagamento</option>
+            <option value="rejeitado">Rejeitado</option>
+            <option value="pago">Pago</option>
+            <option value="recolhido">Recolhido</option>
+            <option value="finalizado">Finalizado</option>
+            <option value="cancelado">Cancelado</option>
+        </select>
+        </form>
+    </div>
+    <div class="listagem">
+        <table>
+            <thead>
+                <tr>
+                <th>Número do pedido</th>
+                <th>Data do pedido</th>
+                <th>Status</th>
+                <th>Valor total</th>
+                <th>Ações</th>
+                </tr>
+            </thead>
+            
+            <tbody>
+                <tr *ngFor="let pedido of pedidosFiltrados">
+                    <td>{{pedido.idPedido}}</td>
+                    <td>{{pedido.dataHora}}</td>
+                    <td id="aberto1">{{pedido.estado}}</td>
+                    <td>{{pedido.valorTotal}}</td>
+                    <td *ngIf="pedido.estado=='ABERTO'" id="btn-cancel1">
+                        <a class="cancel-button" (click)="cancelar(pedido)">Cancelar</a>
+                    </td>
+                    <td *ngIf="pedido.estado=='AGUARDANDO PAGAMENTO'" id="btn-cancel1">
+                        <a class="cancel-button" style="background-color: greenyellow;" [routerLink]="['/cliente/pagarpedido/', pedido.idPedido]">PAGAR</a>
+                    </td>
+                    <!-- Gambiarra para não quebrar a linha -->
+                    <td *ngIf="pedido.estado!=='ABERTO' && pedido.estado!=='AGUARDANDO PAGAMENTO'" id="btn-cancel1">
+                        <a class="cancel-button" style="background-color: white;">NO ACTION</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    </div>
+</section>
+
+<div class="overlay" id="overlay">
+    <div class="popup" id="popup">
+    <img src="./assets/atencao.png">
+    <h2>Cancelar Pedido</h2>
+    <p>Você tem certeza que deseja cancelar seu pedido?</p>
+    <button type="button" class="btn-yes" onclick="closePopupYes()">Sim</button>
+    <button type="button" onclick="closePopup()">Não</button>
+    </div>
+
+    <div class="popup" id="popup2">
+    <img src="assets/sucesso.png">
+    <h2>Cancelar Pedido</h2>
+    <p>Pedido cancelado com sucesso!</p>
+    <button type="button" class="btn-yes" onclick="closePopupCancel()">Ok</button>
+    </div>
+</div>
+
+</div>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const filtroEstados = document.getElementById("filtro-estados");
+    const linhasPedidos = document.querySelectorAll("tbody tr");
+
+    filtroEstados.addEventListener("change", function () {
+    const estadoSelecionado = filtroEstados.value;
+
+    linhasPedidos.forEach(function (linha) {
+        const statusPedido = linha.querySelector("td:nth-child(3)").textContent;
+
+        if (estadoSelecionado === "" || estadoSelecionado === statusPedido.toLowerCase()) {
+        linha.style.display = "table-row";
+        } else {
+        linha.style.display = "none";
+        }
+    });
+    });
+});
+
+</script>

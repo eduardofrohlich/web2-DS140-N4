@@ -1,0 +1,206 @@
+.novo-pedido {
+    display: flex;
+    justify-content: left;
+  }
+  
+  .title-page {
+    display: block;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .home .content {
+    padding-top: 12vh;
+  }
+  
+  .seletor-status {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 4vh;
+    margin-bottom: 2vh;
+  }
+  
+  form {
+    display: inline;
+    width: 40%;
+    margin: 0;
+    margin-bottom: 8px;
+    position: relative;
+  }
+  
+  .content h1 {
+    color: #000;
+    margin-left: 4vh;
+    font-weight: bolder;
+    font-size: 2vw;
+    top: 3.5vh;
+    text-align: left;
+  }
+  
+  .seletor-status label {
+    color: #000;
+    font-weight: bolder;
+    position: relative;
+    display: block;
+  }
+  
+  .seletor-status select {
+    color: #000;
+    margin-left: 0.7vh;
+    margin-right: 5vh;
+    margin-bottom: 2vh;
+    margin: 2vh 0 3vh 0;
+    padding: 1vh 1vh;
+    position: relative;
+    background: #38797a00;
+    border-radius: 3vh;
+    border: 1px solid #000;
+  }
+  
+  .seletor-status a {
+    color: #fff;
+    text-decoration: none;
+    padding: 1vh 6vh;
+    font-weight: 500;
+    font-weight: bolder;
+    transition: 0.5s;
+    background: #38797a9d;
+    border: none;
+    border-radius: 3vh;
+    margin-left: 0;
+  }
+  
+  .listagem table {
+    border-collapse: collapse;
+    width: 98%;
+    margin-bottom: 10vh;
+    margin-left: 2vh;
+  }
+  
+  .listagem th {
+    padding: 0.7vh;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+  
+  }
+  
+  .listagem td {
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .listagem tr:hover {
+    background-color: #f5f5f5;
+  }
+  
+  .listagem th {
+    background-color: #38797a9d;
+    color: #fff;
+  }
+  
+  .listagem .cancel-button {
+    margin-left: 10px;
+    background-color: #d9534f;
+    color: white;
+    border: none;
+    border-radius: 3vh;
+    padding: 6px 12px;
+    cursor: pointer;
+  }
+  
+  .listagem a {
+    background: #38797a9d;
+    text-align: center;
+    display: grid;
+    place-items: center;
+    border-radius: 3vh;
+    text-decoration: none;
+  }
+  
+  .listagem .grey-button {
+    background: #1a191986;
+    text-align: center;
+    border-radius: 3vh;
+    text-decoration: none;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.5s;
+  }
+  
+  .popup {
+    width: 400px;
+    background: #fff;
+    border-radius: 6px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.1);
+    text-align: center;
+    padding: 0 30px 30px;
+    color: #333;
+    visibility: hidden;
+    transition: transform 0.4s, top 0.4s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  .open-popup {
+    visibility: visible;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  
+  .popup img {
+    width: 100px;
+    justify-content: center;
+    margin-top: -50px;
+    border-radius: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  .popup h2 {
+    font-size: 30px;
+    font-weight: 500;
+    margin: 30px 0 10px;
+  }
+  
+  .popup button {
+    width: 100%;
+    margin-top: 50px;
+    padding: 10px 0;
+    background: #6e6e6ea9;
+    color: #fff;
+    border: 0;
+    outline: none;
+    font-size: 18px;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  .popup .btn-yes {
+    width: 100%;
+    margin-top: 50px;
+    padding: 10px 0;
+    background: #db08087c;
+    color: #fff;
+    border: 0;
+    outline: none;
+    font-size: 18px;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  .content-with-sidebar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .content {
+    width: 100%;
+  }
+  

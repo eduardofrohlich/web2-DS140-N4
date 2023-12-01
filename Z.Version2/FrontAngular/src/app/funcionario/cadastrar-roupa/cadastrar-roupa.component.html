@@ -1,0 +1,50 @@
+
+<div class="container-cad">
+    <h2>Cadastro de Roupa</h2>
+    <form name="form-cad" id="form-funcionario" #formRoupa="ngForm">
+        <div class="form-group">
+            <label for="nome">Nome da peça</label>
+            <input type="name" id="nome" name="nome" [(ngModel)]="roupa.nomeRoupa" #nome="ngModel" required />
+        </div>
+
+        <div class="form-group">
+            <label for="preco">Preço</label>
+            <input type="text" name="valor" onInput="mascaraMoeda(event);" [(ngModel)]="roupa.valor" #valor="ngModel" required/>
+        </div>
+
+        <div class="inline-group">
+            <div class="form-group">
+                <label for="prazo">Prazo</label>
+                <input type="price" id="prazo" name="prazo" [(ngModel)]="roupa.prazo" #prazo="ngModel" required />
+            </div>
+        </div>
+
+        <div>
+        <a [routerLink]="['/funcionario/roupa/listar']">
+            <button type="button" id="btn1" class="submit-btn">Cancelar</button>
+        </a>
+        <a (click)="inserir()">
+            <button type="submit" id="btn-form" class="submit-btn btn2">Cadastrar</button>
+        </a>
+        </div>
+    </form>
+</div>
+
+<script>
+function mascaraMoeda(event) {
+    const onlyDigits = event.target.value
+    .split("")
+    .filter(s => /\d/.test(s))
+    .join("")
+    .padStart(3, "0")
+    const digitsFloat = onlyDigits.slice(0, -2) + "." + onlyDigits.slice(-2)
+    event.target.value = maskCurrency(digitsFloat)
+}
+
+function maskCurrency(valor, locale = 'pt-BR', currency = 'BRL') {
+    return new Intl.NumberFormat(locale, {
+    style: 'currency',
+    currency
+    }).format(valor)
+}
+</script>

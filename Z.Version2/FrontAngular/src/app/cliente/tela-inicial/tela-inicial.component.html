@@ -1,0 +1,46 @@
+<nav class="menu-sidebar">
+    <div class="logo">
+    <img src="/assets/img/default/logo.png" alt="Logo">
+    </div>
+    <h2><a href="/prototipo/cliente/tela_inicial_cliente/index.html">LOL Lavanderia Online</a></h2>
+    <ul>
+    <li><a href="/prototipo/cliente/tela_inicial_cliente/index.html"><i class="menu-item"></i><span
+            class="menu-texto">Página Inicial</span></a></li>
+    <li><a href="/prototipo/cliente/tela_meus_pedidos/index.html"><i class="menu-item"></i><span
+            class="menu-texto">Meus pedidos</span></a></li>
+    <li><a href="#"><i class="menu-item"></i><span class="menu-texto">Serviços</span></a></li>
+    <li><a href="#"><i class="menu-item"></i><span class="menu-texto">Contato</span></a></li>
+    </ul>
+    <ul class="logout">
+    <li><a href="/prototipo/home/tela_inicial/inicio.html"><i class="menu-item"></i><span
+            class="menu-texto">Sair</span></a></li>
+    </ul>
+</nav>
+<div class="content-with-sidebar">
+    <section class="home">
+    <div class="novo-pedido">
+        <a href="/prototipo/cliente/tela_pedido_online/HTML/pedido.html">Abrir novo pedido</a>
+    </div>
+    <div class="content">
+        <h2>Pedidos abertos</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Pedido</th>
+                    <th>Itens</th>
+                </tr>
+            </thead>
+            <tbody *ngFor="let pedido of pedidos">
+                <tr>
+                    <td>#{{pedido.idPedido}}</td>
+                    <td *ngFor="let roupa of pedido.roupas" class="espaco">
+                        <!-- <br> não está dando nova linha -->
+                        {{roupa.roupa?.nomeRoupa}} ({{roupa.qtdRoupa}})
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    </section>
+</div>

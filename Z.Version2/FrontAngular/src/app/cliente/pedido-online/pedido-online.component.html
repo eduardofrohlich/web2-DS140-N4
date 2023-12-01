@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt">
+    <head>
+        <meta charset="UTF-8">
+        <title>Pedido</title>
+    </head>
+
+    <body>
+        <div class="container-pedido1">
+            <div class="container-roupas">
+                <div class="container-roupa" *ngFor="let roupa of roupas">
+                    <img class="imagem-roupa" src="../../../assets/img/roupas/{{roupa.roupa?.imagem}}">
+
+                    <div class="info-roupa">
+                        <p>Nome da roupa: {{roupa.roupa?.nomeRoupa}}</p>
+                        <p>Custo: {{roupa.roupa?.valor}} R$</p>
+                        <p>Prazo: {{roupa.roupa?.prazo}} dia(s)</p>
+                    </div>
+
+                    <div class="botoes-updown">
+                        <img src="../../../assets/img/default/botaoUp.png" class="botao-up" (click)="adicionar(roupa)">
+                        <img src="../../../assets/img/default/botaoDown.png" class="botao-down" (click)="remover(roupa)">
+                    </div>
+
+                    <div class="info-botao">
+                        <p id="qtd-meia">Quantidade: {{roupa.qtdRoupa}}</p>
+                        <p id="valor-meia">Valor total: {{roupa.valorTotalRoupa}} R$</p>
+                    </div>
+                </div>
+            </div>
+            <div class="container-confirmar-pedidos">
+                <div class="confirmar-pedido">
+                    <div class="info-pedido">
+                        <p id="valor-total">Valor Total: {{pedido.valorTotal}} R$</p>
+                        <P id="tempo-total">Tempo Total: {{pedido.prazoEntrega}} dia(s)</P>
+                    </div>
+                    
+                    <div class="botoes-pedido">
+                        <button (click)="aprovar()" class="botao-confirmar">APROVAR</button>
+                        <button (click)="rejeitar()" class="botao-rejeitar">REJEITAR</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

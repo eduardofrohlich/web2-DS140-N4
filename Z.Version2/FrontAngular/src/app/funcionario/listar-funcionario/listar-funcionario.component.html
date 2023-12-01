@@ -1,0 +1,82 @@
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    //search
+    const filtro = document.getElementById("search-input");
+    const linhas = document.querySelectorAll("tbody tr");
+
+    filtro.addEventListener("input", function () {
+    const funcionario = filtro.value;
+
+    linhas.forEach(function (linha) {
+        const nome = linha.querySelector("td:nth-child(1)").textContent.toLocaleLowerCase();
+
+        if (funcionario === "" || nome.includes(funcionario)) {
+        linha.style.display = "table-row";
+        } else {
+        linha.style.display = "none";
+        }
+    });
+    });
+
+});
+</script>
+
+<nav class="menu-sidebar">
+<div class="logo">
+    <img src="/assets/img/default/logo.png" alt="Logo_LOL">
+</div>
+<h2><a href="/prototipo/funcionario/index.html">LOL Lavanderia Online</a></h2>
+<ul>
+    <li><a href="/prototipo/funcionario/index.html"><i class="menu-item"></i><span class="menu-texto">Página Inicial</span></a></li>
+    <li><a href="/prototipo/funcionario/tela_visualiza_pedido/index.html"><i class="menu-item"></i><span class="menu-texto">Pedidos</span></a></li>
+    <li><a href="/prototipo/funcionario/relatorios/relatorios.html"><i class="menu-item"></i><span class="menu-texto">Relatórios</span></a></li>
+    <li><a href="/prototipo/funcionario/tela_manutencao_funcionarios/manutencao_de_funcionarios.html"><i class="menu-item"></i><span class="menu-texto">Funcionários</span></a></li>
+    <li><a href="/prototipo/funcionario/tela_manutencao_roupas/manutencao_roupas.html"><i class="menu-item"></i><span class="menu-texto">Roupas</span></a></li>
+
+    <li><a href="#"><i class="menu-item"></i><span class="menu-texto">Serviços</span></a></li>
+    <li><a href="#"><i class="menu-item"></i><span class="menu-texto">Contato</span></a></li>
+</ul>
+<ul class="logout">
+    <li><a href="/prototipo/home/tela_inicial/inicio.html"><i class="menu-item"></i><span class="menu-texto">Sair</span></a></li>
+</ul>
+</nav>
+
+<div class="content-with-sidebar">
+<section class="home">
+    <div class="content">
+    <div class="novo-pedido">
+        <a [routerLink]="['/funcionario/cadastrar']">Cadastrar Funcionário</a>
+    </div>
+    <h1>Funcionários</h1>
+    <div class="seletor-status">
+        <form>
+        <label for="search-input">Filtrar por nome:</label>
+        <input type="text" id="search-input" placeholder="Digite o nome do(a) funcionário(a)." autocomplete="off">
+        </form>
+    </div>
+        <div class="listagem">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nome completo</th>
+                        <th>E-mail</th>
+                        <th>Data de nascimento</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let func of funcionarios">
+                        <td>{{func.nome}}</td>
+                        <td>{{func.email}}</td>
+                        <td>{{func.dataNascimento}}</td>
+                        <td>
+                            <a class="grey-button" [routerLink]="['/funcionario/editar', func.idFuncionario]">Editar</a>
+                            <a class="grey-button" (click)="remover(func)">Remover</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+</div>
