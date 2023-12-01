@@ -18,6 +18,7 @@ import { EditarRoupaComponent } from './funcionario/editar-roupa/editar-roupa.co
 import { EsqueceuSenhaComponent } from './cliente/esqueceu-senha/esqueceu-senha.component';
 import { CadastrarRoupaComponent } from './funcionario/cadastrar-roupa/cadastrar-roupa.component';
 import { CadastrarClienteComponent } from './cliente/cadastrar-cliente/cadastrar-cliente.component';
+import { DetalhesFuncionarioComponent } from './funcionario/detalhes-funcionario/detalhes-funcionario.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -31,7 +32,7 @@ const routes: Routes = [
   { path: 'funcionario/relatorio/cliente-fiel', component: RelatorioClienteFielComponent },
   { path: 'funcionario', component: TelaInicialFuncComponent },
   { path: 'funcionario/pedidos', component: VisualizaPedidoComponent },
-  { path: 'funcionario/manutencao-func', component: ManutencaoFuncionariosComponent  },
+  { path: 'funcionario/manutencao/funcionarios', component: ManutencaoFuncionariosComponent  },
   { path: 'funcionario/editar-func', component: EditarFuncionarioComponent },
   { path: 'funcionario/cadastrar-func', component: CadastrarFuncionarioComponent },
   { path: 'funcionario/manutencao-roupas', component: ManutencaoRoupasComponent },
@@ -40,6 +41,7 @@ const routes: Routes = [
   { path: 'funcionario/cadastrar-roupa', component: CadastrarRoupaComponent },
   { path: 'logout', component: LoginComponent },
   { path: 'cliente/cadastrar-cliente', component: CadastrarClienteComponent},
+  { path: 'funcionario/manutencao/funcionarios/detalhes-funcionario', component: DetalhesFuncionarioComponent },
 
 ];
 
